@@ -1,1 +1,5 @@
-parameters:
+services:
+	-
+		class: JanGregor\Prophecy\Extension\ProphetProphesizeDynamicReturnTypeExtension
+		tags:
+			- phpstan.broker.dynamicMethodReturnTypeExtension

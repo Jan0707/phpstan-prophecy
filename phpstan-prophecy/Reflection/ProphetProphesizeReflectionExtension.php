@@ -16,7 +16,7 @@ class ProphetProphesizeReflectionExtension implements MethodsClassReflectionExte
 
     public function getMethod(ClassReflection $classReflection, string $methodName): MethodReflection
     {
-        $methodReflection = new ProphesizeMethodReflection();
+        $methodReflection = new ProphesizeMethodReflection($classReflection);
 
         return $methodReflection;
     }

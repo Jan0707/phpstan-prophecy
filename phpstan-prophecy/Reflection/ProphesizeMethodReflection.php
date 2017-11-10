@@ -9,9 +9,19 @@ use PHPStan\Type\Type;
 
 class ProphesizeMethodReflection implements MethodReflection
 {
+    /**
+     * @var ClassReflection
+     */
+    private $declaringClass;
+
+    public function __construct(ClassReflection $declaringClass)
+    {
+        $this->declaringClass = $declaringClass;
+    }
+
     public function getDeclaringClass(): ClassReflection
     {
-        return new ClassReflection();
+        return $this->declaringClass;
     }
 
     public function isStatic(): bool

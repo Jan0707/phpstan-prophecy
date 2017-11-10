@@ -21,7 +21,6 @@ class BaseModelTest extends TestCase
 
     public function testWithProphecy()
     {
-        /** @var BaseModel $subject */
         $subject = $this->prophesize(BaseModel::class);
         $subject->getFoo()->willReturn('bar');
 

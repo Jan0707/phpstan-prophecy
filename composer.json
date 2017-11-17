@@ -10,7 +10,7 @@
     "require-dev": {
         "phpspec/prophecy": "^1.7",
         "phpunit/phpunit": "^6.4",
-        "phpstan/phpstan": "^0.8.5"
+        "phpstan/phpstan": "0.9.x-dev"
     },
     "autoload": {
         "psr-4": {

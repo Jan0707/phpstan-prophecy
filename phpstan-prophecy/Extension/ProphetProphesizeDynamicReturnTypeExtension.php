@@ -2,9 +2,10 @@
 
 namespace JanGregor\Prophecy\Extension;
 
-
 use JanGregor\Prophecy\Type\ObjectProphecyType;
+use PhpParser\Node\Expr\ClassConstFetch;
 use PhpParser\Node\Expr\MethodCall;
+use PhpParser\Node\Name;
 use PHPStan\Analyser\Scope;
 use PHPStan\Reflection\MethodReflection;
 use PHPStan\Type\DynamicMethodReturnTypeExtension;
@@ -15,25 +16,43 @@ class ProphetProphesizeDynamicReturnTypeExtension implements DynamicMethodReturn
 {
     public static function getClass(): string
     {
-        var_dump('getClass');
-
         return Prophet::class;
     }
 
     public function isMethodSupported(MethodReflection $methodReflection): bool
     {
-        var_dump('isMethodSupported');
-
         return $methodReflection->getName() === 'prophesize';
     }
 
     public function getTypeFromMethodCall(MethodReflection $methodReflection, MethodCall $methodCall, Scope $scope): Type
     {
         if (count($methodCall->args) === 0) {
-            throw new \Exception('Cannot analyze prophecy without target class.');
+            return $methodReflection->getReturnType();
         }
 
-        $ObjectProphecyType = new ObjectProphecyType($methodCall->args[0]);
+        $arg = $methodCall->args[0]->value;
+
+        if (!($arg instanceof ClassConstFetch)) {
+            return $methodReflection->getReturnType();
+        }
+
+        $class = $arg->class;
+
+        if (!($class instanceof Name)) {
+            return $methodReflection->getReturnType();
+        }
+
+        $class = (string) $class;
+
+        if ($class === 'static') {
+            return $methodReflection->getReturnType();
+        }
+
+        if ($class === 'self') {
+            $class = $scope->getClassReflection()->getName();
+        }
+
+        $ObjectProphecyType = new ObjectProphecyType($class);
 
         return $ObjectProphecyType;
     }

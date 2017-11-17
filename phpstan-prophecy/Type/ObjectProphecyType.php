@@ -13,8 +13,6 @@ class ObjectProphecyType extends ObjectType
     protected $prophesizedClass;
 
     /**
-     * ObjectProphecyType constructor.
-     *
      * @param string $prophesizedClass The class that is being mocked/prophesized
      */
     public function __construct(string $prophesizedClass)
@@ -22,7 +20,15 @@ class ObjectProphecyType extends ObjectType
         $this->prophesizedClass = $prophesizedClass;
 
         parent::__construct(ObjectProphecy::class);
+    }
 
-        var_dump($this);
+    public function describe(): string
+    {
+        return sprintf('%s<%s>', parent::describe(), $this->prophesizedClass);
+    }
+
+    public function getProphesizedClass(): string
+    {
+        return $this->prophesizedClass;
     }
 }

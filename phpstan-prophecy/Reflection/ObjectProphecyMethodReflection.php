@@ -57,12 +57,12 @@ class ObjectProphecyMethodReflection implements MethodReflection
      */
     public function getParameters(): array
     {
-        return []; // todo
+        return [];
     }
 
     public function isVariadic(): bool
     {
-        return true; // todo?
+        return true;
     }
 
     public function getReturnType(): Type
@@ -70,8 +70,8 @@ class ObjectProphecyMethodReflection implements MethodReflection
         return new ObjectType(MethodProphecy::class);
     }
 
-    public function getPrototype(): self
+    public function getPrototype(): MethodReflection
     {
-        // TODO: Implement getPrototype() method.
+        return $this;
     }
 }

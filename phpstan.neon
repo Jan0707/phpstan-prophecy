@@ -1,14 +1,2 @@
-services:
-	-
-		class: JanGregor\Prophecy\Extension\ProphetProphesizeDynamicReturnTypeExtension
-		tags:
-			- phpstan.broker.dynamicMethodReturnTypeExtension
-	-
-		class: JanGregor\Prophecy\Extension\TestCaseProphesizeDynamicReturnTypeExtension
-		tags:
-			- phpstan.broker.dynamicMethodReturnTypeExtension
-
-	-
-		class: JanGregor\Prophecy\Extension\ObjectProphecyRevealDynamicReturnTypeExtension
-		tags:
-			- phpstan.broker.dynamicMethodReturnTypeExtension
+includes:
+	- phpstan-prophecy/extension.neon

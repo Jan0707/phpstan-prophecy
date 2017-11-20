@@ -1,2 +1,2 @@
 includes:
-	- phpstan-prophecy/extension.neon
+	- src/extension.neon

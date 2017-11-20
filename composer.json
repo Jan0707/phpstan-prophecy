@@ -3,7 +3,7 @@
     "authors": [
         {
             "name": "Jan Gregor Emge-Triebel",
-            "email": "jan@lillydoo.com"
+            "email": "jan@jangregor.me"
         }
     ],
     "require": {},
@@ -14,8 +14,12 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "src/",
-            "JanGregor\\Prophecy\\": "phpstan-prophecy/"
+            "JanGregor\\Prophecy\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "Tests/"
         }
     }
 }

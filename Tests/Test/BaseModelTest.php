@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Test\Model;
+namespace Tests\Test;
 
-use App\Model\BaseModel;
+use Tests\Model\BaseModel;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
 

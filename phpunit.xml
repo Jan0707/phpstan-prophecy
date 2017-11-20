@@ -1,5 +1,5 @@
 <phpunit
-        bootstrap="bootstrap.php"
+        bootstrap="Tests/bootstrap.php"
         colors="true"
         backupGlobals="false"
         backupStaticAttributes="false"
@@ -12,7 +12,7 @@
 >
     <filter>
         <whitelist>
-            <directory>../../src</directory>
+            <directory>Tests/Test</directory>
         </whitelist>
     </filter>
 </phpunit>

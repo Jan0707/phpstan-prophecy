@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Model;
+namespace Tests\Model;
 
 
 class BaseModel

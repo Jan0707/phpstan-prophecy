@@ -10,9 +10,9 @@
         failOnRisky="true"
         failOnWarning="true"
 >
-    <filter>
-        <whitelist>
+    <testsuites>
+        <testsuite name="Base">
             <directory>Tests/Test</directory>
-        </whitelist>
-    </filter>
+        </testsuite>
+    </testsuites>
 </phpunit>

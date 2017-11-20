@@ -14,7 +14,7 @@ use Prophecy\Prophet;
 
 class ProphetProphesizeDynamicReturnTypeExtension implements DynamicMethodReturnTypeExtension
 {
-    public static function getClass(): string
+    public function getClass(): string
     {
         return Prophet::class;
     }

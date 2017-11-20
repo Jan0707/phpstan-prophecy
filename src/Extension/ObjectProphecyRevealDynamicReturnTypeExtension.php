@@ -14,7 +14,7 @@ use Prophecy\Prophecy\ObjectProphecy;
 
 class ObjectProphecyRevealDynamicReturnTypeExtension implements DynamicMethodReturnTypeExtension
 {
-    public static function getClass(): string
+    public function getClass(): string
     {
         return ObjectProphecy::class;
     }

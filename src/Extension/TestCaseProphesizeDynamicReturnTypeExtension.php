@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 
 class TestCaseProphesizeDynamicReturnTypeExtension extends  ProphetProphesizeDynamicReturnTypeExtension
 {
-    public static function getClass(): string
+    public function getClass(): string
     {
         return TestCase::class;
     }

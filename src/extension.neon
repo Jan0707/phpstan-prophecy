@@ -16,5 +16,4 @@ services:
 	-
 		class: JanGregor\Prophecy\Reflection\ProphecyMethodsClassReflectionExtension
 		tags:
-			- phpstan.broker.propertiesClassReflectionExtension
 			- phpstan.broker.methodsClassReflectionExtension

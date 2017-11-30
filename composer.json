@@ -6,11 +6,10 @@
             "email": "jan@jangregor.me"
         }
     ],
-    "require": {},
-    "require-dev": {
+    "require": {
         "phpspec/prophecy": "^1.7",
-        "phpunit/phpunit": "^6.4",
-        "phpstan/phpstan": "0.9.x-dev"
+        "phpunit/phpunit": "^6.0",
+        "phpstan/phpstan": "^0.9"
     },
     "autoload": {
         "psr-4": {

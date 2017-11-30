@@ -1,0 +1,5 @@
+Tests               export-ignore
+vendor              export-ignore
+.*                  export-ignore
+phpstan.neon        export-ignore
+phpunit.xml         export-ignore

@@ -52,8 +52,6 @@ class ProphetProphesizeDynamicReturnTypeExtension implements DynamicMethodReturn
             $class = $scope->getClassReflection()->getName();
         }
 
-        $ObjectProphecyType = new ObjectProphecyType($class);
-
-        return $ObjectProphecyType;
+        return new ObjectProphecyType($class);
     }
 }

@@ -8,7 +8,7 @@
     ],
     "require": {
         "phpspec/prophecy": "^1.7",
-        "phpunit/phpunit": "^6.0",
+        "phpunit/phpunit": "^6.0||^7.0",
         "phpstan/phpstan": "^0.9"
     },
     "autoload": {

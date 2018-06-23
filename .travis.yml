@@ -11,6 +11,7 @@ cache:
 
 before_install:
     - phpenv config-rm xdebug.ini
+    - composer validate
 
 install: 
     - composer update --prefer-dist --prefer-stable --no-interaction

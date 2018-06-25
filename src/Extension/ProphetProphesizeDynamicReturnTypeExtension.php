@@ -8,8 +8,12 @@ use PhpParser\Node\Expr\MethodCall;
 use PhpParser\Node\Name;
 use PHPStan\Analyser\Scope;
 use PHPStan\Reflection\MethodReflection;
+use PHPStan\Reflection\ParametersAcceptorSelector;
+use PHPStan\ShouldNotHappenException;
+use PHPStan\Type\Constant\ConstantStringType;
 use PHPStan\Type\DynamicMethodReturnTypeExtension;
 use PHPStan\Type\Type;
+use PHPStan\Type\TypeWithClassName;
 use Prophecy\Prophet;
 
 class ProphetProphesizeDynamicReturnTypeExtension implements DynamicMethodReturnTypeExtension
@@ -24,31 +28,39 @@ class ProphetProphesizeDynamicReturnTypeExtension implements DynamicMethodReturn
         return $methodReflection->getName() === 'prophesize';
     }
 
+    /**
+     * @param MethodReflection $methodReflection
+     * @param MethodCall $methodCall
+     * @param Scope $scope
+     * @return Type
+     * @throws \PHPStan\ShouldNotHappenException
+     */
     public function getTypeFromMethodCall(MethodReflection $methodReflection, MethodCall $methodCall, Scope $scope): Type
     {
-        if (count($methodCall->args) === 0) {
-            return $methodReflection->getReturnType();
+        $parametersAcceptor = ParametersAcceptorSelector::selectSingle($methodReflection->getVariants());
+        $prophecyType = $parametersAcceptor->getReturnType();
+
+        if (\count($methodCall->args) === 0) {
+            return $prophecyType;
         }
 
-        $arg = $methodCall->args[0]->value;
+        $argType = $scope->getType($methodCall->args[0]->value);
 
-        if (!($arg instanceof ClassConstFetch)) {
-            return $methodReflection->getReturnType();
+        if (!($argType instanceof ConstantStringType)) {
+            return $prophecyType;
         }
 
-        $class = $arg->class;
+        $class = $argType->getValue();
 
-        if (!($class instanceof Name)) {
-            return $methodReflection->getReturnType();
+        if (!($prophecyType instanceof TypeWithClassName)) {
+            throw new ShouldNotHappenException();
         }
-
-        $class = (string) $class;
 
         if ($class === 'static') {
-            return $methodReflection->getReturnType();
+            return $prophecyType;
         }
 
-        if ($class === 'self') {
+        if ($class === 'self' && $scope->getClassReflection() !== null) {
             $class = $scope->getClassReflection()->getName();
         }
 

@@ -3,6 +3,7 @@
 namespace JanGregor\Prophecy\Type;
 
 use PHPStan\Type\ObjectType;
+use PHPStan\Type\VerbosityLevel;
 use Prophecy\Prophecy\ObjectProphecy;
 
 class ObjectProphecyType extends ObjectType
@@ -22,9 +23,9 @@ class ObjectProphecyType extends ObjectType
         parent::__construct(ObjectProphecy::class);
     }
 
-    public function describe(): string
+    public function describe(VerbosityLevel $level): string
     {
-        return sprintf('%s<%s>', parent::describe(), $this->prophesizedClass);
+        return sprintf('%s<%s>', parent::describe($level), $this->prophesizedClass);
     }
 
     public function getProphesizedClass(): string

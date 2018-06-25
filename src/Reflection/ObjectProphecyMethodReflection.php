@@ -6,6 +6,7 @@ use PHPStan\Reflection\ClassReflection;
 use PHPStan\Reflection\MethodReflection;
 use PHPStan\Reflection\ClassMemberReflection;
 use PHPStan\Reflection\ParameterReflection;
+use PHPStan\Reflection\TrivialParametersAcceptor;
 use PHPStan\Type\ObjectType;
 use PHPStan\Type\Type;
 use Prophecy\Prophecy\MethodProphecy;
@@ -51,6 +52,13 @@ class ObjectProphecyMethodReflection implements MethodReflection
     public function getName(): string
     {
         return $this->name;
+    }
+
+    public function getVariants(): array
+    {
+        return [
+            new TrivialParametersAcceptor(),
+        ];
     }
 
     /**

@@ -1,7 +1,6 @@
 language: php
 
 php:
-    - 7.0
     - 7.1
     - 7.2
 
@@ -22,6 +21,6 @@ script:
 jobs:
   include:
     - stage: Test
-      php: 7.0
+      php: 7.1
       env: PREFER_LOWEST=true
       install: composer update --prefer-lowest --prefer-dist --prefer-stable --no-interaction

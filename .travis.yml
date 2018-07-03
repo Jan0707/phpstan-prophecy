@@ -12,7 +12,7 @@ cache:
 before_install:
     - phpenv config-rm xdebug.ini
 
-install: 
+install:
     - composer update --prefer-dist --prefer-stable --no-interaction
 
 script:
@@ -20,8 +20,8 @@ script:
     - vendor/bin/phpunit
 
 jobs:
-  include:
-    - stage: Test
-      php: 7.0
-      env: PREFER_LOWEST=true
-      install: composer update --prefer-lowest --prefer-dist --prefer-stable --no-interaction
+    include:
+        - stage: Test
+            php: 7.0
+            env: PREFER_LOWEST=true
+            install: composer update --prefer-lowest --prefer-dist --prefer-stable --no-interaction

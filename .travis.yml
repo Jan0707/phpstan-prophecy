@@ -16,7 +16,7 @@ install:
     - composer update --prefer-dist --prefer-stable --no-interaction
 
 script:
-    - vendor/bin/phpstan analyse -l 7 -c phpstan.neon src Tests
+    - vendor/bin/phpstan analyse -l 7 -c phpstan.neon src tests
     - vendor/bin/phpunit
 
 jobs:

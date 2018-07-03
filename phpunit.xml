@@ -12,7 +12,7 @@
 >
     <testsuites>
         <testsuite name="Base">
-            <directory>Tests/Test</directory>
+            <directory>tests/Test</directory>
         </testsuite>
     </testsuites>
 </phpunit>

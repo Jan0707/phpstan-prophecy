@@ -10,7 +10,7 @@
         "php": "^7.0",
         "phpspec/prophecy": "^1.7",
         "phpunit/phpunit": "^6.0||^7.0",
-        "phpstan/phpstan": "^0.9"
+        "phpstan/phpstan": "^0.9|^0.10"
     },
     "autoload": {
         "psr-4": {

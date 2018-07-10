@@ -1,28 +1,28 @@
 language: php
 
 php:
-    - 7.0
-    - 7.1
-    - 7.2
+  - 7.0
+  - 7.1
+  - 7.2
 
 cache:
-    directories:
-        - $HOME/.composer/cache/files
+  directories:
+    - $HOME/.composer/cache/files
 
 before_install:
-    - phpenv config-rm xdebug.ini
-    - composer validate
+  - phpenv config-rm xdebug.ini
+  - composer validate
 
 install:
-    - composer update --prefer-dist --prefer-stable --no-interaction
+  - composer update --prefer-dist --prefer-stable --no-interaction
 
 script:
-    - vendor/bin/phpstan analyse -l max -c phpstan.neon src tests
-    - vendor/bin/phpunit
+  - vendor/bin/phpstan analyse -l max -c phpstan.neon src tests
+  - vendor/bin/phpunit
 
 jobs:
-    include:
-        - stage: Test
-            php: 7.0
-            env: PREFER_LOWEST=true
-            install: composer update --prefer-lowest --prefer-dist --prefer-stable --no-interaction
+  include:
+    - stage: Test
+      php: 7.0
+      env: PREFER_LOWEST=true
+      install: composer update --prefer-lowest --prefer-dist --prefer-stable --no-interaction

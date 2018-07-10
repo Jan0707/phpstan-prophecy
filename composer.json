@@ -1,6 +1,7 @@
 {
     "name": "jangregor/phpstan-prophecy",
     "description": "Provides a phpstan/phpstan extension for phpspec/prophecy",
+    "license": "MIT",
     "authors": [
         {
             "name": "Jan Gregor Emge-Triebel",

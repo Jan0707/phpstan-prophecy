@@ -1,26 +1,87 @@
 language: php
 
-php:
-    - 7.1
-    - 7.2
-
 cache:
-    directories:
-        - $HOME/.composer/cache/files
+  directories:
+    - $HOME/.composer/cache/files
 
-before_install:
-    - phpenv config-rm xdebug.ini
-
-install: 
-    - composer update --prefer-dist --prefer-stable --no-interaction
-
-script:
-    - vendor/bin/phpstan analyse -l 7 -c phpstan.neon src Tests
-    - vendor/bin/phpunit
+stages:
+  - stan
+  - test
 
 jobs:
   include:
-    - stage: Test
+    - stage: Stan
+
+      php: 7.2
+
+      install:
+        - composer install
+
+      script:
+        - vendor/bin/phpstan analyse -l max -c phpstan.neon src tests
+
+    - &TEST
+
+      stage: Test
+
+      php: 7.0
+
+      env: WITH_LOWEST=true
+
+      install:
+        - if [[ "$WITH_LOWEST" == "true" ]]; then composer update --prefer-lowest; fi
+        - if [[ "$WITH_LOCKED" == "true" ]]; then composer install; fi
+        - if [[ "$WITH_HIGHEST" == "true" ]]; then composer update; fi
+
+      script:
+        - vendor/bin/phpunit
+
+    - <<: *TEST
+
+      php: 7.0
+
+      env: WITH_LOCKED=true
+
+    - <<: *TEST
+
+      php: 7.0
+
+      env: WITH_HIGHEST=true
+
+    - <<: *TEST
+
       php: 7.1
-      env: PREFER_LOWEST=true
-      install: composer update --prefer-lowest --prefer-dist --prefer-stable --no-interaction
+
+      env: WITH_LOWEST=true
+
+    - <<: *TEST
+
+      php: 7.1
+
+      env: WITH_LOCKED=true
+
+    - <<: *TEST
+
+      php: 7.1
+
+      env: WITH_HIGHEST=true
+
+    - <<: *TEST
+
+      php: 7.2
+
+      env: WITH_LOWEST=true
+
+    - <<: *TEST
+
+      php: 7.2
+
+      env: WITH_LOCKED=true
+
+    - <<: *TEST
+
+      php: 7.2
+
+      env: WITH_HIGHEST=true
+
+

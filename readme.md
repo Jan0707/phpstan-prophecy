@@ -46,4 +46,4 @@ includes:
 	- vendor/jangregor/phpstan-prophecy/src/extension.neon
 ```
 
-And you shoudld be good to go. Happy testing!
+And you should be good to go. Happy testing!

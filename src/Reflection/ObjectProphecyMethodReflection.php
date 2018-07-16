@@ -4,7 +4,9 @@ namespace JanGregor\Prophecy\Reflection;
 
 use PHPStan\Reflection\ClassReflection;
 use PHPStan\Reflection\MethodReflection;
+use PHPStan\Reflection\ClassMemberReflection;
 use PHPStan\Reflection\ParameterReflection;
+use PHPStan\Reflection\TrivialParametersAcceptor;
 use PHPStan\Type\ObjectType;
 use PHPStan\Type\Type;
 use Prophecy\Prophecy\MethodProphecy;
@@ -52,6 +54,13 @@ class ObjectProphecyMethodReflection implements MethodReflection
         return $this->name;
     }
 
+    public function getVariants(): array
+    {
+        return [
+            new TrivialParametersAcceptor(),
+        ];
+    }
+
     /**
      * @return ParameterReflection[]
      */
@@ -70,7 +79,7 @@ class ObjectProphecyMethodReflection implements MethodReflection
         return new ObjectType(MethodProphecy::class);
     }
 
-    public function getPrototype(): MethodReflection
+    public function getPrototype(): ClassMemberReflection
     {
         return $this;
     }

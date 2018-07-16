@@ -24,7 +24,7 @@ jobs:
 
       stage: Test
 
-      php: 7.0
+      php: 7.1
 
       env: WITH_LOWEST=true
 
@@ -35,30 +35,6 @@ jobs:
 
       script:
         - vendor/bin/phpunit
-
-    - <<: *TEST
-
-      php: 7.0
-
-      env: WITH_LOCKED=true
-
-    - <<: *TEST
-
-      php: 7.0
-
-      env: WITH_HIGHEST=true
-
-    - <<: *TEST
-
-      php: 7.1
-
-      env: WITH_LOWEST=true
-
-    - <<: *TEST
-
-      php: 7.1
-
-      env: WITH_LOCKED=true
 
     - <<: *TEST
 

@@ -1,12 +1,19 @@
 services:
 	-
 		class: JanGregor\Prophecy\Extension\ProphetProphesizeDynamicReturnTypeExtension
+		arguments:
+			className: Prophecy\Prophet
 		tags:
 			- phpstan.broker.dynamicMethodReturnTypeExtension
+		autowired: false
+
 	-
-		class: JanGregor\Prophecy\Extension\TestCaseProphesizeDynamicReturnTypeExtension
+		class: JanGregor\Prophecy\Extension\ProphetProphesizeDynamicReturnTypeExtension
+		arguments:
+			className: PHPUnit\Framework\TestCase
 		tags:
 			- phpstan.broker.dynamicMethodReturnTypeExtension
+		autowired: false
 
 	-
 		class: JanGregor\Prophecy\Extension\ObjectProphecyRevealDynamicReturnTypeExtension

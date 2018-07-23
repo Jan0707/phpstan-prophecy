@@ -14,13 +14,21 @@ use PHPStan\Type\Constant\ConstantStringType;
 use PHPStan\Type\DynamicMethodReturnTypeExtension;
 use PHPStan\Type\Type;
 use PHPStan\Type\TypeWithClassName;
-use Prophecy\Prophet;
 
 class ProphetProphesizeDynamicReturnTypeExtension implements DynamicMethodReturnTypeExtension
 {
+
+    /** @var string */
+    private $className;
+
+    public function __construct(string $className)
+    {
+        $this->className = $className;
+    }
+
     public function getClass(): string
     {
-        return Prophet::class;
+        return $this->className;
     }
 
     public function isMethodSupported(MethodReflection $methodReflection): bool

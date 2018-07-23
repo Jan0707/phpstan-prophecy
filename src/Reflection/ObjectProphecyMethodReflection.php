@@ -3,12 +3,10 @@
 namespace JanGregor\Prophecy\Reflection;
 
 use PHPStan\Reflection\ClassReflection;
+use PHPStan\Reflection\FunctionVariant;
 use PHPStan\Reflection\MethodReflection;
 use PHPStan\Reflection\ClassMemberReflection;
-use PHPStan\Reflection\ParameterReflection;
-use PHPStan\Reflection\TrivialParametersAcceptor;
 use PHPStan\Type\ObjectType;
-use PHPStan\Type\Type;
 use Prophecy\Prophecy\MethodProphecy;
 
 class ObjectProphecyMethodReflection implements MethodReflection
@@ -57,26 +55,12 @@ class ObjectProphecyMethodReflection implements MethodReflection
     public function getVariants(): array
     {
         return [
-            new TrivialParametersAcceptor(),
+            new FunctionVariant(
+                [],
+                true,
+                new ObjectType(MethodProphecy::class)
+            ),
         ];
-    }
-
-    /**
-     * @return ParameterReflection[]
-     */
-    public function getParameters(): array
-    {
-        return [];
-    }
-
-    public function isVariadic(): bool
-    {
-        return true;
-    }
-
-    public function getReturnType(): Type
-    {
-        return new ObjectType(MethodProphecy::class);
     }
 
     public function getPrototype(): ClassMemberReflection

@@ -12,13 +12,12 @@ use PHPStan\Type\DynamicMethodReturnTypeExtension;
 use PHPStan\Type\ObjectType;
 use PHPStan\Type\Type;
 use PHPStan\Type\TypeCombinator;
-use Prophecy\Prophecy\ObjectProphecy;
 
 class ObjectProphecyRevealDynamicReturnTypeExtension implements DynamicMethodReturnTypeExtension
 {
     public function getClass(): string
     {
-        return ObjectProphecy::class;
+        return 'Prophecy\Prophecy\ObjectProphecy';
     }
 
     public function isMethodSupported(MethodReflection $methodReflection): bool

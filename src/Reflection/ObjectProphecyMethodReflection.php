@@ -9,7 +9,6 @@ use PHPStan\Reflection\ParameterReflection;
 use PHPStan\Reflection\TrivialParametersAcceptor;
 use PHPStan\Type\ObjectType;
 use PHPStan\Type\Type;
-use Prophecy\Prophecy\MethodProphecy;
 
 class ObjectProphecyMethodReflection implements MethodReflection
 {
@@ -76,7 +75,7 @@ class ObjectProphecyMethodReflection implements MethodReflection
 
     public function getReturnType(): Type
     {
-        return new ObjectType(MethodProphecy::class);
+        return new ObjectType('Prophecy\Prophecy\MethodProphecy');
     }
 
     public function getPrototype(): ClassMemberReflection

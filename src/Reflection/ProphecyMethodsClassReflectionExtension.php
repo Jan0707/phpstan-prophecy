@@ -2,7 +2,6 @@
 
 namespace JanGregor\Prophecy\Reflection;
 
-
 use PHPStan\Reflection\ClassReflection;
 use PHPStan\Reflection\MethodReflection;
 use PHPStan\Reflection\MethodsClassReflectionExtension;

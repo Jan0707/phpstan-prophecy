@@ -33,7 +33,7 @@ It will also help PHPStan to understand that `$prophecy` accepts method calls to
 
 ## Installation and usage
 
-Install via composer (no release available yet):
+Install via composer:
 
 ```
 composer require --dev jangregor/phpstan-prophecy

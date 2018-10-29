@@ -16,7 +16,7 @@
         "phpspec/prophecy": "^1.7",
         "phpunit/phpunit": "^6.0||^7.0"
     },
-    "conflicts": {
+    "conflict": {
         "phpspec/prophecy": "<1.7, >=2.0",
         "phpunit/phpunit": "<6.0, >=8.0"
     },

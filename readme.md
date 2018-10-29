@@ -10,7 +10,7 @@ This repository provides an extension so that it also understands code that uses
 
 ### Prophesizing and Revealing
 
-```
+```php
 $prophecy = $prophet->prophesize(SomeModel::class);
 $instance = $prophecy->reveal();
 ```
@@ -19,7 +19,7 @@ It will help PHPStan to understand that the `$instance` variable is indeed an in
 
 ### Method Predictions
 
-```
+```php
 $prophecy = $prophet->prophesize(Calculator::class);
 $prophecy->doubleTheNumber(Argument::is(2))->willReturn(5);
 
@@ -35,13 +35,13 @@ It will also help PHPStan to understand that `$prophecy` accepts method calls to
 
 Install via composer (no release available yet):
 
-```
+```shell
 composer require --dev jangregor/phpstan-prophecy
 ```
 
 And then make sure to add the extension to your `phpstan.neon` file:
 
-```
+```neon
 includes:
 	- vendor/jangregor/phpstan-prophecy/src/extension.neon
 ```

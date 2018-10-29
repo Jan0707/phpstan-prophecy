@@ -4,7 +4,6 @@ namespace JanGregor\Prophecy\Type;
 
 use PHPStan\Type\ObjectType;
 use PHPStan\Type\VerbosityLevel;
-use Prophecy\Prophecy\ObjectProphecy;
 
 class ObjectProphecyType extends ObjectType
 {
@@ -20,7 +19,7 @@ class ObjectProphecyType extends ObjectType
     {
         $this->prophesizedClass = $prophesizedClass;
 
-        parent::__construct(ObjectProphecy::class);
+        parent::__construct('Prophecy\Prophecy\ObjectProphecy');
     }
 
     public function describe(VerbosityLevel $level): string

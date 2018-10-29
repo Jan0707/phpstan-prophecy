@@ -10,9 +10,15 @@
     ],
     "require": {
         "php": "^7.1",
+        "phpstan/phpstan": "^0.10"
+    },
+    "require-dev": {
         "phpspec/prophecy": "^1.7",
-        "phpstan/phpstan": "^0.10",
         "phpunit/phpunit": "^6.0||^7.0"
+    },
+    "conflicts": {
+        "phpspec/prophecy": "<1.7, >=2.0",
+        "phpunit/phpunit": "<6.0, >=8.0"
     },
     "autoload": {
         "psr-4": {

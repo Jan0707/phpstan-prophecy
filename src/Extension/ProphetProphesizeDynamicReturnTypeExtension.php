@@ -3,9 +3,7 @@
 namespace JanGregor\Prophecy\Extension;
 
 use JanGregor\Prophecy\Type\ObjectProphecyType;
-use PhpParser\Node\Expr\ClassConstFetch;
 use PhpParser\Node\Expr\MethodCall;
-use PhpParser\Node\Name;
 use PHPStan\Analyser\Scope;
 use PHPStan\Reflection\MethodReflection;
 use PHPStan\Reflection\ParametersAcceptorSelector;
@@ -14,13 +12,12 @@ use PHPStan\Type\Constant\ConstantStringType;
 use PHPStan\Type\DynamicMethodReturnTypeExtension;
 use PHPStan\Type\Type;
 use PHPStan\Type\TypeWithClassName;
-use Prophecy\Prophet;
 
 class ProphetProphesizeDynamicReturnTypeExtension implements DynamicMethodReturnTypeExtension
 {
     public function getClass(): string
     {
-        return Prophet::class;
+        return 'Prophecy\Prophet';
     }
 
     public function isMethodSupported(MethodReflection $methodReflection): bool

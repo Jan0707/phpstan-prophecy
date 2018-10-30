@@ -50,7 +50,7 @@ jobs:
 
     - <<: *TEST
 
-      php: 7.2
+      php: 7.1
 
       env: WITH_LOCKED=true
 

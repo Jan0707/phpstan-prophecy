@@ -1,4 +1,4 @@
-![](https://api.travis-ci.org/Jan0707/phpstan-prophecy.svg?branch=master)
+[![Build Status](https://travis-ci.org/Jan0707/phpstan-prophecy.svg?branch=master)](https://travis-ci.org/Jan0707/phpstan-prophecy)
 
 # PHPStan-Prophecy
 

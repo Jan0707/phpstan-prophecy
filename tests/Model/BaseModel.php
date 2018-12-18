@@ -2,7 +2,6 @@
 
 namespace Tests\Model;
 
-
 class BaseModel
 {
     /**

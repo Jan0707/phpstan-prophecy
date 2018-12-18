@@ -2,7 +2,6 @@
 
 namespace JanGregor\Prophecy\Extension;
 
-
 use JanGregor\Prophecy\Type\ObjectProphecyType;
 use PhpParser\Node\Expr\MethodCall;
 use PHPStan\Analyser\Scope;

@@ -31,4 +31,13 @@ class ObjectProphecyType extends ObjectType
     {
         return $this->prophesizedClass;
     }
+
+    /**
+     * @param mixed[] $properties
+     * @return self
+     */
+    public static function __set_state(array $properties): Type
+    {
+        return new self($properties['prophesizedClass']);
+    }
 }

@@ -15,7 +15,7 @@ $prophecy = $prophet->prophesize(SomeModel::class);
 $instance = $prophecy->reveal();
 ```
 
-It will help PHPStan to understand that the `$instance` variable is indeed an instance of `SomeClass`.
+It will help PHPStan to understand that the `$instance` variable is indeed an instance of `SomeModel`.
 
 ### Method Predictions
 

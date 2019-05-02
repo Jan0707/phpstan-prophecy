@@ -47,3 +47,7 @@ includes:
 ```
 
 And you should be good to go. Happy testing!
+
+## Contributing
+
+Please have a look at [`CONTRIBUTING.md`](.github/CONTRIBUTING.md).

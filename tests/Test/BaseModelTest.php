@@ -2,12 +2,18 @@
 
 namespace Tests\Test;
 
-use Tests\Model\BaseModel;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
+use Prophecy\Prophecy\ObjectProphecy;
+use Tests\Model\BaseModel;
 
 class BaseModelTest extends TestCase
 {
+    /**
+     * @var BaseModel|ObjectProphecy
+     */
+    private $subject;
+
     public function testBasicProperty()
     {
         $word = 'bar';
@@ -28,5 +34,24 @@ class BaseModelTest extends TestCase
 
         $this->assertEquals('bar', $subject->reveal()->getFoo());
         $this->assertEquals(5, $subject->reveal()->doubleTheNumber(2));
+    }
+
+    /**
+     * @before
+     */
+    public function createSubject(): void
+    {
+        $this->subject = $this->prophesize(BaseModel::class);
+    }
+
+    public function testProphesizedAttributesShouldAlsoWork(): void
+    {
+        $this->subject->getFoo()->willReturn('bar');
+        $this->subject->doubleTheNumber(Argument::is(2))->willReturn(5);
+
+        $subject = $this->subject->reveal();
+
+        $this->assertEquals('bar', $subject->getFoo());
+        $this->assertEquals(5, $subject->doubleTheNumber(2));
     }
 }

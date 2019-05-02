@@ -15,9 +15,18 @@ use PHPStan\Type\TypeWithClassName;
 
 class ProphetProphesizeDynamicReturnTypeExtension implements DynamicMethodReturnTypeExtension
 {
+
+    /** @var string */
+    private $className;
+
+    public function __construct(string $className)
+    {
+        $this->className = $className;
+    }
+
     public function getClass(): string
     {
-        return 'Prophecy\Prophet';
+        return $this->className;
     }
 
     public function isMethodSupported(MethodReflection $methodReflection): bool

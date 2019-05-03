@@ -4,6 +4,7 @@ namespace JanGregor\Prophecy\Type;
 
 use PHPStan\Type\ObjectType;
 use PHPStan\Type\VerbosityLevel;
+use PHPStan\Type\Type;
 
 class ObjectProphecyType extends ObjectType
 {

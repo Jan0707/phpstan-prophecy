@@ -57,5 +57,4 @@ class TypeNodeResolverExtension implements \PHPStan\PhpDoc\TypeNodeResolverExten
 
         return null;
     }
-
 }

@@ -31,6 +31,16 @@
             "Tests\\": "tests/"
         }
     },
+    "scripts": {
+        "build": [
+            "@cs",
+            "@stan",
+            "@test"
+        ],
+        "cs": "php-cs-fixer fix --diff --verbose",
+        "stan": "phpstan analyse -l max -c phpstan.neon src tests",
+        "test": "phpunit"
+    },
     "config": {
         "sort-packages": true
     }

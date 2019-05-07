@@ -37,6 +37,8 @@
     },
     "scripts": {
         "build": [
+            "@composer validate",
+            "@composer normalize",
             "@cs",
             "@stan",
             "@test"

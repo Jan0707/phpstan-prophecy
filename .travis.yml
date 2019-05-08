@@ -16,6 +16,7 @@ jobs:
       php: 7.2
 
       before_install:
+        - phpenv config-rm xdebug.ini
         - composer validate
 
       install:
@@ -33,6 +34,7 @@ jobs:
       env: WITH_LOWEST=true
 
       before_install:
+        - phpenv config-rm xdebug.ini
         - composer validate
 
       install:
@@ -70,6 +72,9 @@ jobs:
     - stage: Style
 
       php: 7.1
+
+      before_install:
+        - phpenv config-rm xdebug.ini
 
       install:
         - composer install

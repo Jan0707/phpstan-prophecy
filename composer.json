@@ -12,15 +12,18 @@
         "php": "^7.1",
         "phpstan/phpstan": "^0.10.0 || ^0.11.0"
     },
+    "conflict": {
+        "phpspec/prophecy": "<1.7,>=2.0",
+        "phpunit/phpunit": "<6.0,>=9.0"
+    },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "~2.15.0",
         "localheinz/composer-normalize": "^1.1.3",
         "phpspec/prophecy": "^1.7",
-        "phpunit/phpunit": "^6.0||^7.0"
+        "phpunit/phpunit": "^6.0 || ^7.0"
     },
-    "conflict": {
-        "phpspec/prophecy": "<1.7, >=2.0",
-        "phpunit/phpunit": "<6.0, >=9.0"
+    "config": {
+        "sort-packages": true
     },
     "autoload": {
         "psr-4": {
@@ -41,8 +44,5 @@
         "cs": "php-cs-fixer fix --diff --verbose",
         "stan": "phpstan analyse -l max -c phpstan.neon src tests",
         "test": "phpunit"
-    },
-    "config": {
-        "sort-packages": true
     }
 }

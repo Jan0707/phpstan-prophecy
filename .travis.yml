@@ -99,9 +99,11 @@ jobs:
 
       before_install:
         - phpenv config-rm xdebug.ini
+        - composer validate
 
       install:
         - composer install
 
       script:
+        - composer normalize --dry-run
         - vendor/bin/php-cs-fixer fix --diff --dry-run --verbose

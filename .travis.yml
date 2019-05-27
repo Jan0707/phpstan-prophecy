@@ -69,6 +69,24 @@ jobs:
 
       env: WITH_HIGHEST=true
 
+    - <<: *TEST
+
+      php: 7.3
+
+      env: WITH_LOWEST=true
+
+    - <<: *TEST
+
+      php: 7.3
+
+      env: WITH_LOCKED=true
+
+    - <<: *TEST
+
+      php: 7.3
+
+      env: WITH_HIGHEST=true
+
     - stage: Style
 
       php: 7.1

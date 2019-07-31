@@ -1,5 +1,6 @@
 {
     "name": "jangregor/phpstan-prophecy",
+    "type": "phpstan-extension",
     "description": "Provides a phpstan/phpstan extension for phpspec/prophecy",
     "license": "MIT",
     "authors": [
@@ -24,6 +25,13 @@
     },
     "config": {
         "sort-packages": true
+    },
+    "extra": {
+        "phpstan": {
+            "includes": [
+                "src/extension.neon"
+            ]
+        }
     },
     "autoload": {
         "psr-4": {

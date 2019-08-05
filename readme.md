@@ -1,5 +1,7 @@
 [![Build Status](https://travis-ci.org/Jan0707/phpstan-prophecy.svg?branch=master)](https://travis-ci.org/Jan0707/phpstan-prophecy)
 
+[![Violinist Enabled](https://img.shields.io/badge/violinist-enabled-brightgreen.svg)](https://violinist.io)
+
 # PHPStan-Prophecy
 
 ## Introduction
@@ -39,6 +41,13 @@ Install via composer:
 composer require --dev jangregor/phpstan-prophecy
 ```
 
+### Automatic Extension Setup
+
+If you have the [PHPStan Extension Installer](https://github.com/phpstan/extension-installer) installed as well, there is no next step required.
+Otherwise, please proceed with the manual setup step.
+
+### Manual Setup 
+
 And then make sure to add the extension to your `phpstan.neon` file:
 
 ```neon
@@ -53,11 +62,11 @@ And you should be good to go. Happy testing!
 If you need a suitable dev environment you can always use docker.
 Simply build the respective container and tag it via:
 
-``docker build -t phpstan-prophecy:7.2 docker/container/php``
+``docker build -t phpstan-prophecy:7.1 docker/container/php``
 
 You can then use this tagged container image to run php during development:
 
-``docker run -it --rm --name phpstan-prophecy-dev -v "$PWD":/var/www/html -w /var/www/html phpstan-prohphecy:7.2 bash``
+``docker run -it --rm --name phpstan-prophecy-dev -v "$PWD":/var/www/html -w /var/www/html phpstan-prohphecy:7.1 bash``
 
 ## Contributing
 

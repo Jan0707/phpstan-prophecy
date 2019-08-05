@@ -48,6 +48,17 @@ includes:
 
 And you should be good to go. Happy testing!
 
+## Development
+
+If you need a suitable dev environment you can always use docker.
+Simply build the respective container and tag it via:
+
+``docker build -t phpstan-prophecy:7.2 docker/container/php``
+
+You can then use this tagged container image to run php during development:
+
+``docker run -it --rm --name phpstan-prophecy-dev -v "$PWD":/var/www/html -w /var/www/html phpstan-prohphecy:7.2 bash``
+
 ## Contributing
 
 Please have a look at [`CONTRIBUTING.md`](.github/CONTRIBUTING.md).

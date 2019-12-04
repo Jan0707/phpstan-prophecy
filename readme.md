@@ -1,5 +1,4 @@
-[![Build Status](https://travis-ci.org/Jan0707/phpstan-prophecy.svg?branch=master)](https://travis-ci.org/Jan0707/phpstan-prophecy)
-
+[![Continuous Integration](https://github.com/Jan0707/phpstan-prophecy/workflows/Continuous%20Integration/badge.svg)](https://github.com/Jan0707/phpstan-prophecy/actions)
 [![Violinist Enabled](https://img.shields.io/badge/violinist-enabled-brightgreen.svg)](https://violinist.io)
 
 # PHPStan-Prophecy
@@ -46,7 +45,7 @@ composer require --dev jangregor/phpstan-prophecy
 If you have the [PHPStan Extension Installer](https://github.com/phpstan/extension-installer) installed as well, there is no next step required.
 Otherwise, please proceed with the manual setup step.
 
-### Manual Setup 
+### Manual Setup
 
 And then make sure to add the extension to your `phpstan.neon` file:
 

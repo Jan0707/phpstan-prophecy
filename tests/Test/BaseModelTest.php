@@ -14,7 +14,7 @@ class BaseModelTest extends TestCase
      */
     private $subject;
 
-    public function testBasicProperty()
+    public function testBasicProperty(): void
     {
         $word = 'bar';
 
@@ -25,7 +25,7 @@ class BaseModelTest extends TestCase
         $this->assertEquals(4, $subject->doubleTheNumber(2));
     }
 
-    public function testWithProphecy()
+    public function testWithProphecy(): void
     {
         $subject = $this->prophesize(BaseModel::class);
         $subject->getFoo()->willReturn('bar');

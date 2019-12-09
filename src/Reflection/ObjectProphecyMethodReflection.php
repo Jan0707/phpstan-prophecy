@@ -2,11 +2,14 @@
 
 namespace JanGregor\Prophecy\Reflection;
 
+use PHPStan\Reflection\ClassMemberReflection;
 use PHPStan\Reflection\ClassReflection;
 use PHPStan\Reflection\FunctionVariant;
 use PHPStan\Reflection\MethodReflection;
-use PHPStan\Reflection\ClassMemberReflection;
+use PHPStan\TrinaryLogic;
+use PHPStan\Type\Generic\TemplateTypeMap;
 use PHPStan\Type\ObjectType;
+use PHPStan\Type\Type;
 use Prophecy\Prophecy\MethodProphecy;
 
 class ObjectProphecyMethodReflection implements MethodReflection
@@ -56,6 +59,8 @@ class ObjectProphecyMethodReflection implements MethodReflection
     {
         return [
             new FunctionVariant(
+                TemplateTypeMap::createEmpty(),
+                null,
                 [],
                 true,
                 new ObjectType(MethodProphecy::class)
@@ -66,5 +71,40 @@ class ObjectProphecyMethodReflection implements MethodReflection
     public function getPrototype(): ClassMemberReflection
     {
         return $this;
+    }
+
+    public function isDeprecated(): TrinaryLogic
+    {
+        return TrinaryLogic::createNo();
+    }
+
+    public function getDeprecatedDescription(): ?string
+    {
+        return null;
+    }
+
+    public function isFinal(): TrinaryLogic
+    {
+        return TrinaryLogic::createYes();
+    }
+
+    public function isInternal(): TrinaryLogic
+    {
+        return TrinaryLogic::createNo();
+    }
+
+    public function getThrowType(): ?Type
+    {
+        return null;
+    }
+
+    public function hasSideEffects(): TrinaryLogic
+    {
+        return TrinaryLogic::createNo();
+    }
+
+    public function getDocComment(): ?string
+    {
+        return null;
     }
 }

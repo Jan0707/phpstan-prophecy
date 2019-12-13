@@ -11,7 +11,7 @@
     ],
     "require": {
         "php": "^7.1",
-        "phpstan/phpstan": "^0.10.0 || ^0.11.0 || ^0.12.2"
+        "phpstan/phpstan": "^0.12.0"
     },
     "conflict": {
         "phpspec/prophecy": "<1.7,>=2.0",

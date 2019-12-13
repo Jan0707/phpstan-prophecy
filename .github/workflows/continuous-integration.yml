@@ -58,13 +58,9 @@ jobs:
         php-version:
           - 7.4
 
-        phpstan-version:
-          - "^0.10.0"
-          - "^0.11.0"
-          - "^0.12.0"
-
         dependencies:
           - lowest
+          - locked
           - highest
 
     steps:
@@ -82,20 +78,21 @@ jobs:
         uses: actions/cache@v1.0.3
         with:
           path: ~/.composer/cache
-          key: php-${{ matrix.php-version }}-phpstan-${{ matrix.phpstan-version }}-composer-${{ matrix.dependencies }}-${{ hashFiles('**/composer.lock') }}
+          key: php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-${{ hashFiles('**/composer.lock') }}
           restore-keys: |
-            php-${{ matrix.php-version }}-phpstan-${{ matrix.phpstan-version }}-composer-${{ matrix.dependencies }}-
+            php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-
 
-      - name: "Require phpstan/phpstan:${{ matrix.phpstan-version }} with lowest dependencies"
+      - name: "Install lowest dependencies with composer"
         if: matrix.dependencies == 'lowest'
-        run: composer require phpstan/phpstan:${{ matrix.phpstan-version }} --no-interaction --no-progress --no-suggest --prefer-lowest --update-with-dependencies
+        run: composer update --no-interaction --no-progress --no-suggest --prefer-lowest
 
-      - name: "Require phpstan/phpstan:${{ matrix.phpstan-version }} with highest dependencies"
+      - name: "Install locked dependencies with composer"
+        if: matrix.dependencies == 'locked'
+        run: composer install --no-interaction --no-progress --no-suggest
+
+      - name: "Install highest dependencies with composer"
         if: matrix.dependencies == 'highest'
-        run: composer require phpstan/phpstan:${{ matrix.phpstan-version }} --no-interaction --no-progress --no-suggest --update-with-dependencies
-
-      - name: "Run composer show phpstan/phpstan"
-        run: composer show phpstan/phpstan
+        run: composer update --no-interaction --no-progress --no-suggest
 
       - name: "Run phpstan/phpstan"
         run: vendor/bin/phpstan analyse --configuration=phpstan.neon

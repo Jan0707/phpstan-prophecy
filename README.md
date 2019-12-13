@@ -1,4 +1,6 @@
 [![Continuous Integration](https://github.com/Jan0707/phpstan-prophecy/workflows/Continuous%20Integration/badge.svg)](https://github.com/Jan0707/phpstan-prophecy/actions)
+[![Latest Stable Version](https://poser.pugx.org/jangregor/phpstan-prophecy/v/stable)](https://packagist.org/packages/jangregor/phpstan-prophecy)
+[![Total Downloads](https://poser.pugx.org/jangregor/phpstan-prophecy/downloads)](https://packagist.org/packages/jangregor/phpstan-prophecy)
 [![Violinist Enabled](https://img.shields.io/badge/violinist-enabled-brightgreen.svg)](https://violinist.io)
 
 # PHPStan-Prophecy

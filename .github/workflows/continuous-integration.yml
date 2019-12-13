@@ -58,6 +58,15 @@ jobs:
         php-version:
           - 7.4
 
+        phpstan-version:
+          - "^0.10.0"
+          - "^0.11.0"
+          - "^0.12.0"
+
+        dependencies:
+          - lowest
+          - highest
+
     steps:
       - name: "Checkout"
         uses: actions/checkout@v2.0.0
@@ -73,12 +82,20 @@ jobs:
         uses: actions/cache@v1.0.3
         with:
           path: ~/.composer/cache
-          key: php-${{ matrix.php-version }}-composer-locked-${{ hashFiles('**/composer.lock') }}
+          key: php-${{ matrix.php-version }}-phpstan-${{ matrix.phpstan-version }}-composer-${{ matrix.dependencies }}-${{ hashFiles('**/composer.lock') }}
           restore-keys: |
-            php-${{ matrix.php-version }}-composer-locked-
+            php-${{ matrix.php-version }}-phpstan-${{ matrix.phpstan-version }}-composer-${{ matrix.dependencies }}-
 
-      - name: "Install locked dependencies with composer"
-        run: composer install --no-interaction --no-progress --no-suggest
+      - name: "Require phpstan/phpstan:${{ matrix.phpstan-version }} with lowest dependencies"
+        if: matrix.dependencies == 'lowest'
+        run: composer require phpstan/phpstan:${{ matrix.phpstan-version }} --no-interaction --no-progress --no-suggest --prefer-lowest --update-with-dependencies
+
+      - name: "Require phpstan/phpstan:${{ matrix.phpstan-version }} with highest dependencies"
+        if: matrix.dependencies == 'highest'
+        run: composer require phpstan/phpstan:${{ matrix.phpstan-version }} --no-interaction --no-progress --no-suggest --update-with-dependencies
+
+      - name: "Run composer show phpstan/phpstan"
+        run: composer show phpstan/phpstan
 
       - name: "Run phpstan/phpstan"
         run: vendor/bin/phpstan analyse --configuration=phpstan.neon
@@ -91,15 +108,10 @@ jobs:
     strategy:
       matrix:
         php-version:
-          - 7.1
-          - 7.2
-          - 7.3
           - 7.4
 
         dependencies:
-          - lowest
           - locked
-          - highest
 
     steps:
       - name: "Checkout"

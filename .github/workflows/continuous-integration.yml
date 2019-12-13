@@ -81,7 +81,7 @@ jobs:
         run: composer install --no-interaction --no-progress --no-suggest
 
       - name: "Run phpstan/phpstan"
-        run: vendor/bin/phpstan analyse -l max -c phpstan.neon src tests
+        run: vendor/bin/phpstan analyse --configuration=phpstan.neon
 
   tests:
     name: "Tests"

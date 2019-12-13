@@ -58,6 +58,11 @@ jobs:
         php-version:
           - 7.4
 
+        dependencies:
+          - lowest
+          - locked
+          - highest
+
     steps:
       - name: "Checkout"
         uses: actions/checkout@v2.0.0
@@ -73,12 +78,21 @@ jobs:
         uses: actions/cache@v1.0.3
         with:
           path: ~/.composer/cache
-          key: php-${{ matrix.php-version }}-composer-locked-${{ hashFiles('**/composer.lock') }}
+          key: php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-${{ hashFiles('**/composer.lock') }}
           restore-keys: |
-            php-${{ matrix.php-version }}-composer-locked-
+            php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-
+
+      - name: "Install lowest dependencies with composer"
+        if: matrix.dependencies == 'lowest'
+        run: composer update --no-interaction --no-progress --no-suggest --prefer-lowest
 
       - name: "Install locked dependencies with composer"
+        if: matrix.dependencies == 'locked'
         run: composer install --no-interaction --no-progress --no-suggest
+
+      - name: "Install highest dependencies with composer"
+        if: matrix.dependencies == 'highest'
+        run: composer update --no-interaction --no-progress --no-suggest
 
       - name: "Run phpstan/phpstan"
         run: vendor/bin/phpstan analyse --configuration=phpstan.neon
@@ -91,15 +105,10 @@ jobs:
     strategy:
       matrix:
         php-version:
-          - 7.1
-          - 7.2
-          - 7.3
           - 7.4
 
         dependencies:
-          - lowest
           - locked
-          - highest
 
     steps:
       - name: "Checkout"

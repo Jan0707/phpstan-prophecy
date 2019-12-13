@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "97c478fb5ea142f9c35e2c0e8c6e2dbd",
+    "content-hash": "89d1d4b13b8dc1293b6ae500b26a67b3",
     "packages": [
         {
             "name": "nikic/php-parser",
@@ -813,6 +813,7 @@
                 "json",
                 "printer"
             ],
+            "abandoned": "ergebnis/json-printer",
             "time": "2018-08-11T23:54:50+00:00"
         },
         {

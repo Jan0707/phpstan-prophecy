@@ -67,6 +67,10 @@ You can then use this tagged container image to run php during development:
 
 ``docker run -it --rm --name phpstan-prophecy-dev -v "$PWD":/var/www/html -w /var/www/html phpstan-prohphecy:7.1 bash``
 
+## Changelog
+
+Please have a look at [`CHANGELOG.md`](CHANGELOG.md).
+
 ## Contributing
 
 Please have a look at [`CONTRIBUTING.md`](.github/CONTRIBUTING.md).

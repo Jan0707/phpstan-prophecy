@@ -2,6 +2,7 @@ includes:
 	- src/extension.neon
 
 parameters:
+	inferPrivatePropertyTypeFromConstructor: true
 	level: max
 	paths:
 		- src

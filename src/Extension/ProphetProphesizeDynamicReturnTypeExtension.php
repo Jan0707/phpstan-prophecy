@@ -32,15 +32,6 @@ class ProphetProphesizeDynamicReturnTypeExtension implements DynamicMethodReturn
         return 'prophesize' === $methodReflection->getName();
     }
 
-    /**
-     * @param MethodReflection $methodReflection
-     * @param MethodCall       $methodCall
-     * @param Scope            $scope
-     *
-     * @throws \PHPStan\ShouldNotHappenException
-     *
-     * @return Type
-     */
     public function getTypeFromMethodCall(MethodReflection $methodReflection, MethodCall $methodCall, Scope $scope): Type
     {
         $parametersAcceptor = ParametersAcceptorSelector::selectSingle($methodReflection->getVariants());

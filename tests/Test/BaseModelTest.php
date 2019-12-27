@@ -1,16 +1,16 @@
 <?php
 
-namespace Tests\Test;
+namespace JanGregor\Prophecy\Test\Test;
 
+use JanGregor\Prophecy\Test\Model\BaseModel;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
 use Prophecy\Prophecy\ObjectProphecy;
-use Tests\Model\BaseModel;
 
 /**
  * @internal
  *
- * @covers \Tests\Model\BaseModel
+ * @covers \JanGregor\Prophecy\Test\Model\BaseModel
  */
 final class BaseModelTest extends TestCase
 {

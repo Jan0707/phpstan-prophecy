@@ -7,7 +7,12 @@ use Prophecy\Argument;
 use Prophecy\Prophecy\ObjectProphecy;
 use Tests\Model\BaseModel;
 
-class BaseModelTest extends TestCase
+/**
+ * @internal
+ *
+ * @covers \Tests\Model\BaseModel
+ */
+final class BaseModelTest extends TestCase
 {
     /**
      * @var BaseModel|ObjectProphecy
@@ -21,8 +26,8 @@ class BaseModelTest extends TestCase
         $subject = new BaseModel();
         $subject->setFoo($word);
 
-        $this->assertEquals($word, $subject->getFoo());
-        $this->assertEquals(4, $subject->doubleTheNumber(2));
+        self::assertEquals($word, $subject->getFoo());
+        self::assertEquals(4, $subject->doubleTheNumber(2));
     }
 
     public function testWithProphecy(): void
@@ -32,8 +37,8 @@ class BaseModelTest extends TestCase
 
         $subject->doubleTheNumber(Argument::is(2))->willReturn(5);
 
-        $this->assertEquals('bar', $subject->reveal()->getFoo());
-        $this->assertEquals(5, $subject->reveal()->doubleTheNumber(2));
+        self::assertEquals('bar', $subject->reveal()->getFoo());
+        self::assertEquals(5, $subject->reveal()->doubleTheNumber(2));
     }
 
     /**
@@ -51,7 +56,7 @@ class BaseModelTest extends TestCase
 
         $subject = $this->subject->reveal();
 
-        $this->assertEquals('bar', $subject->getFoo());
-        $this->assertEquals(5, $subject->doubleTheNumber(2));
+        self::assertEquals('bar', $subject->getFoo());
+        self::assertEquals(5, $subject->doubleTheNumber(2));
     }
 }

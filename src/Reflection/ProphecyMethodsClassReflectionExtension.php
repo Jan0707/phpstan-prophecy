@@ -12,7 +12,7 @@ class ProphecyMethodsClassReflectionExtension implements MethodsClassReflectionE
     {
         // don't know which class is prophesized here, so let's say yes to every method
         // must match class in MockBuilderType parent::__construct() equivalent
-        return $classReflection->getName() === 'Prophecy\Prophecy\ObjectProphecy';
+        return 'Prophecy\Prophecy\ObjectProphecy' === $classReflection->getName();
     }
 
     public function getMethod(ClassReflection $classReflection, string $methodName): MethodReflection

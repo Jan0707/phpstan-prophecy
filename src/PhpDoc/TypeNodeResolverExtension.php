@@ -14,8 +14,9 @@ use Prophecy\Prophecy\ObjectProphecy;
 
 class TypeNodeResolverExtension implements \PHPStan\PhpDoc\TypeNodeResolverExtension, TypeNodeResolverAwareExtension
 {
-
-    /** @var TypeNodeResolver */
+    /**
+     * @var TypeNodeResolver
+     */
     private $typeNodeResolver;
 
     public function setTypeNodeResolver(TypeNodeResolver $typeNodeResolver): void
@@ -34,13 +35,15 @@ class TypeNodeResolverExtension implements \PHPStan\PhpDoc\TypeNodeResolverExten
             return null;
         }
 
-        if (count($typeNode->types) === 2) {
+        if (2 === \count($typeNode->types)) {
             $objectProphecyType = null;
             $prophesizedType = null;
+
             foreach ($typeNode->types as $innerType) {
                 $type = $this->typeNodeResolver->resolve($innerType, $nameScope);
+
                 if ($type instanceof TypeWithClassName) {
-                    if ($type->getClassName() === ObjectProphecy::class) {
+                    if (ObjectProphecy::class === $type->getClassName()) {
                         $objectProphecyType = $type;
                     } else {
                         $prophesizedType = $type;
@@ -50,7 +53,7 @@ class TypeNodeResolverExtension implements \PHPStan\PhpDoc\TypeNodeResolverExten
                 }
             }
 
-            if ($objectProphecyType !== null && $prophesizedType !== null) {
+            if (null !== $objectProphecyType && null !== $prophesizedType) {
                 return new ObjectProphecyType($prophesizedType->getClassName());
             }
         }

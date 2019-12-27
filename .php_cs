@@ -1,9 +1,18 @@
 <?php
 
-$finder = PhpCsFixer\Finder::create()->in(__DIR__);
+use Ergebnis\PhpCsFixer\Config;
 
-return PhpCsFixer\Config::create()
-    ->setFinder($finder)
-    ->setRules([
-        '@PSR2' => true,
-    ]);
+$config = Config\Factory::fromRuleSet(new Config\RuleSet\Php71(), [
+    'declare_strict_types' => false,
+    'final_class' => false,
+]);
+
+$config->getFinder()
+    ->ignoreDotFiles(false)
+    ->in(__DIR__)
+    ->exclude([
+        '.github',
+    ])
+    ->name('.php_cs');
+
+return $config;

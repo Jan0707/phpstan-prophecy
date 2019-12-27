@@ -15,8 +15,9 @@ use PHPStan\Type\TypeWithClassName;
 
 class ProphetProphesizeDynamicReturnTypeExtension implements DynamicMethodReturnTypeExtension
 {
-
-    /** @var string */
+    /**
+     * @var string
+     */
     private $className;
 
     public function __construct(string $className)
@@ -31,22 +32,24 @@ class ProphetProphesizeDynamicReturnTypeExtension implements DynamicMethodReturn
 
     public function isMethodSupported(MethodReflection $methodReflection): bool
     {
-        return $methodReflection->getName() === 'prophesize';
+        return 'prophesize' === $methodReflection->getName();
     }
 
     /**
      * @param MethodReflection $methodReflection
-     * @param MethodCall $methodCall
-     * @param Scope $scope
-     * @return Type
+     * @param MethodCall       $methodCall
+     * @param Scope            $scope
+     *
      * @throws \PHPStan\ShouldNotHappenException
+     *
+     * @return Type
      */
     public function getTypeFromMethodCall(MethodReflection $methodReflection, MethodCall $methodCall, Scope $scope): Type
     {
         $parametersAcceptor = ParametersAcceptorSelector::selectSingle($methodReflection->getVariants());
         $prophecyType = $parametersAcceptor->getReturnType();
 
-        if (\count($methodCall->args) === 0) {
+        if (0 === \count($methodCall->args)) {
             return $prophecyType;
         }
 
@@ -62,11 +65,11 @@ class ProphetProphesizeDynamicReturnTypeExtension implements DynamicMethodReturn
             throw new ShouldNotHappenException();
         }
 
-        if ($class === 'static') {
+        if ('static' === $class) {
             return $prophecyType;
         }
 
-        if ($class === 'self' && $scope->getClassReflection() !== null) {
+        if ('self' === $class && null !== $scope->getClassReflection()) {
             $class = $scope->getClassReflection()->getName();
         }
 

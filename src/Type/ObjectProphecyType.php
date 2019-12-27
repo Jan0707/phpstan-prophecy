@@ -23,22 +23,23 @@ class ObjectProphecyType extends ObjectType
         parent::__construct('Prophecy\Prophecy\ObjectProphecy');
     }
 
-    public function describe(VerbosityLevel $level): string
-    {
-        return sprintf('%s<%s>', parent::describe($level), $this->prophesizedClass);
-    }
-
-    public function getProphesizedClass(): string
-    {
-        return $this->prophesizedClass;
-    }
-
     /**
      * @param mixed[] $properties
+     *
      * @return self
      */
     public static function __set_state(array $properties): Type
     {
         return new self($properties['prophesizedClass']);
+    }
+
+    public function describe(VerbosityLevel $level): string
+    {
+        return \sprintf('%s<%s>', parent::describe($level), $this->prophesizedClass);
+    }
+
+    public function getProphesizedClass(): string
+    {
+        return $this->prophesizedClass;
     }
 }

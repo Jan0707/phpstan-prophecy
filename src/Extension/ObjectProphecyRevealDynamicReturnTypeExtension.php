@@ -21,15 +21,17 @@ class ObjectProphecyRevealDynamicReturnTypeExtension implements DynamicMethodRet
 
     public function isMethodSupported(MethodReflection $methodReflection): bool
     {
-        return $methodReflection->getName() === 'reveal';
+        return 'reveal' === $methodReflection->getName();
     }
 
     /**
      * @param MethodReflection $methodReflection
-     * @param MethodCall $methodCall
-     * @param Scope $scope
-     * @return Type
+     * @param MethodCall       $methodCall
+     * @param Scope            $scope
+     *
      * @throws \PHPStan\ShouldNotHappenException
+     *
+     * @return Type
      */
     public function getTypeFromMethodCall(MethodReflection $methodReflection, MethodCall $methodCall, Scope $scope): Type
     {

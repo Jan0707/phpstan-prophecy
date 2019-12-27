@@ -14,14 +14,8 @@ use Prophecy\Prophecy\MethodProphecy;
 
 class ObjectProphecyMethodReflection implements MethodReflection
 {
-    /**
-     * @var ClassReflection
-     */
     private $declaringClass;
 
-    /**
-     * @var string
-     */
     private $name;
 
     public function __construct(ClassReflection $declaringClass, string $name)

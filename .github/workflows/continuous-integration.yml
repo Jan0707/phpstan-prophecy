@@ -42,7 +42,7 @@ jobs:
       - name: "Install locked dependencies with composer"
         run: composer install --no-interaction --no-progress --no-suggest
 
-      - name: "Run localheinz/composer-normalize"
+      - name: "Run ergebnis/composer-normalize"
         run: composer normalize --dry-run
 
       - name: "Run friendsofphp/php-cs-fixer"

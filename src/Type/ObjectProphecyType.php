@@ -13,9 +13,6 @@ class ObjectProphecyType extends ObjectType
      */
     protected $prophesizedClass;
 
-    /**
-     * @param string $prophesizedClass The class that is being mocked/prophesized
-     */
     public function __construct(string $prophesizedClass)
     {
         $this->prophesizedClass = $prophesizedClass;
@@ -23,11 +20,6 @@ class ObjectProphecyType extends ObjectType
         parent::__construct('Prophecy\Prophecy\ObjectProphecy');
     }
 
-    /**
-     * @param mixed[] $properties
-     *
-     * @return self
-     */
     public static function __set_state(array $properties): Type
     {
         return new self($properties['prophesizedClass']);

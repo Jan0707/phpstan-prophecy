@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Model;
+namespace JanGregor\Prophecy\Test\Model;
 
 class BaseModel
 {

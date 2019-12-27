@@ -9,29 +9,46 @@ use PHPStan\Type\VerbosityLevel;
 class ObjectProphecyType extends ObjectType
 {
     /**
-     * @var string
+     * @var string[]
      */
-    protected $prophesizedClass;
+    protected $prophesizedClasses;
 
     public function __construct(string $prophesizedClass)
     {
-        $this->prophesizedClass = $prophesizedClass;
+        $this->prophesizedClasses = [
+            $prophesizedClass,
+        ];
 
         parent::__construct('Prophecy\Prophecy\ObjectProphecy');
     }
 
     public static function __set_state(array $properties): Type
     {
-        return new self($properties['prophesizedClass']);
+        return new self($properties['prophesizedClasses']);
     }
 
     public function describe(VerbosityLevel $level): string
     {
-        return \sprintf('%s<%s>', parent::describe($level), $this->prophesizedClass);
+        return \sprintf(
+            '%s<%s>',
+            parent::describe($level),
+            \implode(
+                '&',
+                $this->prophesizedClasses
+            )
+        );
     }
 
-    public function getProphesizedClass(): string
+    public function addProphesizedClass(string $prophesizedClass): void
     {
-        return $this->prophesizedClass;
+        $this->prophesizedClasses[] = $prophesizedClass;
+    }
+
+    /**
+     * @return string[]
+     */
+    public function getProphesizedClasses(): array
+    {
+        return $this->prophesizedClasses;
     }
 }

@@ -21,6 +21,11 @@ services:
 			- phpstan.broker.dynamicMethodReturnTypeExtension
 
 	-
+		class: JanGregor\Prophecy\Extension\ObjectProphecyWillImplementDynamicReturnTypeExtension
+		tags:
+			- phpstan.broker.dynamicMethodReturnTypeExtension
+
+	-
 		class: JanGregor\Prophecy\Reflection\ProphecyMethodsClassReflectionExtension
 		tags:
 			- phpstan.broker.methodsClassReflectionExtension

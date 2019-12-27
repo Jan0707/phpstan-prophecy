@@ -2,7 +2,9 @@
 
 namespace JanGregor\Prophecy\Test\Test;
 
+use JanGregor\Prophecy\Test\Model\Bar;
 use JanGregor\Prophecy\Test\Model\BaseModel;
+use JanGregor\Prophecy\Test\Model\Foo;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
 use Prophecy\Prophecy\ObjectProphecy;
@@ -58,5 +60,21 @@ final class BaseModelTest extends TestCase
 
         self::assertEquals('bar', $subject->getFoo());
         self::assertEquals(5, $subject->doubleTheNumber(2));
+    }
+
+    public function testWillImplementWorks(): void
+    {
+        $fooThatAlsoBars = $this->prophesize(Foo::class);
+
+        $fooThatAlsoBars->willImplement(Bar::class);
+
+        $fooThatAlsoBars
+            ->bar()
+            ->shouldBeCalled()
+            ->willReturn('Oh');
+
+        $subject = new BaseModel();
+
+        self::assertSame('Oh', $subject->bar($fooThatAlsoBars->reveal()));
     }
 }

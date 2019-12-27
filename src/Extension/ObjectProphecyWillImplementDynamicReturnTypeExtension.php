@@ -31,37 +31,37 @@ class ObjectProphecyWillImplementDynamicReturnTypeExtension implements DynamicMe
 
         $calledOnType = $scope->getType($methodCall->var);
 
-        $prophecyType = $parametersAcceptor->getReturnType();
+        $returnType = $parametersAcceptor->getReturnType();
 
         if (!$calledOnType instanceof ObjectProphecyType) {
-            return $prophecyType;
+            return $returnType;
         }
 
         if (0 === \count($methodCall->args)) {
-            return $prophecyType;
+            return $returnType;
         }
 
-        $argType = $scope->getType($methodCall->args[0]->value);
+        $argumentType = $scope->getType($methodCall->args[0]->value);
 
-        if (!($argType instanceof ConstantStringType)) {
-            return $prophecyType;
+        if (!$argumentType instanceof ConstantStringType) {
+            return $returnType;
         }
 
-        $class = $argType->getValue();
+        $className = $argumentType->getValue();
 
-        if (!($prophecyType instanceof TypeWithClassName)) {
+        if (!$returnType instanceof TypeWithClassName) {
             throw new ShouldNotHappenException();
         }
 
-        if ('static' === $class) {
-            return $prophecyType;
+        if ('static' === $className) {
+            return $returnType;
         }
 
-        if ('self' === $class && null !== $scope->getClassReflection()) {
-            $class = $scope->getClassReflection()->getName();
+        if ('self' === $className && null !== $scope->getClassReflection()) {
+            $className = $scope->getClassReflection()->getName();
         }
 
-        $calledOnType->addProphesizedClass($class);
+        $calledOnType->addProphesizedClass($className);
 
         return $calledOnType;
     }

@@ -39,7 +39,7 @@ class ProphetProphesizeDynamicReturnTypeExtension implements DynamicMethodReturn
         $returnType = $parametersAcceptor->getReturnType();
 
         if (0 === \count($methodCall->args)) {
-            return $returnType;
+            return new ObjectProphecyType();
         }
 
         $argumentType = $scope->getType($methodCall->args[0]->value);

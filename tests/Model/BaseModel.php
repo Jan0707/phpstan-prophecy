@@ -39,4 +39,9 @@ class BaseModel
     {
         return $bar->bar();
     }
+
+    public function baz(Baz $baz): string
+    {
+        return $baz->baz();
+    }
 }

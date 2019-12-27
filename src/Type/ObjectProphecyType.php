@@ -13,11 +13,9 @@ class ObjectProphecyType extends ObjectType
      */
     protected $prophesizedClasses;
 
-    public function __construct(string $prophesizedClass)
+    public function __construct(string ...$prophesizedClasses)
     {
-        $this->prophesizedClasses = [
-            $prophesizedClass,
-        ];
+        $this->prophesizedClasses = $prophesizedClasses;
 
         parent::__construct('Prophecy\Prophecy\ObjectProphecy');
     }

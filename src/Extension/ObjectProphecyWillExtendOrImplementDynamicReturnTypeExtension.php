@@ -13,7 +13,7 @@ use PHPStan\Type\DynamicMethodReturnTypeExtension;
 use PHPStan\Type\Type;
 use PHPStan\Type\TypeWithClassName;
 
-class ObjectProphecyWillImplementDynamicReturnTypeExtension implements DynamicMethodReturnTypeExtension
+class ObjectProphecyWillExtendOrImplementDynamicReturnTypeExtension implements DynamicMethodReturnTypeExtension
 {
     public function getClass(): string
     {
@@ -22,7 +22,16 @@ class ObjectProphecyWillImplementDynamicReturnTypeExtension implements DynamicMe
 
     public function isMethodSupported(MethodReflection $methodReflection): bool
     {
-        return 'willImplement' === $methodReflection->getName();
+        $methodNames = [
+            'willImplement',
+            'willExtend',
+        ];
+
+        return \in_array(
+            $methodReflection->getName(),
+            $methodNames,
+            true
+        );
     }
 
     public function getTypeFromMethodCall(MethodReflection $methodReflection, MethodCall $methodCall, Scope $scope): Type

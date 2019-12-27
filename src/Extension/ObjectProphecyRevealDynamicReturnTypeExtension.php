@@ -34,9 +34,12 @@ class ObjectProphecyRevealDynamicReturnTypeExtension implements DynamicMethodRet
             return $parametersAcceptor->getReturnType();
         }
 
-        return TypeCombinator::intersect(
-            new ObjectType($calledOnType->getProphesizedClass()),
-            $parametersAcceptor->getReturnType()
-        );
+        $types = \array_map(static function (string $class): ObjectType {
+            return new ObjectType($class);
+        }, $calledOnType->getProphesizedClasses());
+
+        $types[] = $parametersAcceptor->getReturnType();
+
+        return TypeCombinator::intersect(...$types);
     }
 }

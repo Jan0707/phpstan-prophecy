@@ -8,6 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 For a full diff see [`0.5.1...master`][0.5.1...master].
 
+### Added
+
+* Support for `willImplement()` ([#92]), by [@localheinz]
+
 ## [`0.5.1`][0.5.1]
 
 For a full diff see [`0.5.0...0.5.1`][0.5.0...0.5.1].
@@ -81,6 +85,7 @@ For a full diff see [`afd6fd9...0.1`][afd6fd9...0.1].
 
 [#67]: https://github.com/Jan0707/phpstan-prophecy/pull/67
 [#79]: https://github.com/Jan0707/phpstan-prophecy/pull/79
+[#92]: https://github.com/Jan0707/phpstan-prophecy/pull/92
 
 [@localheinz]: https://github.com/localheinz
 [@PedroTroller]: https://github.com/PedroTroller

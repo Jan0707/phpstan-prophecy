@@ -34,4 +34,9 @@ class BaseModel
     {
         return 2 * $number;
     }
+
+    public function bar(Bar $bar): string
+    {
+        return $bar->bar();
+    }
 }

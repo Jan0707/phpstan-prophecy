@@ -26,19 +26,21 @@ class ObjectProphecyRevealDynamicReturnTypeExtension implements DynamicMethodRet
 
     public function getTypeFromMethodCall(MethodReflection $methodReflection, MethodCall $methodCall, Scope $scope): Type
     {
-        $calledOnType = $scope->getType($methodCall->var);
-
         $parametersAcceptor = ParametersAcceptorSelector::selectSingle($methodReflection->getVariants());
 
+        $calledOnType = $scope->getType($methodCall->var);
+
+        $returnType = $parametersAcceptor->getReturnType();
+
         if (!$calledOnType instanceof ObjectProphecyType) {
-            return $parametersAcceptor->getReturnType();
+            return $returnType;
         }
 
         $types = \array_map(static function (string $class): ObjectType {
             return new ObjectType($class);
         }, $calledOnType->getProphesizedClasses());
 
-        $types[] = $parametersAcceptor->getReturnType();
+        $types[] = $returnType;
 
         return TypeCombinator::intersect(...$types);
     }

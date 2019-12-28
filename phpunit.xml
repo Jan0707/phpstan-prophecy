@@ -13,8 +13,8 @@
     failOnWarning="true"
 >
     <testsuites>
-        <testsuite name="Base">
-            <directory>tests/Test</directory>
+        <testsuite name="Static Analysis">
+            <directory>tests/StaticAnalysis</directory>
         </testsuite>
     </testsuites>
 </phpunit>

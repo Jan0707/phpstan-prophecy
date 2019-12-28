@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace JanGregor\Prophecy\Test\Model;
+namespace JanGregor\Prophecy\Test\StaticAnalysis;
 
 abstract class Baz
 {

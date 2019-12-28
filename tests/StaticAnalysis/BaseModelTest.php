@@ -1,11 +1,7 @@
 <?php
 
-namespace JanGregor\Prophecy\Test\Test;
+namespace JanGregor\Prophecy\Test\StaticAnalysis;
 
-use JanGregor\Prophecy\Test\Model\Bar;
-use JanGregor\Prophecy\Test\Model\BaseModel;
-use JanGregor\Prophecy\Test\Model\Baz;
-use JanGregor\Prophecy\Test\Model\Foo;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
 use Prophecy\Prophecy\ObjectProphecy;
@@ -13,7 +9,7 @@ use Prophecy\Prophecy\ObjectProphecy;
 /**
  * @internal
  *
- * @covers \JanGregor\Prophecy\Test\Model\BaseModel
+ * @coversNothing
  */
 final class BaseModelTest extends TestCase
 {

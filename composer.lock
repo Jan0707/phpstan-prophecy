@@ -449,16 +449,16 @@
         },
         {
             "name": "ergebnis/composer-normalize",
-            "version": "2.1.1",
+            "version": "2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ergebnis/composer-normalize.git",
-                "reference": "3d8b5818b5bfeda21d8a8077d0eda4112734695c"
+                "reference": "38a8ce53a18e0c6b1e00eb3da57c27d695fe38df"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ergebnis/composer-normalize/zipball/3d8b5818b5bfeda21d8a8077d0eda4112734695c",
-                "reference": "3d8b5818b5bfeda21d8a8077d0eda4112734695c",
+                "url": "https://api.github.com/repos/ergebnis/composer-normalize/zipball/38a8ce53a18e0c6b1e00eb3da57c27d695fe38df",
+                "reference": "38a8ce53a18e0c6b1e00eb3da57c27d695fe38df",
                 "shasum": ""
             },
             "require": {
@@ -474,7 +474,7 @@
                 "ergebnis/php-cs-fixer-config": "~1.1.2",
                 "ergebnis/phpstan-rules": "~0.14.2",
                 "ergebnis/test-util": "~0.9.1",
-                "jangregor/phpstan-prophecy": "~0.5.1",
+                "jangregor/phpstan-prophecy": "~0.6.0",
                 "phpstan/extension-installer": "^1.0.3",
                 "phpstan/phpstan": "~0.12.3",
                 "phpstan/phpstan-deprecation-rules": "~0.12.0",
@@ -510,7 +510,7 @@
                 "normalizer",
                 "plugin"
             ],
-            "time": "2019-12-26T22:01:46+00:00"
+            "time": "2020-01-01T11:15:02+00:00"
         },
         {
             "name": "ergebnis/json-normalizer",

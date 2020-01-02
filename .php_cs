@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Ergebnis\PhpCsFixer\Config;
 
 $config = Config\Factory::fromRuleSet(new Config\RuleSet\Php71(), [

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace JanGregor\Prophecy\Test\StaticAnalysis;
 
 use PHPUnit\Framework\TestCase;

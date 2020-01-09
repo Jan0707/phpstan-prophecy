@@ -57,7 +57,7 @@
             "@test"
         ],
         "cs": "php-cs-fixer fix --diff --verbose",
-        "stan": "phpstan analyse -l max -c phpstan.neon src tests",
+        "stan": "phpstan analyse",
         "test": "phpunit"
     }
 }

@@ -11,18 +11,19 @@ declare(strict_types=1);
  * @see https://github.com/Jan0707/phpstan-prophecy
  */
 
+use Ergebnis\License;
 use Ergebnis\PhpCsFixer\Config;
 
-$header = <<<'EOF'
-Copyright (c) 2018 Jan Gregor Emge-Triebel
+$license = License\Type\MIT::text(
+    __DIR__ . '/LICENSE',
+    License\Year::fromString('2018'),
+    License\Holder::fromString('Jan Gregor Emge-Triebel'),
+    License\Url::fromString('https://github.com/Jan0707/phpstan-prophecy')
+);
 
-For the full copyright and license information, please view
-the LICENSE file that was distributed with this source code.
+$license->save();
 
-@see https://github.com/Jan0707/phpstan-prophecy
-EOF;
-
-$config = Config\Factory::fromRuleSet(new Config\RuleSet\Php71($header), [
+$config = Config\Factory::fromRuleSet(new Config\RuleSet\Php71($license->header()), [
     'final_class' => false,
 ]);
 

@@ -13,29 +13,24 @@ declare(strict_types=1);
 
 namespace JanGregor\Prophecy\Reflection;
 
-use PHPStan\Reflection\ClassMemberReflection;
-use PHPStan\Reflection\ClassReflection;
-use PHPStan\Reflection\FunctionVariant;
-use PHPStan\Reflection\MethodReflection;
+use PHPStan\Reflection;
 use PHPStan\TrinaryLogic;
-use PHPStan\Type\Generic\TemplateTypeMap;
-use PHPStan\Type\ObjectType;
-use PHPStan\Type\Type;
-use Prophecy\Prophecy\MethodProphecy;
+use PHPStan\Type;
+use Prophecy\Prophecy;
 
-class ObjectProphecyMethodReflection implements MethodReflection
+class ObjectProphecyMethodReflection implements Reflection\MethodReflection
 {
     private $declaringClass;
 
     private $name;
 
-    public function __construct(ClassReflection $declaringClass, string $name)
+    public function __construct(Reflection\ClassReflection $declaringClass, string $name)
     {
         $this->declaringClass = $declaringClass;
         $this->name = $name;
     }
 
-    public function getDeclaringClass(): ClassReflection
+    public function getDeclaringClass(): Reflection\ClassReflection
     {
         return $this->declaringClass;
     }
@@ -63,17 +58,17 @@ class ObjectProphecyMethodReflection implements MethodReflection
     public function getVariants(): array
     {
         return [
-            new FunctionVariant(
-                TemplateTypeMap::createEmpty(),
+            new Reflection\FunctionVariant(
+                Type\Generic\TemplateTypeMap::createEmpty(),
                 null,
                 [],
                 true,
-                new ObjectType(MethodProphecy::class)
+                new Type\ObjectType(Prophecy\MethodProphecy::class)
             ),
         ];
     }
 
-    public function getPrototype(): ClassMemberReflection
+    public function getPrototype(): Reflection\ClassMemberReflection
     {
         return $this;
     }
@@ -98,7 +93,7 @@ class ObjectProphecyMethodReflection implements MethodReflection
         return TrinaryLogic::createNo();
     }
 
-    public function getThrowType(): ?Type
+    public function getThrowType(): ?Type\Type
     {
         return null;
     }

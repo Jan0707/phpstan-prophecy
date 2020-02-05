@@ -13,11 +13,9 @@ declare(strict_types=1);
 
 namespace JanGregor\Prophecy\Type;
 
-use PHPStan\Type\ObjectType;
-use PHPStan\Type\Type;
-use PHPStan\Type\VerbosityLevel;
+use PHPStan\Type;
 
-class ObjectProphecyType extends ObjectType
+class ObjectProphecyType extends Type\ObjectType
 {
     /**
      * @var string[]
@@ -31,12 +29,12 @@ class ObjectProphecyType extends ObjectType
         parent::__construct('Prophecy\Prophecy\ObjectProphecy');
     }
 
-    public static function __set_state(array $properties): Type
+    public static function __set_state(array $properties): Type\Type
     {
         return new self($properties['prophesizedClasses']);
     }
 
-    public function describe(VerbosityLevel $level): string
+    public function describe(Type\VerbosityLevel $level): string
     {
         return \sprintf(
             '%s<%s>',

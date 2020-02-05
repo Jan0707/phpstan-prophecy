@@ -13,20 +13,18 @@ declare(strict_types=1);
 
 namespace JanGregor\Prophecy\Reflection;
 
-use PHPStan\Reflection\ClassReflection;
-use PHPStan\Reflection\MethodReflection;
-use PHPStan\Reflection\MethodsClassReflectionExtension;
+use PHPStan\Reflection;
 
-class ProphecyMethodsClassReflectionExtension implements MethodsClassReflectionExtension
+class ProphecyMethodsClassReflectionExtension implements Reflection\MethodsClassReflectionExtension
 {
-    public function hasMethod(ClassReflection $classReflection, string $methodName): bool
+    public function hasMethod(Reflection\ClassReflection $classReflection, string $methodName): bool
     {
         // don't know which class is prophesized here, so let's say yes to every method
         // must match class in MockBuilderType parent::__construct() equivalent
         return 'Prophecy\Prophecy\ObjectProphecy' === $classReflection->getName();
     }
 
-    public function getMethod(ClassReflection $classReflection, string $methodName): MethodReflection
+    public function getMethod(Reflection\ClassReflection $classReflection, string $methodName): Reflection\MethodReflection
     {
         return new ObjectProphecyMethodReflection($classReflection, $methodName);
     }

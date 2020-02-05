@@ -14,24 +14,20 @@ declare(strict_types=1);
 namespace JanGregor\Prophecy\Extension;
 
 use JanGregor\Prophecy\Type\ObjectProphecyType;
-use PhpParser\Node\Expr\MethodCall;
-use PHPStan\Analyser\Scope;
-use PHPStan\Reflection\MethodReflection;
-use PHPStan\Reflection\ParametersAcceptorSelector;
+use PhpParser\Node;
+use PHPStan\Analyser;
+use PHPStan\Reflection;
 use PHPStan\ShouldNotHappenException;
-use PHPStan\Type\Constant\ConstantStringType;
-use PHPStan\Type\DynamicMethodReturnTypeExtension;
-use PHPStan\Type\Type;
-use PHPStan\Type\TypeWithClassName;
+use PHPStan\Type;
 
-class ObjectProphecyWillExtendOrImplementDynamicReturnTypeExtension implements DynamicMethodReturnTypeExtension
+class ObjectProphecyWillExtendOrImplementDynamicReturnTypeExtension implements Type\DynamicMethodReturnTypeExtension
 {
     public function getClass(): string
     {
         return 'Prophecy\Prophecy\ObjectProphecy';
     }
 
-    public function isMethodSupported(MethodReflection $methodReflection): bool
+    public function isMethodSupported(Reflection\MethodReflection $methodReflection): bool
     {
         $methodNames = [
             'willImplement',
@@ -45,9 +41,12 @@ class ObjectProphecyWillExtendOrImplementDynamicReturnTypeExtension implements D
         );
     }
 
-    public function getTypeFromMethodCall(MethodReflection $methodReflection, MethodCall $methodCall, Scope $scope): Type
-    {
-        $parametersAcceptor = ParametersAcceptorSelector::selectSingle($methodReflection->getVariants());
+    public function getTypeFromMethodCall(
+        Reflection\MethodReflection $methodReflection,
+        Node\Expr\MethodCall $methodCall,
+        Analyser\Scope $scope
+    ): Type\Type {
+        $parametersAcceptor = Reflection\ParametersAcceptorSelector::selectSingle($methodReflection->getVariants());
 
         $calledOnType = $scope->getType($methodCall->var);
 
@@ -63,13 +62,13 @@ class ObjectProphecyWillExtendOrImplementDynamicReturnTypeExtension implements D
 
         $argumentType = $scope->getType($methodCall->args[0]->value);
 
-        if (!$argumentType instanceof ConstantStringType) {
+        if (!$argumentType instanceof Type\Constant\ConstantStringType) {
             return $returnType;
         }
 
         $className = $argumentType->getValue();
 
-        if (!$returnType instanceof TypeWithClassName) {
+        if (!$returnType instanceof Type\TypeWithClassName) {
             throw new ShouldNotHappenException();
         }
 

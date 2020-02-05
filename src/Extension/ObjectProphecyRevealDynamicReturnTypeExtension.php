@@ -14,30 +14,29 @@ declare(strict_types=1);
 namespace JanGregor\Prophecy\Extension;
 
 use JanGregor\Prophecy\Type\ObjectProphecyType;
-use PhpParser\Node\Expr\MethodCall;
-use PHPStan\Analyser\Scope;
-use PHPStan\Reflection\MethodReflection;
-use PHPStan\Reflection\ParametersAcceptorSelector;
-use PHPStan\Type\DynamicMethodReturnTypeExtension;
-use PHPStan\Type\ObjectType;
-use PHPStan\Type\Type;
-use PHPStan\Type\TypeCombinator;
+use PhpParser\Node;
+use PHPStan\Analyser;
+use PHPStan\Reflection;
+use PHPStan\Type;
 
-class ObjectProphecyRevealDynamicReturnTypeExtension implements DynamicMethodReturnTypeExtension
+class ObjectProphecyRevealDynamicReturnTypeExtension implements Type\DynamicMethodReturnTypeExtension
 {
     public function getClass(): string
     {
         return 'Prophecy\Prophecy\ObjectProphecy';
     }
 
-    public function isMethodSupported(MethodReflection $methodReflection): bool
+    public function isMethodSupported(Reflection\MethodReflection $methodReflection): bool
     {
         return 'reveal' === $methodReflection->getName();
     }
 
-    public function getTypeFromMethodCall(MethodReflection $methodReflection, MethodCall $methodCall, Scope $scope): Type
-    {
-        $parametersAcceptor = ParametersAcceptorSelector::selectSingle($methodReflection->getVariants());
+    public function getTypeFromMethodCall(
+        Reflection\MethodReflection $methodReflection,
+        Node\Expr\MethodCall $methodCall,
+        Analyser\Scope $scope
+    ): Type\Type {
+        $parametersAcceptor = Reflection\ParametersAcceptorSelector::selectSingle($methodReflection->getVariants());
 
         $calledOnType = $scope->getType($methodCall->var);
 
@@ -47,12 +46,12 @@ class ObjectProphecyRevealDynamicReturnTypeExtension implements DynamicMethodRet
             return $returnType;
         }
 
-        $types = \array_map(static function (string $class): ObjectType {
-            return new ObjectType($class);
+        $types = \array_map(static function (string $class): Type\ObjectType {
+            return new Type\ObjectType($class);
         }, $calledOnType->getProphesizedClasses());
 
         $types[] = $returnType;
 
-        return TypeCombinator::intersect(...$types);
+        return Type\TypeCombinator::intersect(...$types);
     }
 }

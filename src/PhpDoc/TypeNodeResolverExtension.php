@@ -14,23 +14,20 @@ declare(strict_types=1);
 namespace JanGregor\Prophecy\PhpDoc;
 
 use JanGregor\Prophecy\Type\ObjectProphecyType;
-use PHPStan\Analyser\NameScope;
-use PHPStan\PhpDoc\TypeNodeResolver;
-use PHPStan\PhpDoc\TypeNodeResolverAwareExtension;
-use PHPStan\PhpDocParser\Ast\Type\TypeNode;
-use PHPStan\PhpDocParser\Ast\Type\UnionTypeNode;
-use PHPStan\Type\Type;
-use PHPStan\Type\TypeWithClassName;
+use PHPStan\Analyser;
+use PHPStan\PhpDoc;
+use PHPStan\PhpDocParser;
+use PHPStan\Type;
 use Prophecy\Prophecy\ObjectProphecy;
 
-class TypeNodeResolverExtension implements \PHPStan\PhpDoc\TypeNodeResolverExtension, TypeNodeResolverAwareExtension
+class TypeNodeResolverExtension implements PhpDoc\TypeNodeResolverAwareExtension, PhpDoc\TypeNodeResolverExtension
 {
     /**
-     * @var TypeNodeResolver
+     * @var PhpDoc\TypeNodeResolver
      */
     private $typeNodeResolver;
 
-    public function setTypeNodeResolver(TypeNodeResolver $typeNodeResolver): void
+    public function setTypeNodeResolver(PhpDoc\TypeNodeResolver $typeNodeResolver): void
     {
         $this->typeNodeResolver = $typeNodeResolver;
     }
@@ -40,9 +37,9 @@ class TypeNodeResolverExtension implements \PHPStan\PhpDoc\TypeNodeResolverExten
         return 'prophecy-v1';
     }
 
-    public function resolve(TypeNode $typeNode, NameScope $nameScope): ?Type
+    public function resolve(PhpDocParser\Ast\Type\TypeNode $typeNode, Analyser\NameScope $nameScope): ?Type\Type
     {
-        if (!$typeNode instanceof UnionTypeNode) {
+        if (!$typeNode instanceof PhpDocParser\Ast\Type\UnionTypeNode) {
             return null;
         }
 
@@ -53,7 +50,7 @@ class TypeNodeResolverExtension implements \PHPStan\PhpDoc\TypeNodeResolverExten
             foreach ($typeNode->types as $innerType) {
                 $type = $this->typeNodeResolver->resolve($innerType, $nameScope);
 
-                if ($type instanceof TypeWithClassName) {
+                if ($type instanceof Type\TypeWithClassName) {
                     if (ObjectProphecy::class === $type->getClassName()) {
                         $objectProphecyType = $type;
                     } else {

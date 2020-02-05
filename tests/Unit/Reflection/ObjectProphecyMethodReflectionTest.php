@@ -64,7 +64,7 @@ final class ObjectProphecyMethodReflectionTest extends Framework\TestCase
         ];
 
         self::assertEquals($variants, $reflection->getVariants());
-        self::assertTrue($reflection->hasSideEffects()->equals(TrinaryLogic::createNo()));
+        self::assertTrue($reflection->hasSideEffects()->equals(TrinaryLogic::createMaybe()));
         self::assertTrue($reflection->isDeprecated()->equals(TrinaryLogic::createNo()));
         self::assertTrue($reflection->isInternal()->equals(TrinaryLogic::createNo()));
         self::assertFalse($reflection->isPrivate());

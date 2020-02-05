@@ -100,7 +100,7 @@ final class ObjectProphecyMethodReflection implements Reflection\MethodReflectio
 
     public function hasSideEffects(): TrinaryLogic
     {
-        return TrinaryLogic::createNo();
+        return TrinaryLogic::createMaybe();
     }
 
     public function getDocComment(): ?string

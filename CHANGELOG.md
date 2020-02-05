@@ -15,6 +15,7 @@ For a full diff see [`0.6.0...0.6.1`][0.6.0...0.6.1].
 ### Changed
 
 * Marked classes as `final` ([#118]), by [@localheinz]
+* Modified return value of `ObjectPropecyMethodReflection::hasSideEffects()` as invoking methods on an instance of `Prophecy\Prophecy\ObjectProphecy` might have side effects ([#119]), by [@localheinz]
 
 ## [`0.6.0`][0.6.0]
 
@@ -105,6 +106,7 @@ For a full diff see [`afd6fd9...0.1`][afd6fd9...0.1].
 [#92]: https://github.com/Jan0707/phpstan-prophecy/pull/92
 [#94]: https://github.com/Jan0707/phpstan-prophecy/pull/94
 [#118]: https://github.com/Jan0707/phpstan-prophecy/pull/118
+[#119]: https://github.com/Jan0707/phpstan-prophecy/pull/119
 
 [@localheinz]: https://github.com/localheinz
 [@PedroTroller]: https://github.com/PedroTroller

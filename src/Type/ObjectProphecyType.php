@@ -15,12 +15,12 @@ namespace JanGregor\Prophecy\Type;
 
 use PHPStan\Type;
 
-class ObjectProphecyType extends Type\ObjectType
+final class ObjectProphecyType extends Type\ObjectType
 {
     /**
      * @var string[]
      */
-    protected $prophesizedClasses;
+    private $prophesizedClasses;
 
     public function __construct(string ...$prophesizedClasses)
     {

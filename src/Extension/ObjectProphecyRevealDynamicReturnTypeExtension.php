@@ -19,7 +19,7 @@ use PHPStan\Analyser;
 use PHPStan\Reflection;
 use PHPStan\Type;
 
-class ObjectProphecyRevealDynamicReturnTypeExtension implements Type\DynamicMethodReturnTypeExtension
+final class ObjectProphecyRevealDynamicReturnTypeExtension implements Type\DynamicMethodReturnTypeExtension
 {
     public function getClass(): string
     {

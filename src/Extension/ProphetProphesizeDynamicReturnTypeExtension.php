@@ -20,7 +20,7 @@ use PHPStan\Reflection;
 use PHPStan\ShouldNotHappenException;
 use PHPStan\Type;
 
-class ProphetProphesizeDynamicReturnTypeExtension implements Type\DynamicMethodReturnTypeExtension
+final class ProphetProphesizeDynamicReturnTypeExtension implements Type\DynamicMethodReturnTypeExtension
 {
     private $className;
 

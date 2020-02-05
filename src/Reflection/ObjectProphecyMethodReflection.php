@@ -18,7 +18,7 @@ use PHPStan\TrinaryLogic;
 use PHPStan\Type;
 use Prophecy\Prophecy;
 
-class ObjectProphecyMethodReflection implements Reflection\MethodReflection
+final class ObjectProphecyMethodReflection implements Reflection\MethodReflection
 {
     private $declaringClass;
 

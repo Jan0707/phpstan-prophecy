@@ -32,11 +32,6 @@
             "includes": [
                 "extension.neon"
             ]
-        },
-        "violinist": {
-            "allow_updates_beyond_constraint": 0,
-            "one_pull_request_per_package": 1,
-            "update_with_dependencies": 1
         }
     },
     "autoload": {

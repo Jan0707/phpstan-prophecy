@@ -11,7 +11,7 @@ declare(strict_types=1);
  * @see https://github.com/Jan0707/phpstan-prophecy
  */
 
-namespace JanGregor\Prophecy\Test\StaticAnalysis;
+namespace JanGregor\Prophecy\Test\StaticAnalysis\Src;
 
 class BaseModel
 {

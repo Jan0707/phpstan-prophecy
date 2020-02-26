@@ -48,17 +48,5 @@
         "psr-4": {
             "JanGregor\\Prophecy\\Test\\": "tests/"
         }
-    },
-    "scripts": {
-        "build": [
-            "@composer validate",
-            "@composer normalize",
-            "@cs",
-            "@stan",
-            "@test"
-        ],
-        "cs": "php-cs-fixer fix --diff --verbose",
-        "stan": "phpstan analyse",
-        "test": "phpunit"
     }
 }

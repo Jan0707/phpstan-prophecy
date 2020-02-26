@@ -11,7 +11,7 @@ We are using [`friendsofphp/php-cs-fixer`](https://github.com/FriendsOfPHP/PHP-C
 Run
 
 ```
-$ composer cs
+$ make coding-standards
 ```
 
 to automatically fix coding standard violations.
@@ -23,7 +23,7 @@ We are using [`phpstan/phpstan`](https://github.com/phpstan/phpstan) to statical
 Run
 
 ```
-$ composer stan
+$ make static-code-analysis
 ```
 
 to run a static code analysis.
@@ -35,7 +35,7 @@ We are using [`phpunit/phpunit`](https://github.com/sebastianbergmann/phpunit) t
 Run
 
 ```
-$ composer test
+$ make tests
 ```
 
 to run all the tests.
@@ -45,7 +45,7 @@ to run all the tests.
 Run
 
 ```
-$ composer build
+$ make
 ```
 
 to enforce coding standards, perform a static code analysis, and run tests!

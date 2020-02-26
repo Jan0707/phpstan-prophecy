@@ -10,5 +10,9 @@ trim_trailing_whitespace = true
 [*.neon]
 indent_style = tab
 
+
 [*.yml]
 indent_size = 2
+
+[Makefile]
+indent_style = tab

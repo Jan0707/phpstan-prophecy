@@ -11,8 +11,12 @@ declare(strict_types=1);
  * @see https://github.com/Jan0707/phpstan-prophecy
  */
 
-namespace JanGregor\Prophecy\Test\StaticAnalysis;
+namespace JanGregor\Prophecy\Test\StaticAnalysis\Test;
 
+use JanGregor\Prophecy\Test\StaticAnalysis\Src\Bar;
+use JanGregor\Prophecy\Test\StaticAnalysis\Src\BaseModel;
+use JanGregor\Prophecy\Test\StaticAnalysis\Src\Baz;
+use JanGregor\Prophecy\Test\StaticAnalysis\Src\Foo;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
 use Prophecy\Prophecy\ObjectProphecy;
@@ -25,7 +29,7 @@ use Prophecy\Prophecy\ObjectProphecy;
 final class BaseModelTest extends TestCase
 {
     /**
-     * @var BaseModel|ObjectProphecy
+     * @var \JanGregor\Prophecy\Test\StaticAnalysis\Src\BaseModel|ObjectProphecy
      */
     private $subject;
 

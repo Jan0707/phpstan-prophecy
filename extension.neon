@@ -26,11 +26,11 @@ services:
 			- phpstan.broker.dynamicMethodReturnTypeExtension
 
 	-
-		class: JanGregor\Prophecy\Reflection\ProphecyMethodsClassReflectionExtension
-		tags:
-			- phpstan.broker.methodsClassReflectionExtension
-
-	-
 		class: JanGregor\Prophecy\PhpDoc\TypeNodeResolverExtension
 		tags:
 			- phpstan.phpDoc.typeNodeResolverExtension
+
+	-
+		class: JanGregor\Prophecy\Reflection\ProphecyMethodsClassReflectionExtension
+		tags:
+			- phpstan.broker.methodsClassReflectionExtension

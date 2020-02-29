@@ -31,8 +31,11 @@ $config->getFinder()
     ->ignoreDotFiles(false)
     ->in(__DIR__)
     ->exclude([
-        '.github',
+        '.build/',
+        '.github/',
     ])
     ->name('.php_cs');
+
+$config->setCacheFile(__DIR__ . '/.build/php-cs-fixer/.php_cs.cache');
 
 return $config;

@@ -3,6 +3,7 @@ it: coding-standards static-code-analysis tests ## Runs the coding-standards, st
 
 .PHONY: coding-standards
 coding-standards: vendor ## Fixes code style issues with friendsofphp/php-cs-fixer
+	mkdir -p .build/php-cs-fixer
 	vendor/bin/php-cs-fixer fix --config=.php_cs --diff --diff-format=udiff --verbose
 
 .PHONY: help
@@ -11,6 +12,7 @@ help: ## Displays this list of targets with descriptions
 
 .PHONY: static-code-analysis
 static-code-analysis: vendor ## Runs a static code analysis with phpstan/phpstan
+	mkdir -p .build/phpstan
 	vendor/bin/phpstan analyse --configuration=phpstan.neon
 
 .PHONY: tests

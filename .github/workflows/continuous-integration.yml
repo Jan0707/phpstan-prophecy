@@ -54,6 +54,9 @@ jobs:
       - name: "Run ergebnis/composer-normalize"
         run: "composer normalize --dry-run"
 
+      - name: "Create cache directory for friendsofphp/php-cs-fixer"
+        run: "mkdir -p .build/php-cs-fixer"
+
       - name: "Run friendsofphp/php-cs-fixer"
         run: "vendor/bin/php-cs-fixer fix --diff --dry-run --verbose"
 
@@ -108,6 +111,9 @@ jobs:
 
       - name: "Show phpstan/phpstan version"
         run: "vendor/bin/phpstan --version"
+
+      - name: "Create cache directory for phpstan/phpstan"
+        run: "mkdir -p .build/phpstan"
 
       - name: "Run phpstan/phpstan"
         run: "vendor/bin/phpstan analyse --configuration=phpstan.neon"

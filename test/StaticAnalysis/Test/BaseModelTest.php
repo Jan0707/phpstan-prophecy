@@ -13,94 +13,70 @@ declare(strict_types=1);
 
 namespace JanGregor\Prophecy\Test\StaticAnalysis\Test;
 
-use JanGregor\Prophecy\Test\StaticAnalysis\Src\Bar;
-use JanGregor\Prophecy\Test\StaticAnalysis\Src\BaseModel;
-use JanGregor\Prophecy\Test\StaticAnalysis\Src\Baz;
-use JanGregor\Prophecy\Test\StaticAnalysis\Src\Foo;
-use PHPUnit\Framework\TestCase;
-use Prophecy\Argument;
-use Prophecy\Prophecy\ObjectProphecy;
+use JanGregor\Prophecy\Test\StaticAnalysis\Src;
+use PHPUnit\Framework;
 
 /**
  * @internal
  *
- * @coversNothing
+ * @covers \JanGregor\Prophecy\Test\StaticAnalysis\Src\BaseModel
  */
-final class BaseModelTest extends TestCase
+final class BaseModelTest extends Framework\TestCase
 {
-    /**
-     * @var \JanGregor\Prophecy\Test\StaticAnalysis\Src\BaseModel|ObjectProphecy
-     */
-    private $subject;
-
-    public function testBasicProperty(): void
+    public function testDefaults(): void
     {
-        $word = 'bar';
+        $model = new Src\BaseModel();
 
-        $subject = new BaseModel();
-        $subject->setFoo($word);
-
-        self::assertEquals($word, $subject->getFoo());
-        self::assertEquals(4, $subject->doubleTheNumber(2));
+        self::assertNull($model->getFoo());
     }
 
-    public function testWithProphecy(): void
+    public function testCanSetAndGetFoo(): void
     {
-        $subject = $this->prophesize(BaseModel::class);
-        $subject->getFoo()->willReturn('bar');
+        $foo = 'Hello!';
 
-        $subject->doubleTheNumber(Argument::is(2))->willReturn(5);
+        $model = new Src\BaseModel();
 
-        self::assertEquals('bar', $subject->reveal()->getFoo());
-        self::assertEquals(5, $subject->reveal()->doubleTheNumber(2));
+        $model->setFoo($foo);
+
+        self::assertSame($foo, $model->getFoo());
     }
 
-    /**
-     * @before
-     */
-    public function createSubject(): void
+    public function testCanDoubleTheNumber(): void
     {
-        $this->subject = $this->prophesize(BaseModel::class);
+        $number = 9000;
+
+        $model = new Src\BaseModel();
+
+        self::assertSame(2 * $number, $model->doubleTheNumber($number));
     }
 
-    public function testProphesizedAttributesShouldAlsoWork(): void
+    public function testBarReturnsBar(): void
     {
-        $this->subject->getFoo()->willReturn('bar');
-        $this->subject->doubleTheNumber(Argument::is(2))->willReturn(5);
+        $value = 'Hmm';
 
-        $subject = $this->subject->reveal();
+        $bar = $this->prophesize(Src\Bar::class);
 
-        self::assertEquals('bar', $subject->getFoo());
-        self::assertEquals(5, $subject->doubleTheNumber(2));
+        $bar
+            ->bar()
+            ->willReturn($value);
+
+        $model = new Src\BaseModel();
+
+        self::assertSame($value, $model->bar($bar->reveal()));
     }
 
-    public function testWillExtendWorks(): void
+    public function testBazReturnsBaz(): void
     {
-        $baz = $this->prophesize()->willExtend(Baz::class);
+        $value = 'Ah!';
+
+        $baz = $this->prophesize(Src\Baz::class);
 
         $baz
             ->baz()
-            ->shouldBeCalled()
-            ->willReturn('Hmm');
+            ->willReturn($value);
 
-        $subject = new BaseModel();
+        $model = new Src\BaseModel();
 
-        self::assertSame('Hmm', $subject->baz($baz->reveal()));
-    }
-
-    public function testWillImplementWorks(): void
-    {
-        $fooThatAlsoBars = $this->prophesize(Foo::class);
-
-        $fooThatAlsoBars->willImplement(Bar::class);
-
-        $fooThatAlsoBars
-            ->bar()
-            ->shouldBeCalled()
-            ->willReturn('Oh');
-
-        $subject = new BaseModel();
-
-        self::assertSame('Oh', $subject->bar($fooThatAlsoBars->reveal()));
+        self::assertSame($value, $model->baz($baz->reveal()));
     }
 }

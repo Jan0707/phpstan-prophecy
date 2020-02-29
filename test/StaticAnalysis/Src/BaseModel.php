@@ -16,32 +16,21 @@ namespace JanGregor\Prophecy\Test\StaticAnalysis\Src;
 class BaseModel
 {
     /**
-     * @var string
+     * @var null|string
      */
     private $foo;
 
-    /**
-     * @return string
-     */
-    public function getFoo(): string
+    public function getFoo(): ?string
     {
         return $this->foo;
     }
 
-    /**
-     * @param string $foo
-     */
     public function setFoo(string $foo): void
     {
         $this->foo = $foo;
     }
 
-    /**
-     * @param int $number
-     *
-     * @return int
-     */
-    public function doubleTheNumber(int $number)
+    public function doubleTheNumber(int $number): int
     {
         return 2 * $number;
     }

@@ -1,5 +1,5 @@
 includes:
-	- src/extension.neon
+	- extension.neon
 
 parameters:
 	ignoreErrors:

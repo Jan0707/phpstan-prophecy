@@ -30,7 +30,7 @@
     "extra": {
         "phpstan": {
             "includes": [
-                "src/extension.neon"
+                "extension.neon"
             ]
         },
         "violinist": {

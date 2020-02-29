@@ -53,7 +53,7 @@ And then make sure to add the extension to your `phpstan.neon` file:
 
 ```neon
 includes:
-	- vendor/jangregor/phpstan-prophecy/src/extension.neon
+	- vendor/jangregor/phpstan-prophecy/extension.neon
 ```
 
 And you should be good to go. Happy testing!

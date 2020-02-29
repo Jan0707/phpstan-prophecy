@@ -18,7 +18,7 @@ use PHPStan\Analyser;
 use PHPStan\PhpDoc;
 use PHPStan\PhpDocParser;
 use PHPStan\Type;
-use Prophecy\Prophecy\ObjectProphecy;
+use Prophecy\Prophecy;
 
 /**
  * @internal
@@ -54,7 +54,7 @@ final class TypeNodeResolverExtension implements PhpDoc\TypeNodeResolverAwareExt
                 $type = $this->typeNodeResolver->resolve($innerType, $nameScope);
 
                 if ($type instanceof Type\TypeWithClassName) {
-                    if (ObjectProphecy::class === $type->getClassName()) {
+                    if (Prophecy\ObjectProphecy::class === $type->getClassName()) {
                         $objectProphecyType = $type;
                     } else {
                         $prophesizedType = $type;

@@ -16,7 +16,6 @@ namespace JanGregor\Prophecy\Test\StaticAnalysis\Test;
 use JanGregor\Prophecy\Test\StaticAnalysis\Src;
 use PHPUnit\Framework;
 use Prophecy\Argument;
-use Prophecy\Prophecy;
 
 /**
  * @internal
@@ -25,9 +24,6 @@ use Prophecy\Prophecy;
  */
 final class ProphesizeTest extends Framework\TestCase
 {
-    /**
-     * @var Prophecy\ObjectProphecy|Src\BaseModel
-     */
     private $prophecy;
 
     protected function setUp(): void

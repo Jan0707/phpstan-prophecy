@@ -2,6 +2,8 @@ includes:
 	- src/extension.neon
 
 parameters:
+	ignoreErrors:
+		- '#^Property .* has no typehint specified\.$#'
 	inferPrivatePropertyTypeFromConstructor: true
 	level: max
 	paths:

@@ -11,7 +11,7 @@ declare(strict_types=1);
  * @see https://github.com/Jan0707/phpstan-prophecy
  */
 
-namespace JanGregor\Prophecy\Test\StaticAnalysis\Test;
+namespace JanGregor\Prophecy\Test\StaticAnalysis\Test\ObjectProphecy;
 
 use JanGregor\Prophecy\Test\StaticAnalysis\Src;
 use PHPUnit\Framework;
@@ -21,38 +21,38 @@ use PHPUnit\Framework;
  *
  * @coversNothing
  */
-final class WillExtendTest extends Framework\TestCase
+final class WillImplementTest extends Framework\TestCase
 {
     private $prophecy;
 
     protected function setUp(): void
     {
-        $this->prophecy = $this->prophesize()->willExtend(Src\Baz::class);
+        $this->prophecy = $this->prophesize(Src\Foo::class)->willImplement(Src\Bar::class);
     }
 
     public function testInSetUp(): void
     {
         $this->prophecy
-            ->baz()
+            ->bar()
             ->shouldBeCalled()
-            ->willReturn('Hmm');
+            ->willReturn('Oh');
 
         $subject = new Src\BaseModel();
 
-        self::assertSame('Hmm', $subject->baz($this->prophecy->reveal()));
+        self::assertSame('Oh', $subject->bar($this->prophecy->reveal()));
     }
 
     public function testInTestMethod(): void
     {
-        $prophecy = $this->prophesize()->willExtend(Src\Baz::class);
+        $prophecy = $this->prophesize(Src\Foo::class)->willImplement(Src\Bar::class);
 
         $prophecy
-            ->baz()
+            ->bar()
             ->shouldBeCalled()
-            ->willReturn('Hmm');
+            ->willReturn('Oh');
 
         $subject = new Src\BaseModel();
 
-        self::assertSame('Hmm', $subject->baz($prophecy->reveal()));
+        self::assertSame('Oh', $subject->bar($prophecy->reveal()));
     }
 }

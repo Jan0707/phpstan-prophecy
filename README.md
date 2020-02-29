@@ -64,13 +64,13 @@ If you need a suitable dev environment you can always use docker.
 Simply build the respective container and tag it via:
 
 ```
-$ docker build -t phpstan-prophecy:7.1 .docker/container/php
+$ docker build -t phpstan-prophecy:7.1 .docker/
 ```
 
 You can then use this tagged container image to run php during development:
 
 ```
-$ docker run -it --rm --name phpstan-prophecy-dev -v "$PWD":/var/www/html -w /var/www/html phpstan-prohphecy:7.1 bash
+$ docker run -it --rm --name phpstan-prophecy-dev -v "$PWD":/var/www/html -w /var/www/html phpstan-propphecy:7.1 bash
 ```
 
 ## Changelog

@@ -46,7 +46,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "JanGregor\\Prophecy\\Test\\": "tests/"
+            "JanGregor\\Prophecy\\Test\\": "test/"
         }
     }
 }

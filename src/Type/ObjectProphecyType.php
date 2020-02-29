@@ -15,6 +15,9 @@ namespace JanGregor\Prophecy\Type;
 
 use PHPStan\Type;
 
+/**
+ * @internal
+ */
 final class ObjectProphecyType extends Type\ObjectType
 {
     /**

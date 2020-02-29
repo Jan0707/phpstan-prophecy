@@ -11,6 +11,7 @@ For a full diff see [`0.6.2...master`][0.6.2...master].
 ### Changed
 
 * Moved `src/extension.neon` to `extension.neon` ([#140]), by [@localheinz]
+* Marked classes as `@final` ([#144]), by [@localheinz]
 
 ## [`0.6.2`][0.6.2]
 
@@ -123,6 +124,7 @@ For a full diff see [`afd6fd9...0.1`][afd6fd9...0.1].
 [#119]: https://github.com/Jan0707/phpstan-prophecy/pull/119
 [#124]: https://github.com/Jan0707/phpstan-prophecy/pull/124
 [#140]: https://github.com/Jan0707/phpstan-prophecy/pull/140
+[#144]: https://github.com/Jan0707/phpstan-prophecy/pull/144
 
 [@localheinz]: https://github.com/localheinz
 [@PedroTroller]: https://github.com/PedroTroller

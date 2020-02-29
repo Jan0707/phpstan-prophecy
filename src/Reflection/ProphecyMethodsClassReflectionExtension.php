@@ -15,6 +15,9 @@ namespace JanGregor\Prophecy\Reflection;
 
 use PHPStan\Reflection;
 
+/**
+ * @internal
+ */
 final class ProphecyMethodsClassReflectionExtension implements Reflection\MethodsClassReflectionExtension
 {
     public function hasMethod(Reflection\ClassReflection $classReflection, string $methodName): bool

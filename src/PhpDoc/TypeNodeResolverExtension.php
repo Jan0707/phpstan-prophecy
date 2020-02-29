@@ -20,6 +20,9 @@ use PHPStan\PhpDocParser;
 use PHPStan\Type;
 use Prophecy\Prophecy\ObjectProphecy;
 
+/**
+ * @internal
+ */
 final class TypeNodeResolverExtension implements PhpDoc\TypeNodeResolverAwareExtension, PhpDoc\TypeNodeResolverExtension
 {
     /**

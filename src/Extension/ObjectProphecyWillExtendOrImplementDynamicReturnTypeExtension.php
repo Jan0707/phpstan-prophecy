@@ -20,6 +20,9 @@ use PHPStan\Reflection;
 use PHPStan\ShouldNotHappenException;
 use PHPStan\Type;
 
+/**
+ * @internal
+ */
 final class ObjectProphecyWillExtendOrImplementDynamicReturnTypeExtension implements Type\DynamicMethodReturnTypeExtension
 {
     public function getClass(): string

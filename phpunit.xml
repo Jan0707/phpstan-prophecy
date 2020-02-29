@@ -14,10 +14,10 @@
 >
     <testsuites>
         <testsuite name="Static Analysis">
-            <directory>tests/StaticAnalysis</directory>
+            <directory>test/StaticAnalysis</directory>
         </testsuite>
         <testsuite name="Unit">
-            <directory>tests/Unit</directory>
+            <directory>test/Unit</directory>
         </testsuite>
     </testsuites>
 </phpunit>

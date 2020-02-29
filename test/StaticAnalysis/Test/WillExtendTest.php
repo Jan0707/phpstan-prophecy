@@ -23,6 +23,25 @@ use PHPUnit\Framework;
  */
 final class WillExtendTest extends Framework\TestCase
 {
+    private $prophecy;
+
+    protected function setUp(): void
+    {
+        $this->prophecy = $this->prophesize()->willExtend(Src\Baz::class);
+    }
+
+    public function testInSetUp(): void
+    {
+        $this->prophecy
+            ->baz()
+            ->shouldBeCalled()
+            ->willReturn('Hmm');
+
+        $subject = new Src\BaseModel();
+
+        self::assertSame('Hmm', $subject->baz($this->prophecy->reveal()));
+    }
+
     public function testInTestMethod(): void
     {
         $prophecy = $this->prophesize()->willExtend(Src\Baz::class);

@@ -31,7 +31,7 @@ final class ProphesizeTest extends Framework\TestCase
         $this->prophecy = $this->prophesize(Src\BaseModel::class);
     }
 
-    public function testInSetUp(): void
+    public function testCreateProphecyInSetUp(): void
     {
         $this->prophecy
             ->getFoo()
@@ -47,7 +47,7 @@ final class ProphesizeTest extends Framework\TestCase
         self::assertEquals(5, $testDouble->doubleTheNumber(2));
     }
 
-    public function testInTestMethod(): void
+    public function testCreateProphecyInTestMethod(): void
     {
         $prophecy = $this->prophesize(Src\BaseModel::class);
 

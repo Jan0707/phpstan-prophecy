@@ -30,7 +30,7 @@ final class WillImplementTest extends Framework\TestCase
         $this->prophecy = $this->prophesize(Src\Foo::class)->willImplement(Src\Bar::class);
     }
 
-    public function testInSetUp(): void
+    public function testCreateProphecyInSetUp(): void
     {
         $this->prophecy
             ->bar()
@@ -42,7 +42,7 @@ final class WillImplementTest extends Framework\TestCase
         self::assertSame('Oh', $subject->bar($this->prophecy->reveal()));
     }
 
-    public function testInTestMethod(): void
+    public function testCreateProphecyInTestMethod(): void
     {
         $prophecy = $this->prophesize(Src\Foo::class)->willImplement(Src\Bar::class);
 

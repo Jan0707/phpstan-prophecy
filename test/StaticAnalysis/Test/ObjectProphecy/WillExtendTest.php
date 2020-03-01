@@ -30,7 +30,7 @@ final class WillExtendTest extends Framework\TestCase
         $this->prophecy = $this->prophesize()->willExtend(Src\Baz::class);
     }
 
-    public function testInSetUp(): void
+    public function testCreateProphecyInSetUp(): void
     {
         $this->prophecy
             ->baz()
@@ -42,7 +42,7 @@ final class WillExtendTest extends Framework\TestCase
         self::assertSame('Hmm', $subject->baz($this->prophecy->reveal()));
     }
 
-    public function testInTestMethod(): void
+    public function testCreateProphecyInTestMethod(): void
     {
         $prophecy = $this->prophesize()->willExtend(Src\Baz::class);
 

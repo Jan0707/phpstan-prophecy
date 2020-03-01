@@ -11,9 +11,9 @@ declare(strict_types=1);
  * @see https://github.com/Jan0707/phpstan-prophecy
  */
 
-namespace JanGregor\Prophecy\Extension;
+namespace JanGregor\Prophecy\Type\Prophet;
 
-use JanGregor\Prophecy\Type\ObjectProphecyType;
+use JanGregor\Prophecy\Type\ObjectProphecy;
 use PhpParser\Node;
 use PHPStan\Analyser;
 use PHPStan\Reflection;
@@ -23,25 +23,23 @@ use PHPStan\Type;
 /**
  * @internal
  */
-final class ObjectProphecyWillExtendOrImplementDynamicReturnTypeExtension implements Type\DynamicMethodReturnTypeExtension
+final class ProphesizeDynamicReturnTypeExtension implements Type\DynamicMethodReturnTypeExtension
 {
+    private $className;
+
+    public function __construct(string $className)
+    {
+        $this->className = $className;
+    }
+
     public function getClass(): string
     {
-        return 'Prophecy\Prophecy\ObjectProphecy';
+        return $this->className;
     }
 
     public function isMethodSupported(Reflection\MethodReflection $methodReflection): bool
     {
-        $methodNames = [
-            'willExtend',
-            'willImplement',
-        ];
-
-        return \in_array(
-            $methodReflection->getName(),
-            $methodNames,
-            true
-        );
+        return 'prophesize' === $methodReflection->getName();
     }
 
     public function getTypeFromMethodCall(
@@ -51,16 +49,10 @@ final class ObjectProphecyWillExtendOrImplementDynamicReturnTypeExtension implem
     ): Type\Type {
         $parametersAcceptor = Reflection\ParametersAcceptorSelector::selectSingle($methodReflection->getVariants());
 
-        $calledOnType = $scope->getType($methodCall->var);
-
         $returnType = $parametersAcceptor->getReturnType();
 
-        if (!$calledOnType instanceof ObjectProphecyType) {
-            return $returnType;
-        }
-
         if (0 === \count($methodCall->args)) {
-            return $returnType;
+            return new ObjectProphecy\ObjectProphecyType();
         }
 
         $argumentType = $scope->getType($methodCall->args[0]->value);
@@ -83,8 +75,6 @@ final class ObjectProphecyWillExtendOrImplementDynamicReturnTypeExtension implem
             $className = $scope->getClassReflection()->getName();
         }
 
-        $calledOnType->addProphesizedClass($className);
-
-        return $calledOnType;
+        return new ObjectProphecy\ObjectProphecyType($className);
     }
 }

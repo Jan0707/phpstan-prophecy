@@ -11,14 +11,14 @@ declare(strict_types=1);
  * @see https://github.com/Jan0707/phpstan-prophecy
  */
 
-namespace JanGregor\Prophecy\Reflection;
+namespace JanGregor\Prophecy\Reflection\ObjectProphecy;
 
 use PHPStan\Reflection;
 
 /**
  * @internal
  */
-final class ProphecyMethodsClassReflectionExtension implements Reflection\MethodsClassReflectionExtension
+final class MethodsClassReflectionExtension implements Reflection\MethodsClassReflectionExtension
 {
     public function hasMethod(Reflection\ClassReflection $classReflection, string $methodName): bool
     {
@@ -29,6 +29,6 @@ final class ProphecyMethodsClassReflectionExtension implements Reflection\Method
 
     public function getMethod(Reflection\ClassReflection $classReflection, string $methodName): Reflection\MethodReflection
     {
-        return new ObjectProphecyMethodReflection($classReflection, $methodName);
+        return new MethodReflection($classReflection, $methodName);
     }
 }

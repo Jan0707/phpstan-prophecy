@@ -11,9 +11,8 @@ declare(strict_types=1);
  * @see https://github.com/Jan0707/phpstan-prophecy
  */
 
-namespace JanGregor\Prophecy\Extension;
+namespace JanGregor\Prophecy\Type\ObjectProphecy;
 
-use JanGregor\Prophecy\Type\ObjectProphecyType;
 use PhpParser\Node;
 use PHPStan\Analyser;
 use PHPStan\Reflection;
@@ -23,23 +22,25 @@ use PHPStan\Type;
 /**
  * @internal
  */
-final class ProphetProphesizeDynamicReturnTypeExtension implements Type\DynamicMethodReturnTypeExtension
+final class WillExtendOrImplementDynamicReturnTypeExtension implements Type\DynamicMethodReturnTypeExtension
 {
-    private $className;
-
-    public function __construct(string $className)
-    {
-        $this->className = $className;
-    }
-
     public function getClass(): string
     {
-        return $this->className;
+        return 'Prophecy\Prophecy\ObjectProphecy';
     }
 
     public function isMethodSupported(Reflection\MethodReflection $methodReflection): bool
     {
-        return 'prophesize' === $methodReflection->getName();
+        $methodNames = [
+            'willExtend',
+            'willImplement',
+        ];
+
+        return \in_array(
+            $methodReflection->getName(),
+            $methodNames,
+            true
+        );
     }
 
     public function getTypeFromMethodCall(
@@ -49,10 +50,16 @@ final class ProphetProphesizeDynamicReturnTypeExtension implements Type\DynamicM
     ): Type\Type {
         $parametersAcceptor = Reflection\ParametersAcceptorSelector::selectSingle($methodReflection->getVariants());
 
+        $calledOnType = $scope->getType($methodCall->var);
+
         $returnType = $parametersAcceptor->getReturnType();
 
+        if (!$calledOnType instanceof ObjectProphecyType) {
+            return $returnType;
+        }
+
         if (0 === \count($methodCall->args)) {
-            return new ObjectProphecyType();
+            return $returnType;
         }
 
         $argumentType = $scope->getType($methodCall->args[0]->value);
@@ -75,6 +82,8 @@ final class ProphetProphesizeDynamicReturnTypeExtension implements Type\DynamicM
             $className = $scope->getClassReflection()->getName();
         }
 
-        return new ObjectProphecyType($className);
+        $calledOnType->addProphesizedClass($className);
+
+        return $calledOnType;
     }
 }

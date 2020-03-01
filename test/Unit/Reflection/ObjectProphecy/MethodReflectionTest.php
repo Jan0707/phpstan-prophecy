@@ -11,9 +11,9 @@ declare(strict_types=1);
  * @see https://github.com/Jan0707/phpstan-prophecy
  */
 
-namespace JanGregor\Prophecy\Test\Unit\Reflection;
+namespace JanGregor\Prophecy\Test\Unit\Reflection\ObjectProphecy;
 
-use JanGregor\Prophecy\Reflection\ObjectProphecyMethodReflection;
+use JanGregor\Prophecy\Reflection\ObjectProphecy\MethodReflection;
 use PHPStan\Reflection;
 use PHPStan\TrinaryLogic;
 use PHPStan\Type;
@@ -21,18 +21,18 @@ use PHPUnit\Framework;
 use Prophecy\Prophecy;
 
 /**
- * @covers \JanGregor\Prophecy\Reflection\ObjectProphecyMethodReflection
+ * @covers \JanGregor\Prophecy\Reflection\ObjectProphecy\MethodReflection
  *
  * @internal
  */
-final class ObjectProphecyMethodReflectionTest extends Framework\TestCase
+final class MethodReflectionTest extends Framework\TestCase
 {
     public function testConstructorSetsValues(): void
     {
         $classReflection = $this->prophesize(Reflection\ClassReflection::class);
         $name = 'hmm';
 
-        $reflection = new ObjectProphecyMethodReflection(
+        $reflection = new MethodReflection(
             $classReflection->reveal(),
             $name
         );
@@ -43,7 +43,7 @@ final class ObjectProphecyMethodReflectionTest extends Framework\TestCase
 
     public function testDefaults(): void
     {
-        $reflection = new ObjectProphecyMethodReflection(
+        $reflection = new MethodReflection(
             $this->prophesize(Reflection\ClassReflection::class)->reveal(),
             'hmm'
         );

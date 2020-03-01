@@ -1,6 +1,16 @@
 services:
 	-
-		class: JanGregor\Prophecy\Extension\ProphetProphesizeDynamicReturnTypeExtension
+		class: JanGregor\Prophecy\PhpDoc\ObjectProphecy\TypeNodeResolverExtension
+		tags:
+			- phpstan.phpDoc.typeNodeResolverExtension
+
+	-
+		class: JanGregor\Prophecy\Reflection\ObjectProphecy\MethodsClassReflectionExtension
+		tags:
+			- phpstan.broker.methodsClassReflectionExtension
+
+	-
+		class: JanGregor\Prophecy\Type\Prophet\ProphesizeDynamicReturnTypeExtension
 		arguments:
 			className: Prophecy\Prophet
 		tags:
@@ -8,7 +18,7 @@ services:
 		autowired: false
 
 	-
-		class: JanGregor\Prophecy\Extension\ProphetProphesizeDynamicReturnTypeExtension
+		class: JanGregor\Prophecy\Type\Prophet\ProphesizeDynamicReturnTypeExtension
 		arguments:
 			className: PHPUnit\Framework\TestCase
 		tags:
@@ -16,21 +26,12 @@ services:
 		autowired: false
 
 	-
-		class: JanGregor\Prophecy\Extension\ObjectProphecyRevealDynamicReturnTypeExtension
+		class: JanGregor\Prophecy\Type\ObjectProphecy\RevealDynamicReturnTypeExtension
 		tags:
 			- phpstan.broker.dynamicMethodReturnTypeExtension
 
 	-
-		class: JanGregor\Prophecy\Extension\ObjectProphecyWillExtendOrImplementDynamicReturnTypeExtension
+		class: JanGregor\Prophecy\Type\ObjectProphecy\WillExtendOrImplementDynamicReturnTypeExtension
 		tags:
 			- phpstan.broker.dynamicMethodReturnTypeExtension
 
-	-
-		class: JanGregor\Prophecy\PhpDoc\TypeNodeResolverExtension
-		tags:
-			- phpstan.phpDoc.typeNodeResolverExtension
-
-	-
-		class: JanGregor\Prophecy\Reflection\ProphecyMethodsClassReflectionExtension
-		tags:
-			- phpstan.broker.methodsClassReflectionExtension

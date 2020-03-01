@@ -11,7 +11,7 @@ declare(strict_types=1);
  * @see https://github.com/Jan0707/phpstan-prophecy
  */
 
-namespace JanGregor\Prophecy\Reflection;
+namespace JanGregor\Prophecy\Reflection\ObjectProphecy;
 
 use PHPStan\Reflection;
 use PHPStan\TrinaryLogic;
@@ -21,7 +21,7 @@ use Prophecy\Prophecy;
 /**
  * @internal
  */
-final class ObjectProphecyMethodReflection implements Reflection\MethodReflection
+final class MethodReflection implements Reflection\MethodReflection
 {
     private $declaringClass;
 

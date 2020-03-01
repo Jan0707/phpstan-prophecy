@@ -11,7 +11,7 @@ declare(strict_types=1);
  * @see https://github.com/Jan0707/phpstan-prophecy
  */
 
-namespace JanGregor\Prophecy\Type;
+namespace JanGregor\Prophecy\Type\ObjectProphecy;
 
 use PHPStan\Type;
 

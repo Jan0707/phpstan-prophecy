@@ -15,6 +15,7 @@ namespace JanGregor\Prophecy\Test\StaticAnalysis\Test\ObjectProphecy;
 
 use JanGregor\Prophecy\Test\StaticAnalysis\Src;
 use PHPUnit\Framework;
+use Prophecy\Prophecy;
 
 /**
  * @internal
@@ -23,23 +24,41 @@ use PHPUnit\Framework;
  */
 final class WillExtendTest extends Framework\TestCase
 {
-    private $prophecy;
+    private $prophecyWithoutDocBlock;
+
+    /**
+     * @var Prophecy\ObjectProphecy<Src\Baz>
+     */
+    private $prophecyWithDocBlock;
 
     protected function setUp(): void
     {
-        $this->prophecy = $this->prophesize()->willExtend(Src\Baz::class);
+        $this->prophecyWithoutDocBlock = $this->prophesize()->willExtend(Src\Baz::class);
+        $this->prophecyWithDocBlock = $this->prophesize()->willExtend(Src\Baz::class);
     }
 
-    public function testCreateProphecyInSetUp(): void
+    public function testCreateProphecyWithoutDocBlockInSetUp(): void
     {
-        $this->prophecy
+        $this->prophecyWithoutDocBlock
             ->baz()
             ->shouldBeCalled()
             ->willReturn('Hmm');
 
         $subject = new Src\BaseModel();
 
-        self::assertSame('Hmm', $subject->baz($this->prophecy->reveal()));
+        self::assertSame('Hmm', $subject->baz($this->prophecyWithoutDocBlock->reveal()));
+    }
+
+    public function testCreateProphecyWithDocBlockInSetUp(): void
+    {
+        $this->prophecyWithDocBlock
+            ->baz()
+            ->shouldBeCalled()
+            ->willReturn('Hmm');
+
+        $subject = new Src\BaseModel();
+
+        self::assertSame('Hmm', $subject->baz($this->prophecyWithDocBlock->reveal()));
     }
 
     public function testCreateProphecyInTestMethod(): void
@@ -56,9 +75,9 @@ final class WillExtendTest extends Framework\TestCase
         self::assertSame('Hmm', $subject->baz($prophecy->reveal()));
     }
 
-    public function testCreateProphecyInHelperMethod(): void
+    public function testCreateProphecyInHelperMethodWithoutDocBlockAndReturnTypeDeclaration(): void
     {
-        $prophecy = $this->createProphecy();
+        $prophecy = $this->createProphecyWithoutDocBlockAndReturnTypeDeclaration();
 
         $prophecy
             ->baz()
@@ -70,7 +89,70 @@ final class WillExtendTest extends Framework\TestCase
         self::assertSame('Hmm', $subject->baz($prophecy->reveal()));
     }
 
-    private function createProphecy()
+    public function testCreateProphecyInHelperMethodWithDocBlockAndWithoutReturnTypeDeclaration(): void
+    {
+        $prophecy = $this->createProphecyWithDocBlockAndWithoutReturnTypeDeclaration();
+
+        $prophecy
+            ->baz()
+            ->shouldBeCalled()
+            ->willReturn('Hmm');
+
+        $subject = new Src\BaseModel();
+
+        self::assertSame('Hmm', $subject->baz($prophecy->reveal()));
+    }
+
+    public function testCreateProphecyInHelperMethodWithoutDocBlockAndWithReturnTypeDeclaration(): void
+    {
+        $prophecy = $this->createProphecyWithoutDocBlockAndWithReturnTypeDeclaration();
+
+        $prophecy
+            ->baz()
+            ->shouldBeCalled()
+            ->willReturn('Hmm');
+
+        $subject = new Src\BaseModel();
+
+        self::assertSame('Hmm', $subject->baz($prophecy->reveal()));
+    }
+
+    public function testCreateProphecyInHelperMethodWithDocBlockAndReturnTypeDeclaration(): void
+    {
+        $prophecy = $this->createProphecyWithDocBlockAndReturnTypeDeclaration();
+
+        $prophecy
+            ->baz()
+            ->shouldBeCalled()
+            ->willReturn('Hmm');
+
+        $subject = new Src\BaseModel();
+
+        self::assertSame('Hmm', $subject->baz($prophecy->reveal()));
+    }
+
+    private function createProphecyWithoutDocBlockAndReturnTypeDeclaration()
+    {
+        return $this->prophesize()->willExtend(Src\Baz::class);
+    }
+
+    /**
+     * @return Prophecy\ObjectProphecy<Src\Baz>
+     */
+    private function createProphecyWithDocBlockAndWithoutReturnTypeDeclaration()
+    {
+        return $this->prophesize()->willExtend(Src\Baz::class);
+    }
+
+    private function createProphecyWithoutDocBlockAndWithReturnTypeDeclaration(): Prophecy\ObjectProphecy
+    {
+        return $this->prophesize()->willExtend(Src\Baz::class);
+    }
+
+    /**
+     * @return Prophecy\ObjectProphecy<Src\Baz>
+     */
+    private function createProphecyWithDocBlockAndReturnTypeDeclaration(): Prophecy\ObjectProphecy
     {
         return $this->prophesize()->willExtend(Src\Baz::class);
     }

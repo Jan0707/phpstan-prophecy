@@ -15,6 +15,7 @@ namespace JanGregor\Prophecy\Test\StaticAnalysis\Test\ObjectProphecy;
 
 use JanGregor\Prophecy\Test\StaticAnalysis\Src;
 use PHPUnit\Framework;
+use Prophecy\Prophecy;
 
 /**
  * @internal
@@ -23,23 +24,41 @@ use PHPUnit\Framework;
  */
 final class WillImplementTest extends Framework\TestCase
 {
-    private $prophecy;
+    private $prophecyWithoutDocBlock;
+
+    /**
+     * @var Prophecy\ObjectProphecy<Src\Foo&Src\Bar>
+     */
+    private $prophecyWithDocBlock;
 
     protected function setUp(): void
     {
-        $this->prophecy = $this->prophesize(Src\Foo::class)->willImplement(Src\Bar::class);
+        $this->prophecyWithoutDocBlock = $this->prophesize(Src\Foo::class)->willImplement(Src\Bar::class);
+        $this->prophecyWithDocBlock = $this->prophesize(Src\Foo::class)->willImplement(Src\Bar::class);
     }
 
-    public function testCreateProphecyInSetUp(): void
+    public function testCreateProphecyWithoutDocBlockInSetUp(): void
     {
-        $this->prophecy
+        $this->prophecyWithoutDocBlock
             ->bar()
             ->shouldBeCalled()
             ->willReturn('Oh');
 
         $subject = new Src\BaseModel();
 
-        self::assertSame('Oh', $subject->bar($this->prophecy->reveal()));
+        self::assertSame('Oh', $subject->bar($this->prophecyWithoutDocBlock->reveal()));
+    }
+
+    public function testCreateProphecyWithDocBlockInSetUp(): void
+    {
+        $this->prophecyWithoutDocBlock
+            ->bar()
+            ->shouldBeCalled()
+            ->willReturn('Oh');
+
+        $subject = new Src\BaseModel();
+
+        self::assertSame('Oh', $subject->bar($this->prophecyWithoutDocBlock->reveal()));
     }
 
     public function testCreateProphecyInTestMethod(): void
@@ -56,9 +75,9 @@ final class WillImplementTest extends Framework\TestCase
         self::assertSame('Oh', $subject->bar($prophecy->reveal()));
     }
 
-    public function testCreateProphecyInHelperMethod(): void
+    public function testCreateProphecyInHelperMethodWithoutDocBlockAndReturnTypeDeclaration(): void
     {
-        $prophecy = $this->createProphecy();
+        $prophecy = $this->createProphecyWithoutDocBlockAndReturnTypeDeclaration();
 
         $prophecy
             ->bar()
@@ -70,7 +89,70 @@ final class WillImplementTest extends Framework\TestCase
         self::assertSame('Oh', $subject->bar($prophecy->reveal()));
     }
 
-    private function createProphecy()
+    public function testCreateProphecyInHelperMethodWithDocBlockAndWithoutReturnTypeDeclaration(): void
+    {
+        $prophecy = $this->createProphecyWithDocBlockAndWithoutReturnTypeDeclaration();
+
+        $prophecy
+            ->bar()
+            ->shouldBeCalled()
+            ->willReturn('Oh');
+
+        $subject = new Src\BaseModel();
+
+        self::assertSame('Oh', $subject->bar($prophecy->reveal()));
+    }
+
+    public function testCreateProphecyInHelperMethodWithoutDocBlockAndWithReturnTypeDeclaration(): void
+    {
+        $prophecy = $this->createProphecyWithoutDocBlockAndWithReturnTypeDeclaration();
+
+        $prophecy
+            ->bar()
+            ->shouldBeCalled()
+            ->willReturn('Oh');
+
+        $subject = new Src\BaseModel();
+
+        self::assertSame('Oh', $subject->bar($prophecy->reveal()));
+    }
+
+    public function testCreateProphecyInHelperMethodWithDocBlockAndReturnTypeDeclaration(): void
+    {
+        $prophecy = $this->createProphecyWithDocBlockAndReturnTypeDeclaration();
+
+        $prophecy
+            ->bar()
+            ->shouldBeCalled()
+            ->willReturn('Oh');
+
+        $subject = new Src\BaseModel();
+
+        self::assertSame('Oh', $subject->bar($prophecy->reveal()));
+    }
+
+    private function createProphecyWithoutDocBlockAndReturnTypeDeclaration()
+    {
+        return $this->prophesize(Src\Foo::class)->willImplement(Src\Bar::class);
+    }
+
+    /**
+     * @return Prophecy\ObjectProphecy<Src\Foo&Src\Bar>
+     */
+    private function createProphecyWithDocBlockAndWithoutReturnTypeDeclaration()
+    {
+        return $this->prophesize(Src\Foo::class)->willImplement(Src\Bar::class);
+    }
+
+    private function createProphecyWithoutDocBlockAndWithReturnTypeDeclaration(): Prophecy\ObjectProphecy
+    {
+        return $this->prophesize(Src\Foo::class)->willImplement(Src\Bar::class);
+    }
+
+    /**
+     * @return Prophecy\ObjectProphecy<Src\Foo&Src\Bar>
+     */
+    private function createProphecyWithDocBlockAndReturnTypeDeclaration(): Prophecy\ObjectProphecy
     {
         return $this->prophesize(Src\Foo::class)->willImplement(Src\Bar::class);
     }

@@ -1,32 +1,27 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Property JanGregor\\\\Prophecy\\\\Test\\\\StaticAnalysis\\\\Test\\\\ObjectProphecy\\\\ProphesizeTest\\:\\:\\$prophecy has no typehint specified\\.$#"
+			message: "#^Property JanGregor\\\\Prophecy\\\\Test\\\\StaticAnalysis\\\\Test\\\\ObjectProphecy\\\\ProphesizeTest\\:\\:\\$prophecyWithoutDocBlock has no typehint specified\\.$#"
 			count: 1
 			path: test/StaticAnalysis/Test/ObjectProphecy/ProphesizeTest.php
 
 		-
-			message: "#^Method JanGregor\\\\Prophecy\\\\Test\\\\StaticAnalysis\\\\Test\\\\ObjectProphecy\\\\ProphesizeTest\\:\\:createProphecy\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: test/StaticAnalysis/Test/ObjectProphecy/ProphesizeTest.php
-
-		-
-			message: "#^Property JanGregor\\\\Prophecy\\\\Test\\\\StaticAnalysis\\\\Test\\\\ObjectProphecy\\\\WillExtendTest\\:\\:\\$prophecy has no typehint specified\\.$#"
+			message: "#^Property JanGregor\\\\Prophecy\\\\Test\\\\StaticAnalysis\\\\Test\\\\ObjectProphecy\\\\WillExtendTest\\:\\:\\$prophecyWithoutDocBlock has no typehint specified\\.$#"
 			count: 1
 			path: test/StaticAnalysis/Test/ObjectProphecy/WillExtendTest.php
 
 		-
-			message: "#^Method JanGregor\\\\Prophecy\\\\Test\\\\StaticAnalysis\\\\Test\\\\ObjectProphecy\\\\WillExtendTest\\:\\:createProphecy\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method JanGregor\\\\Prophecy\\\\Test\\\\StaticAnalysis\\\\Test\\\\ObjectProphecy\\\\WillExtendTest\\:\\:createProphecyWithoutDocBlockAndReturnTypeDeclaration\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: test/StaticAnalysis/Test/ObjectProphecy/WillExtendTest.php
 
 		-
-			message: "#^Property JanGregor\\\\Prophecy\\\\Test\\\\StaticAnalysis\\\\Test\\\\ObjectProphecy\\\\WillImplementTest\\:\\:\\$prophecy has no typehint specified\\.$#"
+			message: "#^Property JanGregor\\\\Prophecy\\\\Test\\\\StaticAnalysis\\\\Test\\\\ObjectProphecy\\\\WillImplementTest\\:\\:\\$prophecyWithoutDocBlock has no typehint specified\\.$#"
 			count: 1
 			path: test/StaticAnalysis/Test/ObjectProphecy/WillImplementTest.php
 
 		-
-			message: "#^Method JanGregor\\\\Prophecy\\\\Test\\\\StaticAnalysis\\\\Test\\\\ObjectProphecy\\\\WillImplementTest\\:\\:createProphecy\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method JanGregor\\\\Prophecy\\\\Test\\\\StaticAnalysis\\\\Test\\\\ObjectProphecy\\\\WillImplementTest\\:\\:createProphecyWithoutDocBlockAndReturnTypeDeclaration\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: test/StaticAnalysis/Test/ObjectProphecy/WillImplementTest.php
 

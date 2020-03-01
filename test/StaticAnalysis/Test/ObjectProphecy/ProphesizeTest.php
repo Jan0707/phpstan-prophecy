@@ -16,6 +16,7 @@ namespace JanGregor\Prophecy\Test\StaticAnalysis\Test\ObjectProphecy;
 use JanGregor\Prophecy\Test\StaticAnalysis\Src;
 use PHPUnit\Framework;
 use Prophecy\Argument;
+use Prophecy\Prophecy;
 
 /**
  * @internal
@@ -24,24 +25,46 @@ use Prophecy\Argument;
  */
 final class ProphesizeTest extends Framework\TestCase
 {
-    private $prophecy;
+    private $prophecyWithoutDocBlock;
+
+    /**
+     * @var Prophecy\ObjectProphecy<Src\BaseModel>
+     */
+    private $prophecyWithDocBlock;
 
     protected function setUp(): void
     {
-        $this->prophecy = $this->prophesize(Src\BaseModel::class);
+        $this->prophecyWithoutDocBlock = $this->prophesize(Src\BaseModel::class);
+        $this->prophecyWithDocBlock = $this->prophesize(Src\BaseModel::class);
     }
 
-    public function testCreateProphecyInSetUp(): void
+    public function testCreateProphecyWithoutDocBlockInSetUp(): void
     {
-        $this->prophecy
+        $this->prophecyWithoutDocBlock
             ->getFoo()
             ->willReturn('bar');
 
-        $this->prophecy
+        $this->prophecyWithoutDocBlock
             ->doubleTheNumber(Argument::is(2))
             ->willReturn(5);
 
-        $testDouble = $this->prophecy->reveal();
+        $testDouble = $this->prophecyWithoutDocBlock->reveal();
+
+        self::assertEquals('bar', $testDouble->getFoo());
+        self::assertEquals(5, $testDouble->doubleTheNumber(2));
+    }
+
+    public function testCreateProphecyWithDocBlockInSetUp(): void
+    {
+        $this->prophecyWithDocBlock
+            ->getFoo()
+            ->willReturn('bar');
+
+        $this->prophecyWithDocBlock
+            ->doubleTheNumber(Argument::is(2))
+            ->willReturn(5);
+
+        $testDouble = $this->prophecyWithDocBlock->reveal();
 
         self::assertEquals('bar', $testDouble->getFoo());
         self::assertEquals(5, $testDouble->doubleTheNumber(2));
@@ -65,9 +88,9 @@ final class ProphesizeTest extends Framework\TestCase
         self::assertEquals(5, $testDouble->doubleTheNumber(2));
     }
 
-    public function testCreateProphecyInHelperMethod(): void
+    public function testCreateProphecyInHelperMethodWithoutDocBlockAndReturnTypeDeclaration(): void
     {
-        $prophecy = $this->createProphecy();
+        $prophecy = $this->createProphecyWithoutDocBlockAndReturnTypeDeclaration();
 
         $prophecy
             ->getFoo()
@@ -83,7 +106,82 @@ final class ProphesizeTest extends Framework\TestCase
         self::assertEquals(5, $testDouble->doubleTheNumber(2));
     }
 
-    private function createProphecy()
+    public function testCreateProphecyInHelperMethodWithDocBlockAndWithoutReturnTypeDeclaration(): void
+    {
+        $prophecy = $this->createProphecyWithDocBlockAndWithoutReturnTypeDeclaration();
+
+        $prophecy
+            ->getFoo()
+            ->willReturn('bar');
+
+        $prophecy
+            ->doubleTheNumber(Argument::is(2))
+            ->willReturn(5);
+
+        $testDouble = $prophecy->reveal();
+
+        self::assertEquals('bar', $testDouble->getFoo());
+        self::assertEquals(5, $testDouble->doubleTheNumber(2));
+    }
+
+    public function testCreateProphecyInHelperMethodWithoutDocBlockAndWithReturnTypeDeclaration(): void
+    {
+        $prophecy = $this->createProphecyWithoutDocBlockAndWithReturnTypeDeclaration();
+
+        $prophecy
+            ->getFoo()
+            ->willReturn('bar');
+
+        $prophecy
+            ->doubleTheNumber(Argument::is(2))
+            ->willReturn(5);
+
+        $testDouble = $prophecy->reveal();
+
+        self::assertEquals('bar', $testDouble->getFoo());
+        self::assertEquals(5, $testDouble->doubleTheNumber(2));
+    }
+
+    public function testCreateProphecyInHelperMethodWithDocBlockAndReturnTypeDeclaration(): void
+    {
+        $prophecy = $this->createProphecyWithDocBlockAndReturnTypeDeclaration();
+
+        $prophecy
+            ->getFoo()
+            ->willReturn('bar');
+
+        $prophecy
+            ->doubleTheNumber(Argument::is(2))
+            ->willReturn(5);
+
+        $testDouble = $prophecy->reveal();
+
+        self::assertEquals('bar', $testDouble->getFoo());
+        self::assertEquals(5, $testDouble->doubleTheNumber(2));
+    }
+
+    private function createProphecyWithoutDocBlockAndReturnTypeDeclaration()
+    {
+        return $this->prophesize(Src\BaseModel::class);
+    }
+
+    /**
+     * @return Prophecy\ObjectProphecy<Src\BaseModel>
+     */
+    private function createProphecyWithDocBlockAndWithoutReturnTypeDeclaration()
+    {
+        return $this->prophesize(Src\BaseModel::class);
+    }
+
+    private function createProphecyWithoutDocBlockAndWithReturnTypeDeclaration(): Prophecy\ObjectProphecy
+    {
+        return $this->prophesize(Src\BaseModel::class);
+    }
+
+    /**
+     * @return Prophecy\ObjectProphecy<Src\BaseModel>
+     */
+    private function createProphecyWithDocBlockAndReturnTypeDeclaration(): Prophecy\ObjectProphecy
     {
         return $this->prophesize(Src\BaseModel::class);
     }

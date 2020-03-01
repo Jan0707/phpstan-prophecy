@@ -21,73 +21,123 @@ parameters:
 			path: test/StaticAnalysis/Test/BaseModelTest.php
 
 		-
-			message: "#^Property JanGregor\\\\Prophecy\\\\Test\\\\StaticAnalysis\\\\Test\\\\ObjectProphecy\\\\ProphesizeTest\\:\\:\\$prophecy has no typehint specified\\.$#"
+			message: "#^Property JanGregor\\\\Prophecy\\\\Test\\\\StaticAnalysis\\\\Test\\\\ObjectProphecy\\\\ProphesizeTest\\:\\:\\$prophecyWithoutDocBlock has no typehint specified\\.$#"
 			count: 1
 			path: test/StaticAnalysis/Test/ObjectProphecy/ProphesizeTest.php
 
 		-
-			message: "#^Call to an undefined method Prophecy\\\\Prophecy\\\\ObjectProphecy\\:\\:getFoo\\(\\)\\.$#"
+			message: "#^PHPDoc tag @var for property JanGregor\\\\Prophecy\\\\Test\\\\StaticAnalysis\\\\Test\\\\ObjectProphecy\\\\ProphesizeTest\\:\\:\\$prophecyWithDocBlock contains generic type Prophecy\\\\Prophecy\\\\ObjectProphecy\\<JanGregor\\\\Prophecy\\\\Test\\\\StaticAnalysis\\\\Src\\\\BaseModel\\> but class Prophecy\\\\Prophecy\\\\ObjectProphecy is not generic\\.$#"
 			count: 1
 			path: test/StaticAnalysis/Test/ObjectProphecy/ProphesizeTest.php
 
 		-
-			message: "#^Call to an undefined method Prophecy\\\\Prophecy\\\\ObjectProphecy\\:\\:doubleTheNumber\\(\\)\\.$#"
-			count: 1
+			message: "#^Call to an undefined method Prophecy\\\\Prophecy\\\\ObjectProphecy\\<JanGregor\\\\Prophecy\\\\Test\\\\StaticAnalysis\\\\Src\\\\BaseModel\\>\\:\\:getFoo\\(\\)\\.$#"
+			count: 3
+			path: test/StaticAnalysis/Test/ObjectProphecy/ProphesizeTest.php
+
+		-
+			message: "#^Call to an undefined method Prophecy\\\\Prophecy\\\\ObjectProphecy\\<JanGregor\\\\Prophecy\\\\Test\\\\StaticAnalysis\\\\Src\\\\BaseModel\\>\\:\\:doubleTheNumber\\(\\)\\.$#"
+			count: 3
 			path: test/StaticAnalysis/Test/ObjectProphecy/ProphesizeTest.php
 
 		-
 			message: "#^Call to an undefined method object\\:\\:getFoo\\(\\)\\.$#"
-			count: 1
+			count: 5
 			path: test/StaticAnalysis/Test/ObjectProphecy/ProphesizeTest.php
 
 		-
 			message: "#^Call to an undefined method object\\:\\:doubleTheNumber\\(\\)\\.$#"
+			count: 5
+			path: test/StaticAnalysis/Test/ObjectProphecy/ProphesizeTest.php
+
+		-
+			message: "#^Call to an undefined method Prophecy\\\\Prophecy\\\\ObjectProphecy\\:\\:getFoo\\(\\)\\.$#"
+			count: 2
+			path: test/StaticAnalysis/Test/ObjectProphecy/ProphesizeTest.php
+
+		-
+			message: "#^Call to an undefined method Prophecy\\\\Prophecy\\\\ObjectProphecy\\:\\:doubleTheNumber\\(\\)\\.$#"
+			count: 2
+			path: test/StaticAnalysis/Test/ObjectProphecy/ProphesizeTest.php
+
+		-
+			message: "#^Method JanGregor\\\\Prophecy\\\\Test\\\\StaticAnalysis\\\\Test\\\\ObjectProphecy\\\\ProphesizeTest\\:\\:createProphecyWithoutDocBlockAndReturnTypeDeclaration\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: test/StaticAnalysis/Test/ObjectProphecy/ProphesizeTest.php
 
 		-
-			message: "#^Method JanGregor\\\\Prophecy\\\\Test\\\\StaticAnalysis\\\\Test\\\\ObjectProphecy\\\\ProphesizeTest\\:\\:createProphecy\\(\\) has no return typehint specified\\.$#"
-			count: 1
+			message: "#^PHPDoc tag @return contains generic type Prophecy\\\\Prophecy\\\\ObjectProphecy\\<JanGregor\\\\Prophecy\\\\Test\\\\StaticAnalysis\\\\Src\\\\BaseModel\\> but class Prophecy\\\\Prophecy\\\\ObjectProphecy is not generic\\.$#"
+			count: 2
 			path: test/StaticAnalysis/Test/ObjectProphecy/ProphesizeTest.php
 
 		-
-			message: "#^Property JanGregor\\\\Prophecy\\\\Test\\\\StaticAnalysis\\\\Test\\\\ObjectProphecy\\\\WillExtendTest\\:\\:\\$prophecy has no typehint specified\\.$#"
+			message: "#^Property JanGregor\\\\Prophecy\\\\Test\\\\StaticAnalysis\\\\Test\\\\ObjectProphecy\\\\WillExtendTest\\:\\:\\$prophecyWithoutDocBlock has no typehint specified\\.$#"
 			count: 1
 			path: test/StaticAnalysis/Test/ObjectProphecy/WillExtendTest.php
 
 		-
-			message: "#^Call to an undefined method Prophecy\\\\Prophecy\\\\ObjectProphecy\\:\\:baz\\(\\)\\.$#"
+			message: "#^PHPDoc tag @var for property JanGregor\\\\Prophecy\\\\Test\\\\StaticAnalysis\\\\Test\\\\ObjectProphecy\\\\WillExtendTest\\:\\:\\$prophecyWithDocBlock contains generic type Prophecy\\\\Prophecy\\\\ObjectProphecy\\<JanGregor\\\\Prophecy\\\\Test\\\\StaticAnalysis\\\\Src\\\\Baz\\> but class Prophecy\\\\Prophecy\\\\ObjectProphecy is not generic\\.$#"
 			count: 1
+			path: test/StaticAnalysis/Test/ObjectProphecy/WillExtendTest.php
+
+		-
+			message: "#^Call to an undefined method Prophecy\\\\Prophecy\\\\ObjectProphecy\\<JanGregor\\\\Prophecy\\\\Test\\\\StaticAnalysis\\\\Src\\\\Baz\\>\\:\\:baz\\(\\)\\.$#"
+			count: 3
 			path: test/StaticAnalysis/Test/ObjectProphecy/WillExtendTest.php
 
 		-
 			message: "#^Parameter \\#1 \\$baz of method JanGregor\\\\Prophecy\\\\Test\\\\StaticAnalysis\\\\Src\\\\BaseModel\\:\\:baz\\(\\) expects JanGregor\\\\Prophecy\\\\Test\\\\StaticAnalysis\\\\Src\\\\Baz, object given\\.$#"
+			count: 5
+			path: test/StaticAnalysis/Test/ObjectProphecy/WillExtendTest.php
+
+		-
+			message: "#^Call to an undefined method Prophecy\\\\Prophecy\\\\ObjectProphecy\\:\\:baz\\(\\)\\.$#"
+			count: 2
+			path: test/StaticAnalysis/Test/ObjectProphecy/WillExtendTest.php
+
+		-
+			message: "#^Method JanGregor\\\\Prophecy\\\\Test\\\\StaticAnalysis\\\\Test\\\\ObjectProphecy\\\\WillExtendTest\\:\\:createProphecyWithoutDocBlockAndReturnTypeDeclaration\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: test/StaticAnalysis/Test/ObjectProphecy/WillExtendTest.php
 
 		-
-			message: "#^Method JanGregor\\\\Prophecy\\\\Test\\\\StaticAnalysis\\\\Test\\\\ObjectProphecy\\\\WillExtendTest\\:\\:createProphecy\\(\\) has no return typehint specified\\.$#"
-			count: 1
+			message: "#^PHPDoc tag @return contains generic type Prophecy\\\\Prophecy\\\\ObjectProphecy\\<JanGregor\\\\Prophecy\\\\Test\\\\StaticAnalysis\\\\Src\\\\Baz\\> but class Prophecy\\\\Prophecy\\\\ObjectProphecy is not generic\\.$#"
+			count: 2
 			path: test/StaticAnalysis/Test/ObjectProphecy/WillExtendTest.php
 
 		-
-			message: "#^Property JanGregor\\\\Prophecy\\\\Test\\\\StaticAnalysis\\\\Test\\\\ObjectProphecy\\\\WillImplementTest\\:\\:\\$prophecy has no typehint specified\\.$#"
+			message: "#^Property JanGregor\\\\Prophecy\\\\Test\\\\StaticAnalysis\\\\Test\\\\ObjectProphecy\\\\WillImplementTest\\:\\:\\$prophecyWithoutDocBlock has no typehint specified\\.$#"
+			count: 1
+			path: test/StaticAnalysis/Test/ObjectProphecy/WillImplementTest.php
+
+		-
+			message: "#^PHPDoc tag @var for property JanGregor\\\\Prophecy\\\\Test\\\\StaticAnalysis\\\\Test\\\\ObjectProphecy\\\\WillImplementTest\\:\\:\\$prophecyWithDocBlock contains generic type Prophecy\\\\Prophecy\\\\ObjectProphecy\\<JanGregor\\\\Prophecy\\\\Test\\\\StaticAnalysis\\\\Src\\\\Bar&JanGregor\\\\Prophecy\\\\Test\\\\StaticAnalysis\\\\Src\\\\Foo\\> but class Prophecy\\\\Prophecy\\\\ObjectProphecy is not generic\\.$#"
 			count: 1
 			path: test/StaticAnalysis/Test/ObjectProphecy/WillImplementTest.php
 
 		-
 			message: "#^Call to an undefined method Prophecy\\\\Prophecy\\\\ObjectProphecy\\:\\:bar\\(\\)\\.$#"
-			count: 1
+			count: 2
 			path: test/StaticAnalysis/Test/ObjectProphecy/WillImplementTest.php
 
 		-
 			message: "#^Parameter \\#1 \\$bar of method JanGregor\\\\Prophecy\\\\Test\\\\StaticAnalysis\\\\Src\\\\BaseModel\\:\\:bar\\(\\) expects JanGregor\\\\Prophecy\\\\Test\\\\StaticAnalysis\\\\Src\\\\Bar, object given\\.$#"
+			count: 4
+			path: test/StaticAnalysis/Test/ObjectProphecy/WillImplementTest.php
+
+		-
+			message: "#^Call to an undefined method Prophecy\\\\Prophecy\\\\ObjectProphecy\\<JanGregor\\\\Prophecy\\\\Test\\\\StaticAnalysis\\\\Src\\\\Bar&JanGregor\\\\Prophecy\\\\Test\\\\StaticAnalysis\\\\Src\\\\Foo\\>\\:\\:bar\\(\\)\\.$#"
+			count: 2
+			path: test/StaticAnalysis/Test/ObjectProphecy/WillImplementTest.php
+
+		-
+			message: "#^Method JanGregor\\\\Prophecy\\\\Test\\\\StaticAnalysis\\\\Test\\\\ObjectProphecy\\\\WillImplementTest\\:\\:createProphecyWithoutDocBlockAndReturnTypeDeclaration\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: test/StaticAnalysis/Test/ObjectProphecy/WillImplementTest.php
 
 		-
-			message: "#^Method JanGregor\\\\Prophecy\\\\Test\\\\StaticAnalysis\\\\Test\\\\ObjectProphecy\\\\WillImplementTest\\:\\:createProphecy\\(\\) has no return typehint specified\\.$#"
-			count: 1
+			message: "#^PHPDoc tag @return contains generic type Prophecy\\\\Prophecy\\\\ObjectProphecy\\<JanGregor\\\\Prophecy\\\\Test\\\\StaticAnalysis\\\\Src\\\\Bar&JanGregor\\\\Prophecy\\\\Test\\\\StaticAnalysis\\\\Src\\\\Foo\\> but class Prophecy\\\\Prophecy\\\\ObjectProphecy is not generic\\.$#"
+			count: 2
 			path: test/StaticAnalysis/Test/ObjectProphecy/WillImplementTest.php
 
 		-

@@ -65,6 +65,19 @@ final class ExampleTest extends Framework\TestCase
 
         // ...
     }
+
+    public function testSomethingDifferent(): void
+    {
+        $testDouble = $this->createProphecy()->reveal();
+
+        // ...
+    }
+
+    private function createProphecy()
+    {
+        return $this->prophesize(SomeModel::class);
+    }
+
 }
 ```
 
@@ -101,6 +114,18 @@ final class ExampleTest extends Framework\TestCase
 
         // ...
     }
+
+    public function testSomethingDifferent(): void
+    {
+        $testDouble = $this->createProphecy()->reveal();
+
+        // ...
+    }
+
+    private function createProphecy()
+    {
+        return $this->prophesize(SomeModel::class)->willExtend(SomeInterface::class);
+    }
 }
 ```
 
@@ -136,6 +161,18 @@ final class ExampleTest extends Framework\TestCase
         $testDouble = $this->prophecy->reveal();
 
         // ...
+    }
+
+    public function testSomethingDifferent(): void
+    {
+        $testDouble = $this->createProphecy()->reveal();
+
+        // ...
+    }
+
+    private function createProphecy()
+    {
+        return $this->prophesize(SomeModel::class)->willImplement(SomeInterface::class);
     }
 }
 ```

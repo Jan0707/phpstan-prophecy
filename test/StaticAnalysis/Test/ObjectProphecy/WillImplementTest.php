@@ -55,4 +55,23 @@ final class WillImplementTest extends Framework\TestCase
 
         self::assertSame('Oh', $subject->bar($prophecy->reveal()));
     }
+
+    public function testCreateProphecyInHelperMethod(): void
+    {
+        $prophecy = $this->createProphecy();
+
+        $prophecy
+            ->bar()
+            ->shouldBeCalled()
+            ->willReturn('Oh');
+
+        $subject = new Src\BaseModel();
+
+        self::assertSame('Oh', $subject->bar($prophecy->reveal()));
+    }
+
+    private function createProphecy()
+    {
+        return $this->prophesize(Src\Foo::class)->willImplement(Src\Bar::class);
+    }
 }

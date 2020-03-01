@@ -55,4 +55,23 @@ final class WillExtendTest extends Framework\TestCase
 
         self::assertSame('Hmm', $subject->baz($prophecy->reveal()));
     }
+
+    public function testCreateProphecyInHelperMethod(): void
+    {
+        $prophecy = $this->createProphecy();
+
+        $prophecy
+            ->baz()
+            ->shouldBeCalled()
+            ->willReturn('Hmm');
+
+        $subject = new Src\BaseModel();
+
+        self::assertSame('Hmm', $subject->baz($prophecy->reveal()));
+    }
+
+    private function createProphecy()
+    {
+        return $this->prophesize()->willExtend(Src\Baz::class);
+    }
 }

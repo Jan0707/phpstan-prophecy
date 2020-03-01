@@ -28,6 +28,16 @@ $ make static-code-analysis
 
 to run a static code analysis.
 
+We are also using the baseline feature of [`phpstan/phpstan`](https://medium.com/@ondrejmirtes/phpstans-baseline-feature-lets-you-hold-new-code-to-a-higher-standard-e77d815a5dff).
+
+Run
+
+```
+$ make static-code-analysis-baseline
+```
+
+to regenerate the baselines in [`../phpstan-with-extension-baseline.neon`](../phpstan-with-extension-baseline.neon) and [`../phpstan-without-extension-baseline.neon`](../phpstan-without-extension-baseline.neon).
+
 ## Tests
 
 We are using [`phpunit/phpunit`](https://github.com/sebastianbergmann/phpunit) to drive the development.

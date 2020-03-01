@@ -115,8 +115,11 @@ jobs:
       - name: "Create cache directory for phpstan/phpstan"
         run: "mkdir -p .build/phpstan"
 
-      - name: "Run phpstan/phpstan"
-        run: "vendor/bin/phpstan analyse --configuration=phpstan.neon"
+      - name: "Run phpstan/phpstan with extension"
+        run: "vendor/bin/phpstan analyse --configuration=phpstan-with-extension.neon"
+
+      - name: "Run phpstan/phpstan without extension"
+        run: "vendor/bin/phpstan analyse --configuration=phpstan-without-extension.neon"
 
   tests:
     name: "Tests"

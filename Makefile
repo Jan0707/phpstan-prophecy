@@ -13,7 +13,15 @@ help: ## Displays this list of targets with descriptions
 .PHONY: static-code-analysis
 static-code-analysis: vendor ## Runs a static code analysis with phpstan/phpstan
 	mkdir -p .build/phpstan
-	vendor/bin/phpstan analyse --configuration=phpstan.neon
+	vendor/bin/phpstan analyse --configuration=phpstan-with-extension.neon
+	vendor/bin/phpstan analyse --configuration=phpstan-without-extension.neon
+
+.PHONY: static-code-analysis-baseline
+static-code-analysis-baseline: vendor ## Generates a baseline for static code analysis with phpstan/phpstan
+	echo '' > phpstan-with-extension-baseline.neon
+	vendor/bin/phpstan analyze --configuration=phpstan-with-extension.neon --error-format=baselineNeon > phpstan-with-extension-baseline.neon || true
+	echo '' > phpstan-without-extension-baseline.neon
+	vendor/bin/phpstan analyze --configuration=phpstan-without-extension.neon --error-format=baselineNeon > phpstan-without-extension-baseline.neon || true
 
 .PHONY: tests
 tests: vendor ## Runs tests with phpunit/phpunit

@@ -3,6 +3,7 @@ includes:
 
 parameters:
 	ignoreErrors:
+		- '#^Method .* has no return typehint specified\.$#'
 		- '#^Property .* has no typehint specified\.$#'
 	inferPrivatePropertyTypeFromConstructor: true
 	level: max

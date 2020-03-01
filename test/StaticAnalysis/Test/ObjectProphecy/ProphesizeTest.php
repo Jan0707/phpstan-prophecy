@@ -64,4 +64,27 @@ final class ProphesizeTest extends Framework\TestCase
         self::assertEquals('bar', $testDouble->getFoo());
         self::assertEquals(5, $testDouble->doubleTheNumber(2));
     }
+
+    public function testCreateProphecyInHelperMethod(): void
+    {
+        $prophecy = $this->createProphecy();
+
+        $prophecy
+            ->getFoo()
+            ->willReturn('bar');
+
+        $prophecy
+            ->doubleTheNumber(Argument::is(2))
+            ->willReturn(5);
+
+        $testDouble = $prophecy->reveal();
+
+        self::assertEquals('bar', $testDouble->getFoo());
+        self::assertEquals(5, $testDouble->doubleTheNumber(2));
+    }
+
+    private function createProphecy()
+    {
+        return $this->prophesize(Src\BaseModel::class);
+    }
 }

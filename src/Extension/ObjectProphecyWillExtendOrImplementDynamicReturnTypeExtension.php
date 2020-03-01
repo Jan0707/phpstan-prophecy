@@ -33,8 +33,8 @@ final class ObjectProphecyWillExtendOrImplementDynamicReturnTypeExtension implem
     public function isMethodSupported(Reflection\MethodReflection $methodReflection): bool
     {
         $methodNames = [
-            'willImplement',
             'willExtend',
+            'willImplement',
         ];
 
         return \in_array(

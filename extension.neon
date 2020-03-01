@@ -1,3 +1,8 @@
+parameters:
+	stubFiles:
+		- stub/Prophecy/Prophecy/ObjectProphecy.stub
+		- stub/Prophecy/Prophecy/ProphecyInterface.stub
+
 services:
 	-
 		class: JanGregor\Prophecy\PhpDoc\ObjectProphecy\TypeNodeResolverExtension
@@ -24,11 +29,6 @@ services:
 		tags:
 			- phpstan.broker.dynamicMethodReturnTypeExtension
 		autowired: false
-
-	-
-		class: JanGregor\Prophecy\Type\ObjectProphecy\RevealDynamicReturnTypeExtension
-		tags:
-			- phpstan.broker.dynamicMethodReturnTypeExtension
 
 	-
 		class: JanGregor\Prophecy\Type\ObjectProphecy\WillExtendOrImplementDynamicReturnTypeExtension

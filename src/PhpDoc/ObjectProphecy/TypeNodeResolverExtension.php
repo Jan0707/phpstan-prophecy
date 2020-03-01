@@ -13,7 +13,6 @@ declare(strict_types=1);
 
 namespace JanGregor\Prophecy\PhpDoc\ObjectProphecy;
 
-use JanGregor\Prophecy\Type\ObjectProphecy;
 use PHPStan\Analyser;
 use PHPStan\PhpDoc;
 use PHPStan\PhpDocParser;
@@ -65,7 +64,12 @@ final class TypeNodeResolverExtension implements PhpDoc\TypeNodeResolverAwareExt
             }
 
             if (null !== $objectProphecyType && null !== $prophesizedType) {
-                return new ObjectProphecy\ObjectProphecyType($prophesizedType->getClassName());
+                return new Type\Generic\GenericObjectType(
+                    Prophecy\ObjectProphecy::class,
+                    [
+                        new Type\ObjectType($prophesizedType->getClassName()),
+                    ]
+                );
             }
         }
 

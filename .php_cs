@@ -34,7 +34,10 @@ $config->getFinder()
         '.build/',
         '.github/',
     ])
-    ->name('.php_cs');
+    ->name([
+        '*.stub',
+        '.php_cs',
+    ]);
 
 $config->setCacheFile(__DIR__ . '/.build/php-cs-fixer/.php_cs.cache');
 

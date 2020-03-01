@@ -1,77 +1,196 @@
+# phpstan-prophecy
+
 [![Continuous Integration](https://github.com/Jan0707/phpstan-prophecy/workflows/Continuous%20Integration/badge.svg)](https://github.com/Jan0707/phpstan-prophecy/actions)
+
 [![Latest Stable Version](https://poser.pugx.org/jangregor/phpstan-prophecy/v/stable)](https://packagist.org/packages/jangregor/phpstan-prophecy)
 [![Total Downloads](https://poser.pugx.org/jangregor/phpstan-prophecy/downloads)](https://packagist.org/packages/jangregor/phpstan-prophecy)
+
 [![Violinist Enabled](https://img.shields.io/badge/violinist-enabled-brightgreen.svg)](https://violinist.io)
 
-# PHPStan-Prophecy
+Provides a [`prophecy/prophecy`](https://github.com/phpspec/prophecy) extension for [`phpstan/phpstan`](https://github.com/phpstan/phpstan).
 
-## Introduction
+## Installation
 
-PHPStan is a static code analysis tool for php, you can [find out more about it here](https://github.com/phpstan/phpstan).
+Run
 
-This repository provides an extension so that it also understands code that uses the Prophecy library to fake objects in unit tests. So far it covers two use cases:
-
-### Prophesizing and Revealing
-
-```php
-$prophecy = $prophet->prophesize(SomeModel::class);
-$instance = $prophecy->reveal();
+```shell
+$ composer require --dev jangregor/phpstan-prophecy
 ```
 
-It will help PHPStan to understand that the `$instance` variable is indeed an instance of `SomeModel`.
+## Configuration
+
+### Automatic
+
+When using [`phpstan/extension-installer`](https://github.com/phpstan/extension-installer), no further setup is required.
+
+### Manual
+
+When not using [`phpstan/extension-installer`](https://github.com/phpstan/extension-installer), [`extension.neon`](src/extension.neon) needs to be included in `phpstan.neon`:
+
+```diff
+ includes:
++	- vendor/jangregor/phpstan-prophecy/extension.neon
+```
+
+## Usage
+
+### `prophesize()` and `reveal()`
+
+```php
+<?php
+
+use PHPUnit\Framework;
+
+final class ExampleTest extends Framework\TestCase
+{
+    private $prophecy;
+
+    protected function setUp()
+    {
+        $this->prophecy = $this->prophesize(SomeModel::class);
+    }
+
+    public function testSomething(): void
+    {
+        $prophecy = $this->prophesize(SomeModel::class);
+
+        $testDouble = $prophecy->reveal();
+
+        // ...
+    }
+
+    public function testSomethingElse(): void
+    {
+        $testDouble = $this->prophecy->reveal();
+
+        // ...
+    }
+}
+```
+
+:bulb: With this extension enabled, `phpstan/phpstan` will understand that `$testDouble` is an instance of `SomeModel`:
+
+### `prophesize()`, `willExtend()`, and `reveal()`
+
+```php
+<?php
+
+use PHPUnit\Framework;
+
+final class ExampleTest extends Framework\TestCase
+{
+    private $prophecy;
+
+    protected function setUp()
+    {
+        $this->prophecy = $this->prophesize()->willExtend(SomeModel::class)
+    }
+
+    public function testSomething(): void
+    {
+        $prophecy = $this->prophesize()->willExtend(SomeModel::class);
+
+        $testDouble = $prophecy->reveal();
+
+        // ...
+    }
+
+    public function testSomethingElse(): void
+    {
+        $testDouble = $this->prophecy->reveal();
+
+        // ...
+    }
+}
+```
+
+:bulb: With this extension enabled, `phpstan/phpstan` will understand that `$testDouble` is an instance of `SomeModel`:
+
+### `prophesize()`, `willImplement()`, and `reveal()`
+
+```php
+<?php
+
+use PHPUnit\Framework;
+
+final class ExampleTest extends Framework\TestCase
+{
+    private $prophecy;
+
+    protected function setUp()
+    {
+        $this->prophecy = $this->prophesize(SomeModel::class)->willImplement(SomeInterface::class);
+    }
+
+    public function testSomething(): void
+    {
+        $prophecy = $this->prophesize(SomeModel::class)->willImplement(SomeInterface::class);
+
+        $testDouble = $prophecy->reveal();
+
+        // ...
+    }
+
+    public function testSomethingElse(): void
+    {
+        $testDouble = $this->prophecy->reveal();
+
+        // ...
+    }
+}
+```
+
+:bulb: With this extension enabled, `phpstan/phpstan` will understand that `$testDouble` is an instance of `SomeModel` that also implements `SomeInterface`:
 
 ### Method Predictions
 
 ```php
-$prophecy = $prophet->prophesize(Calculator::class);
-$prophecy->doubleTheNumber(Argument::is(2))->willReturn(5);
+<?php
 
-$instance = $prophecy->reveal();
-$instance->doubleTheNumber(2); // Will return 5
+use PHPUnit\Framework;
+
+final class ExampleTest extends Framework\TestCase
+{
+    public function testSomething(): void
+    {
+        $prophecy = $this->prophesize(SomeModel::class);
+
+        $prophecy
+            ->doubleTheNumber(Argument::is(2))
+            ->willReturn(4);
+
+        $testDouble = $prophecy->reveal();
+
+        // ...
+    }
+}
 ```
 
-It will also help PHPStan to understand that `$prophecy` accepts method calls to all methods that are implemented by its prophesized class.
+:bulb: With this extension enabled, `phpstan/phpstan` will understand that `$prophecy`  accepts method calls to all methods that are implemented by its prophesized class (or additionally implemented interfaces, when using `willImplement()`).
 
-**HINT:** Currently there are no checks in place to validate the arguments of methods that are being called on prophecies.
+### Method Arguments
 
-## Installation and usage
-
-Install via composer:
-
-```shell
-composer require --dev jangregor/phpstan-prophecy
-```
-
-### Automatic Extension Setup
-
-If you have the [PHPStan Extension Installer](https://github.com/phpstan/extension-installer) installed as well, there is no next step required.
-Otherwise, please proceed with the manual setup step.
-
-### Manual Setup
-
-And then make sure to add the extension to your `phpstan.neon` file:
-
-```neon
-includes:
-	- vendor/jangregor/phpstan-prophecy/extension.neon
-```
-
-And you should be good to go. Happy testing!
+:exclamation: Currently here are no checks in place to validate the arguments of methods that are invoked on prophecies.
 
 ## Development
 
-If you need a suitable dev environment you can always use docker.
-Simply build the respective container and tag it via:
+A development environment is provided via [`.docker/Dockerfile`](.docker/Dockerfile).
 
-```
-$ docker build -t phpstan-prophecy:7.1 .docker/
+Run
+
+```shell
+$ docker build --tag phpstan-prophecy .docker/
 ```
 
-You can then use this tagged container image to run php during development:
+to build and tag the Docker image.
 
+Run
+
+```shell
+$ docker run -it --rm  --volume "$PWD":/var/www/html --workdir /var/www/html phpstan-prophecy bash
 ```
-$ docker run -it --rm --name phpstan-prophecy-dev -v "$PWD":/var/www/html -w /var/www/html phpstan-prophecy:7.1 bash
-```
+
+to open a shell in the Docker container.
 
 ## Changelog
 
@@ -80,3 +199,9 @@ Please have a look at [`CHANGELOG.md`](CHANGELOG.md).
 ## Contributing
 
 Please have a look at [`CONTRIBUTING.md`](.github/CONTRIBUTING.md).
+
+## License
+
+This package is licensed using the MIT License.
+
+Please have a look at [LICENSE](LICENSE).

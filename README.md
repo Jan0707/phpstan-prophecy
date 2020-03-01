@@ -68,7 +68,7 @@ final class ExampleTest extends Framework\TestCase
 }
 ```
 
-:bulb: With this extension enabled, `phpstan/phpstan` will understand that `$testDouble` is an instance of `SomeModel`:
+:bulb: With this extension enabled, `phpstan/phpstan` will understand that `$testDouble` is an instance of `SomeModel`.
 
 ### `prophesize()`, `willExtend()`, and `reveal()`
 
@@ -104,7 +104,7 @@ final class ExampleTest extends Framework\TestCase
 }
 ```
 
-:bulb: With this extension enabled, `phpstan/phpstan` will understand that `$testDouble` is an instance of `SomeModel`:
+:bulb: With this extension enabled, `phpstan/phpstan` will understand that `$testDouble` is an instance of `SomeModel`.
 
 ### `prophesize()`, `willImplement()`, and `reveal()`
 
@@ -140,7 +140,7 @@ final class ExampleTest extends Framework\TestCase
 }
 ```
 
-:bulb: With this extension enabled, `phpstan/phpstan` will understand that `$testDouble` is an instance of `SomeModel` that also implements `SomeInterface`:
+:bulb: With this extension enabled, `phpstan/phpstan` will understand that `$testDouble` is an instance of `SomeModel` that also implements `SomeInterface`.
 
 ### Method Predictions
 

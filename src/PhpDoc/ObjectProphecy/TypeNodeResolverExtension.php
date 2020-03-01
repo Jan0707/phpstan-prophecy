@@ -11,9 +11,9 @@ declare(strict_types=1);
  * @see https://github.com/Jan0707/phpstan-prophecy
  */
 
-namespace JanGregor\Prophecy\PhpDoc;
+namespace JanGregor\Prophecy\PhpDoc\ObjectProphecy;
 
-use JanGregor\Prophecy\Type\ObjectProphecyType;
+use JanGregor\Prophecy\Type\ObjectProphecy;
 use PHPStan\Analyser;
 use PHPStan\PhpDoc;
 use PHPStan\PhpDocParser;
@@ -65,7 +65,7 @@ final class TypeNodeResolverExtension implements PhpDoc\TypeNodeResolverAwareExt
             }
 
             if (null !== $objectProphecyType && null !== $prophesizedType) {
-                return new ObjectProphecyType($prophesizedType->getClassName());
+                return new ObjectProphecy\ObjectProphecyType($prophesizedType->getClassName());
             }
         }
 

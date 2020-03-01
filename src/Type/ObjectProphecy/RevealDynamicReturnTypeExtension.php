@@ -11,9 +11,8 @@ declare(strict_types=1);
  * @see https://github.com/Jan0707/phpstan-prophecy
  */
 
-namespace JanGregor\Prophecy\Extension;
+namespace JanGregor\Prophecy\Type\ObjectProphecy;
 
-use JanGregor\Prophecy\Type\ObjectProphecyType;
 use PhpParser\Node;
 use PHPStan\Analyser;
 use PHPStan\Reflection;
@@ -22,7 +21,7 @@ use PHPStan\Type;
 /**
  * @internal
  */
-final class ObjectProphecyRevealDynamicReturnTypeExtension implements Type\DynamicMethodReturnTypeExtension
+final class RevealDynamicReturnTypeExtension implements Type\DynamicMethodReturnTypeExtension
 {
     public function getClass(): string
     {

@@ -91,7 +91,7 @@ parameters:
 			path: test/StaticAnalysis/Test/ObjectProphecy/WillImplementTest.php
 
 		-
-			message: "#^Parameter \\#1 \\$declaringClass of class JanGregor\\\\Prophecy\\\\Reflection\\\\ObjectProphecyMethodReflection constructor expects PHPStan\\\\Reflection\\\\ClassReflection, object given\\.$#"
+			message: "#^Parameter \\#1 \\$declaringClass of class JanGregor\\\\Prophecy\\\\Reflection\\\\ObjectProphecy\\\\MethodReflection constructor expects PHPStan\\\\Reflection\\\\ClassReflection, object given\\.$#"
 			count: 2
-			path: test/Unit/Reflection/ObjectProphecyMethodReflectionTest.php
+			path: test/Unit/Reflection/ObjectProphecy/MethodReflectionTest.php
 

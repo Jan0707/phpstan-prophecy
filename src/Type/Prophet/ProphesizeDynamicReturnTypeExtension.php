@@ -13,12 +13,12 @@ declare(strict_types=1);
 
 namespace JanGregor\Prophecy\Type\Prophet;
 
-use JanGregor\Prophecy\Type\ObjectProphecy;
 use PhpParser\Node;
 use PHPStan\Analyser;
 use PHPStan\Reflection;
 use PHPStan\ShouldNotHappenException;
 use PHPStan\Type;
+use Prophecy\Prophecy\ObjectProphecy;
 
 /**
  * @internal
@@ -52,7 +52,7 @@ final class ProphesizeDynamicReturnTypeExtension implements Type\DynamicMethodRe
         $returnType = $parametersAcceptor->getReturnType();
 
         if (0 === \count($methodCall->args)) {
-            return new ObjectProphecy\ObjectProphecyType();
+            return new Type\Generic\GenericObjectType(ObjectProphecy::class, []);
         }
 
         $argumentType = $scope->getType($methodCall->args[0]->value);
@@ -75,6 +75,6 @@ final class ProphesizeDynamicReturnTypeExtension implements Type\DynamicMethodRe
             $className = $scope->getClassReflection()->getName();
         }
 
-        return new ObjectProphecy\ObjectProphecyType($className);
+        return new Type\Generic\GenericObjectType(ObjectProphecy::class, [new Type\ObjectType($className)]);
     }
 }

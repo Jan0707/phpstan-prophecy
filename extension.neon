@@ -1,6 +1,7 @@
 parameters:
     stubFiles:
-        - src/Prophecy.phpstub
+        - stubs/ObjectProphecy.phpstub
+        - stubs/ProphecyInterface.phpstub
 
 services:
 	-

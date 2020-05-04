@@ -1,0 +1,12 @@
+<?php
+
+namespace Prophecy\Prophecy;
+
+/**
+ * @template T of object
+ */
+interface ProphecyInterface
+{
+    /** @return T */
+    public function reveal();
+}

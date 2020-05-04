@@ -7,16 +7,9 @@ namespace Prophecy\Prophecy {
         public function reveal() {}
     }
 
-    /**
-     * @param string $methodName
-     * @param mixed[] $arguments
-     * @return MethodProphecy
-     */
-    public function __call($methodName, array $arguments): MethodProphecy {}
-
-    /** @return $this */
     class MethodProphecy
     {
+        /** @return $this */
         public function willReturn(...$values): self {}
     }
 }
@@ -27,10 +20,12 @@ namespace Prophecy {
 
     /**
      * @template T of class-string|null
-     * @return ObjectProphecy<T>
      */
     class Prophet
     {
+        /**
+         * @return ObjectProphecy<T>
+         */
         public function prophesize($classOrInterface = null): ObjectProphecy {}
     }
 

@@ -4,6 +4,16 @@ parameters:
 
 services:
 	-
+		class: JanGregor\Prophecy\PhpDoc\ObjectProphecy\TypeNodeResolverExtension
+		tags:
+			- phpstan.phpDoc.typeNodeResolverExtension
+
+	-
+		class: JanGregor\Prophecy\Reflection\ObjectProphecy\MethodsClassReflectionExtension
+		tags:
+			- phpstan.broker.methodsClassReflectionExtension
+
+	-
 		class: JanGregor\Prophecy\Type\Prophet\ProphesizeDynamicReturnTypeExtension
 		arguments:
 			className: Prophecy\Prophet
@@ -18,3 +28,8 @@ services:
 		tags:
 			- phpstan.broker.dynamicMethodReturnTypeExtension
 		autowired: false
+
+	-
+		class: JanGregor\Prophecy\Type\ObjectProphecy\WillExtendOrImplementDynamicReturnTypeExtension
+		tags:
+			- phpstan.broker.dynamicMethodReturnTypeExtension

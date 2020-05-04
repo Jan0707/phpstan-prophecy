@@ -8,7 +8,7 @@ namespace Prophecy\Prophecy;
  */
 class ObjectProphecy implements ProphecyInterface
 {
-    /** @psalm-return T */
+    /** @return T */
     public function reveal()
     {
     }

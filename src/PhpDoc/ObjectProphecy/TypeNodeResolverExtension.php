@@ -37,7 +37,7 @@ final class TypeNodeResolverExtension implements PhpDoc\TypeNodeResolverAwareExt
 
     public function getCacheKey(): string
     {
-        return 'prophecy-v1';
+        return 'prophecy-with-generics-v1';
     }
 
     public function resolve(PhpDocParser\Ast\Type\TypeNode $typeNode, Analyser\NameScope $nameScope): ?Type\Type

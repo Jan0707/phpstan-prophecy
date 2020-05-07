@@ -29,7 +29,7 @@ When not using [`phpstan/extension-installer`](https://github.com/phpstan/extens
 
 ```diff
  includes:
-+	- vendor/jangregor/phpstan-prophecy/extension.neon
++	- vendor/jangregor/phpstan-prophecy/src/extension.neon
 ```
 
 ## Usage

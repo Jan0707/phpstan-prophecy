@@ -86,15 +86,13 @@ final class WillExtendOrImplementDynamicReturnTypeExtension implements Type\Dyna
             $className = $scope->getClassReflection()->getName();
         }
 
-        $mockTypeIntersection = Type\TypeCombinator::intersect(
-            new Type\ObjectType($className),
-            ...$calledOnType->getTypes()
-        );
-
         return new Type\Generic\GenericObjectType(
             Prophecy\ObjectProphecy::class,
             [
-                $mockTypeIntersection,
+                Type\TypeCombinator::intersect(
+                    new Type\ObjectType($className),
+                    ...$calledOnType->getTypes()
+                ),
             ]
         );
     }

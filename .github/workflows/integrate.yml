@@ -76,6 +76,7 @@ jobs:
 
         dependencies:
           - "lowest"
+          - "locked"
           - "highest"
 
     steps:

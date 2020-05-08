@@ -13,7 +13,6 @@ declare(strict_types=1);
 
 namespace JanGregor\Prophecy\PhpDoc\ObjectProphecy;
 
-use JanGregor\Prophecy\Type\ObjectProphecy;
 use PHPStan\Analyser;
 use PHPStan\PhpDoc;
 use PHPStan\PhpDocParser;
@@ -37,7 +36,7 @@ final class TypeNodeResolverExtension implements PhpDoc\TypeNodeResolverAwareExt
 
     public function getCacheKey(): string
     {
-        return 'prophecy-v1';
+        return 'prophecy-with-generics-v1';
     }
 
     public function resolve(PhpDocParser\Ast\Type\TypeNode $typeNode, Analyser\NameScope $nameScope): ?Type\Type
@@ -65,7 +64,12 @@ final class TypeNodeResolverExtension implements PhpDoc\TypeNodeResolverAwareExt
             }
 
             if (null !== $objectProphecyType && null !== $prophesizedType) {
-                return new ObjectProphecy\ObjectProphecyType($prophesizedType->getClassName());
+                return new Type\Generic\GenericObjectType(
+                    Prophecy\ObjectProphecy::class,
+                    [
+                        $prophesizedType,
+                    ]
+                );
             }
         }
 

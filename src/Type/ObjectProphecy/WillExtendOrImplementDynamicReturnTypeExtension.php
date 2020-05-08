@@ -18,6 +18,7 @@ use PHPStan\Analyser;
 use PHPStan\Reflection;
 use PHPStan\ShouldNotHappenException;
 use PHPStan\Type;
+use Prophecy\Prophecy;
 
 /**
  * @internal
@@ -54,7 +55,10 @@ final class WillExtendOrImplementDynamicReturnTypeExtension implements Type\Dyna
 
         $returnType = $parametersAcceptor->getReturnType();
 
-        if (!$calledOnType instanceof ObjectProphecyType) {
+        if (
+            !$calledOnType instanceof Type\Generic\GenericObjectType
+            || Prophecy\ObjectProphecy::class !== $calledOnType->getClassName()
+        ) {
             return $returnType;
         }
 
@@ -82,8 +86,14 @@ final class WillExtendOrImplementDynamicReturnTypeExtension implements Type\Dyna
             $className = $scope->getClassReflection()->getName();
         }
 
-        $calledOnType->addProphesizedClass($className);
-
-        return $calledOnType;
+        return new Type\Generic\GenericObjectType(
+            Prophecy\ObjectProphecy::class,
+            [
+                Type\TypeCombinator::intersect(
+                    new Type\ObjectType($className),
+                    ...$calledOnType->getTypes()
+                ),
+            ]
+        );
     }
 }

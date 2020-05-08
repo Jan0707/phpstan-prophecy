@@ -70,9 +70,12 @@ jobs:
         php-version:
           - "7.4"
 
+        phpunit-version:
+          - "6.0.0"
+          - "7.0.0"
+
         dependencies:
           - "lowest"
-          - "locked"
           - "highest"
 
     steps:
@@ -97,6 +100,9 @@ jobs:
           key: "php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-${{ hashFiles('**/composer.lock') }}"
           restore-keys: "php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-"
 
+      - name: "Require phpunit/phpunit"
+        run: "composer require --dev phpunit/phpunit:^${{ matrix.phpunit-version }} --update-with-dependencies"
+
       - name: "Install lowest dependencies with composer"
         if: "matrix.dependencies == 'lowest'"
         run: "composer update --no-interaction --no-progress --no-suggest --prefer-lowest"
@@ -111,6 +117,9 @@ jobs:
 
       - name: "Show phpstan/phpstan version"
         run: "vendor/bin/phpstan --version"
+
+      - name: "Show phpunit/phpunit version"
+        run: "vendor/bin/phpunit --version"
 
       - name: "Create cache directory for phpstan/phpstan"
         run: "mkdir -p .build/phpstan"

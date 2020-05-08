@@ -4,7 +4,7 @@ on:
   - "pull_request"
   - "push"
 
-name: "Continuous Integration"
+name: "Integrate"
 
 env:
   REQUIRED_PHP_EXTENSIONS: "mbstring"

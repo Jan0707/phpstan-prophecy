@@ -18,7 +18,6 @@ use PHPStan\PhpDoc;
 use PHPStan\PhpDocParser;
 use PHPStan\Type;
 use Prophecy\Prophecy;
-use Prophecy\Prophecy\ObjectProphecy;
 
 /**
  * @internal
@@ -65,7 +64,7 @@ final class TypeNodeResolverExtension implements PhpDoc\TypeNodeResolverAwareExt
             }
 
             if (null !== $objectProphecyType && null !== $prophesizedType) {
-                return new Type\Generic\GenericObjectType(ObjectProphecy::class, [$prophesizedType]);
+                return new Type\Generic\GenericObjectType(Prophecy\ObjectProphecy::class, [$prophesizedType]);
             }
         }
 

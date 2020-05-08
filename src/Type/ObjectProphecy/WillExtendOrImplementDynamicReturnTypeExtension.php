@@ -18,8 +18,7 @@ use PHPStan\Analyser;
 use PHPStan\Reflection;
 use PHPStan\ShouldNotHappenException;
 use PHPStan\Type;
-use PHPStan\Type\Generic\GenericObjectType;
-use Prophecy\Prophecy\ObjectProphecy;
+use Prophecy\Prophecy;
 
 /**
  * @internal
@@ -56,7 +55,7 @@ final class WillExtendOrImplementDynamicReturnTypeExtension implements Type\Dyna
 
         $returnType = $parametersAcceptor->getReturnType();
 
-        if (!$calledOnType instanceof Type\Generic\GenericObjectType || ObjectProphecy::class !== $calledOnType->getClassName()) {
+        if (!$calledOnType instanceof Type\Generic\GenericObjectType || Prophecy\ObjectProphecy::class !== $calledOnType->getClassName()) {
             return $returnType;
         }
 
@@ -86,6 +85,6 @@ final class WillExtendOrImplementDynamicReturnTypeExtension implements Type\Dyna
 
         $mockTypeIntersection = Type\TypeCombinator::intersect(new Type\ObjectType($className), ...$calledOnType->getTypes());
 
-        return new GenericObjectType(ObjectProphecy::class, [$mockTypeIntersection]);
+        return new Type\Generic\GenericObjectType(Prophecy\ObjectProphecy::class, [$mockTypeIntersection]);
     }
 }

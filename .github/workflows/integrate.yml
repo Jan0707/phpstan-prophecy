@@ -99,8 +99,8 @@ jobs:
         uses: "actions/cache@v1"
         with:
           path: "${{ steps.determine-composer-cache-directory.outputs.directory }}"
-          key: "php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-${{ hashFiles('**/composer.lock') }}"
-          restore-keys: "php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-"
+          key: "php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-phpunit-${{ matrix.phpunit-version }}-${{ hashFiles('**/composer.lock') }}"
+          restore-keys: "php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}--phpunit-${{ matrix.phpunit-version }}"
 
       - name: "Require phpunit/phpunit"
         run: "composer require --dev phpunit/phpunit:^${{ matrix.phpunit-version }} --update-with-dependencies"

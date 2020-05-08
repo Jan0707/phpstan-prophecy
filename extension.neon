@@ -31,14 +31,6 @@ services:
 			- phpstan.broker.dynamicMethodReturnTypeExtension
 
 	-
-		class: JanGregor\Prophecy\Type\Prophet\ProphesizeDynamicReturnTypeExtension
-		arguments:
-			className: PHPUnit\Framework\TestCase
-		autowired: false
-		tags:
-			- phpstan.broker.dynamicMethodReturnTypeExtension
-
-	-
 		class: JanGregor\Prophecy\Type\ObjectProphecy\WillExtendOrImplementDynamicReturnTypeExtension
 		tags:
 			- phpstan.broker.dynamicMethodReturnTypeExtension

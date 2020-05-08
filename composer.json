@@ -14,15 +14,15 @@
         "phpstan/phpstan": "^0.12.0"
     },
     "conflict": {
-        "phpspec/prophecy": "<1.7,>=2.0",
-        "phpunit/phpunit": "<6.0,>=10.0"
+        "phpspec/prophecy": "<1.7.0,>=2.0.0",
+        "phpunit/phpunit": "<6.0.0,>=10.0.0"
     },
     "require-dev": {
         "ergebnis/composer-normalize": "^2.1.1",
         "ergebnis/license": "^1.0.0",
         "ergebnis/php-cs-fixer-config": "~1.1.2",
-        "phpspec/prophecy": "^1.7",
-        "phpunit/phpunit": "^6.0 || ^7.0"
+        "phpspec/prophecy": "^1.7.0",
+        "phpunit/phpunit": "^6.0.0 || ^7.0.0"
     },
     "config": {
         "sort-packages": true

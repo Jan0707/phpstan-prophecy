@@ -64,7 +64,12 @@ final class TypeNodeResolverExtension implements PhpDoc\TypeNodeResolverAwareExt
             }
 
             if (null !== $objectProphecyType && null !== $prophesizedType) {
-                return new Type\Generic\GenericObjectType(Prophecy\ObjectProphecy::class, [$prophesizedType]);
+                return new Type\Generic\GenericObjectType(
+                    Prophecy\ObjectProphecy::class,
+                    [
+                        $prophesizedType,
+                    ]
+                );
             }
         }
 

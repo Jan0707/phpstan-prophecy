@@ -52,7 +52,10 @@ final class ProphesizeDynamicReturnTypeExtension implements Type\DynamicMethodRe
         $returnType = $parametersAcceptor->getReturnType();
 
         if (0 === \count($methodCall->args)) {
-            return new Type\Generic\GenericObjectType(Prophecy\ObjectProphecy::class, []);
+            return new Type\Generic\GenericObjectType(
+                Prophecy\ObjectProphecy::class,
+                []
+            );
         }
 
         $argumentType = $scope->getType($methodCall->args[0]->value);
@@ -75,6 +78,11 @@ final class ProphesizeDynamicReturnTypeExtension implements Type\DynamicMethodRe
             $className = $scope->getClassReflection()->getName();
         }
 
-        return new Type\Generic\GenericObjectType(Prophecy\ObjectProphecy::class, [new Type\ObjectType($className)]);
+        return new Type\Generic\GenericObjectType(
+            Prophecy\ObjectProphecy::class,
+            [
+                new Type\ObjectType($className),
+            ]
+        );
     }
 }

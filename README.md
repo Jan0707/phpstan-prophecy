@@ -96,7 +96,7 @@ final class ExampleTest extends Framework\TestCase
 
     protected function setUp()
     {
-        $this->prophecy = $this->prophesize()->willExtend(SomeModel::class)
+        $this->prophecy = $this->prophesize()->willExtend(SomeModel::class);
     }
 
     public function testSomething(): void

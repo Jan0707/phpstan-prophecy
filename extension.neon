@@ -18,25 +18,25 @@ services:
 		class: JanGregor\Prophecy\Type\Prophet\ProphesizeDynamicReturnTypeExtension
 		arguments:
 			className: Prophecy\Prophet
+		autowired: false
 		tags:
 			- phpstan.broker.dynamicMethodReturnTypeExtension
-		autowired: false
 
 	-
 		class: JanGregor\Prophecy\Type\Prophet\ProphesizeDynamicReturnTypeExtension
 		arguments:
 			className: PHPUnit\Framework\TestCase
+		autowired: false
 		tags:
 			- phpstan.broker.dynamicMethodReturnTypeExtension
-		autowired: false
 
 	-
 		class: JanGregor\Prophecy\Type\Prophet\ProphesizeDynamicReturnTypeExtension
 		arguments:
 			className: PHPUnit\Framework\TestCase
+		autowired: false
 		tags:
 			- phpstan.broker.dynamicMethodReturnTypeExtension
-		autowired: false
 
 	-
 		class: JanGregor\Prophecy\Type\ObjectProphecy\WillExtendOrImplementDynamicReturnTypeExtension

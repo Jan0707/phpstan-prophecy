@@ -6,7 +6,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## Unreleased
 
-For a full diff see [`0.7.0...master`][0.7.0...master].
+For a full diff see [`0.8.0...master`][0.8.0...master].
+
+## [`0.8.0`][0.8.0]
+
+For a full diff see [`0.7.0...0.8.0`][0.7.0...0.8.0].
+
+### Removed
+
+* Removed the symbolic link from `src/extension.neon` to `extension.neon` ([#182]), by [@localheinz]
+
+  When using [`phpstan/extension-installer`](https://github.com/phpstan/extension-installer), no changes on your end are required.
+
+  When not using [`phpstan/extension-installer`](https://github.com/phpstan/extension-installer), you need to adjust `phpstan.neon`:
+
+  ```diff
+   includes:
+  -	- vendor/jangregor/phpstan-prophecy/src/extension.neon
+  +	- vendor/jangregor/phpstan-prophecy/extension.neon
+  ```
 
 ## [`0.7.0`][0.7.0]
 
@@ -123,7 +141,8 @@ For a full diff see [`afd6fd9...0.1`][afd6fd9...0.1].
 [0.6.0...0.6.1]: https://github.com/Jan0707/phpstan-prophecy/compare/0.6.0...0.6.1
 [0.6.1...0.6.2]: https://github.com/Jan0707/phpstan-prophecy/compare/0.6.1...0.6.2
 [0.6.2...0.7.0]: https://github.com/Jan0707/phpstan-prophecy/compare/0.6.2...0.7.0
-[0.7.0...master]: https://github.com/Jan0707/phpstan-prophecy/compare/0.7.0...master
+[0.7.0...0.8.0]: https://github.com/Jan0707/phpstan-prophecy/compare/0.7.0...0.8.0
+[0.8.0...master]: https://github.com/Jan0707/phpstan-prophecy/compare/0.8.0...master
 
 [#67]: https://github.com/Jan0707/phpstan-prophecy/pull/67
 [#79]: https://github.com/Jan0707/phpstan-prophecy/pull/79
@@ -136,6 +155,7 @@ For a full diff see [`afd6fd9...0.1`][afd6fd9...0.1].
 [#144]: https://github.com/Jan0707/phpstan-prophecy/pull/144
 [#153]: https://github.com/Jan0707/phpstan-prophecy/pull/153
 [#165]: https://github.com/Jan0707/phpstan-prophecy/pull/165
+[#182]: https://github.com/Jan0707/phpstan-prophecy/pull/182
 
 [@Jean85]: https://github.com/Jean85
 [@localheinz]: https://github.com/localheinz

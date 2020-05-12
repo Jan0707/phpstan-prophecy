@@ -25,7 +25,7 @@ When using [`phpstan/extension-installer`](https://github.com/phpstan/extension-
 
 ### Manual
 
-When not using [`phpstan/extension-installer`](https://github.com/phpstan/extension-installer), [`extension.neon`](src/extension.neon) needs to be included in `phpstan.neon`:
+When not using [`phpstan/extension-installer`](https://github.com/phpstan/extension-installer), [`extension.neon`](extension.neon) needs to be included in `phpstan.neon`:
 
 ```diff
  includes:

@@ -1,47 +1,47 @@
 {
-    "name": "jangregor/phpstan-prophecy",
-    "type": "phpstan-extension",
-    "description": "Provides a phpstan/phpstan extension for phpspec/prophecy",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Jan Gregor Emge-Triebel",
-            "email": "jan@jangregor.me"
-        }
-    ],
-    "require": {
-        "php": "^7.1",
-        "phpstan/phpstan": "^0.12.6"
-    },
-    "conflict": {
-        "phpspec/prophecy": "<1.7.0,>=2.0.0",
-        "phpunit/phpunit": "<6.0.0,>=10.0.0"
-    },
-    "require-dev": {
-        "ergebnis/composer-normalize": "^2.1.1",
-        "ergebnis/license": "^1.0.0",
-        "ergebnis/php-cs-fixer-config": "~2.2.0",
-        "phpspec/prophecy": "^1.7.0",
-        "phpunit/phpunit": "^6.0.0 || ^7.0.0 || ^8.0.0 || ^9.0.0"
-    },
-    "config": {
-        "sort-packages": true
-    },
-    "extra": {
-        "phpstan": {
-            "includes": [
-                "extension.neon"
-            ]
-        }
-    },
-    "autoload": {
-        "psr-4": {
-            "JanGregor\\Prophecy\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "JanGregor\\Prophecy\\Test\\": "test/"
-        }
+  "name": "jangregor/phpstan-prophecy",
+  "type": "phpstan-extension",
+  "description": "Provides a phpstan/phpstan extension for phpspec/prophecy",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Jan Gregor Emge-Triebel",
+      "email": "jan@jangregor.me"
     }
+  ],
+  "require": {
+    "php": "^7.1",
+    "phpstan/phpstan": "^0.12.6"
+  },
+  "conflict": {
+    "phpspec/prophecy": "<1.7.0,>=2.0.0",
+    "phpunit/phpunit": "<6.0.0,>=10.0.0"
+  },
+  "require-dev": {
+    "ergebnis/composer-normalize": "^2.1.1",
+    "ergebnis/license": "^1.0.0",
+    "ergebnis/php-cs-fixer-config": "~2.2.0",
+    "phpspec/prophecy": "^1.7.0",
+    "phpunit/phpunit": "^6.0.0 || ^7.0.0 || ^8.0.0 || ^9.0.0"
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "extra": {
+    "phpstan": {
+      "includes": [
+        "extension.neon"
+      ]
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "JanGregor\\Prophecy\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "JanGregor\\Prophecy\\Test\\": "test/"
+    }
+  }
 }

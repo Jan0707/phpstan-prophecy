@@ -1,13 +1,15 @@
-# https://help.github.com/en/categories/automating-your-workflow-with-github-actions
-
-on:
-  - "pull_request"
-  - "push"
+# https://docs.github.com/en/actions
 
 name: "Integrate"
 
+on: # yamllint disable-line rule:truthy
+  pull_request: null
+  push:
+    branches:
+      - "master"
+
 env:
-  REQUIRED_PHP_EXTENSIONS: "mbstring"
+  PHP_EXTENSIONS: "mbstring"
 
 jobs:
   coding-standards:
@@ -27,29 +29,37 @@ jobs:
       - name: "Checkout"
         uses: "actions/checkout@v2.3.3"
 
+      - name: "Lint YAML files"
+        uses: "ibiqlik/action-yamllint@v2.0.0"
+        with:
+          config_file: ".yamllint.yaml"
+          file_or_dir: "."
+          strict: true
+
       - name: "Install PHP with extensions"
-        uses: "shivammathur/setup-php@v2"
+        uses: "shivammathur/setup-php@2.7.0"
         with:
           coverage: "none"
-          extensions: "${{ env.REQUIRED_PHP_EXTENSIONS }}"
+          extensions: "${{ env.PHP_EXTENSIONS }}"
           php-version: "${{ matrix.php-version }}"
 
       - name: "Validate composer.json and composer.lock"
         run: "composer validate --strict"
 
       - name: "Determine composer cache directory"
-        id: "determine-composer-cache-directory"
-        run: "echo \"::set-output name=directory::$(composer config cache-dir)\""
+        uses: "./.github/actions/composer/composer/determine-cache-directory"
 
       - name: "Cache dependencies installed with composer"
-        uses: "actions/cache@v2"
+        uses: "actions/cache@v2.1.2"
         with:
-          path: "${{ steps.determine-composer-cache-directory.outputs.directory }}"
-          key: "php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-${{ hashFiles('**/composer.lock') }}"
+          path: "${{ env.COMPOSER_CACHE_DIR }}"
+          key: "php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-${{ hashFiles('composer.lock') }}"
           restore-keys: "php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-"
 
-      - name: "Install locked dependencies with composer"
-        run: "composer install --no-interaction --no-progress"
+      - name: "Install ${{ matrix.dependencies }} dependencies with composer"
+        uses: "./.github/actions/composer/composer/install"
+        with:
+          dependencies: "${{ matrix.dependencies }}"
 
       - name: "Run ergebnis/composer-normalize"
         run: "composer normalize --dry-run"
@@ -57,8 +67,15 @@ jobs:
       - name: "Create cache directory for friendsofphp/php-cs-fixer"
         run: "mkdir -p .build/php-cs-fixer"
 
+      - name: "Cache cache directory for friendsofphp/php-cs-fixer"
+        uses: "actions/cache@v2.1.2"
+        with:
+          path: ".build/php-cs-fixer"
+          key: "php-${{ matrix.php-version }}-php-cs-fixer-${{ github.sha }}"
+          restore-keys: "php-${{ matrix.php-version }}-php-cs-fixer-"
+
       - name: "Run friendsofphp/php-cs-fixer"
-        run: "vendor/bin/php-cs-fixer fix --diff --dry-run --verbose"
+        run: "vendor/bin/php-cs-fixer fix --config=.php_cs --diff --diff-format=udiff --dry-run --verbose"
 
   static-code-analysis:
     name: "Static Code Analysis"
@@ -86,37 +103,39 @@ jobs:
         uses: "actions/checkout@v2.3.3"
 
       - name: "Install PHP with extensions"
-        uses: "shivammathur/setup-php@v2"
+        uses: "shivammathur/setup-php@2.7.0"
         with:
           coverage: "none"
-          extensions: "${{ env.REQUIRED_PHP_EXTENSIONS }}"
+          extensions: "${{ env.PHP_EXTENSIONS }}"
           php-version: "${{ matrix.php-version }}"
 
       - name: "Determine composer cache directory"
-        id: "determine-composer-cache-directory"
-        run: "echo \"::set-output name=directory::$(composer config cache-dir)\""
+        uses: "./.github/actions/composer/composer/determine-cache-directory"
 
       - name: "Cache dependencies installed with composer"
-        uses: "actions/cache@v2"
+        uses: "actions/cache@v2.1.2"
         with:
-          path: "${{ steps.determine-composer-cache-directory.outputs.directory }}"
-          key: "php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-phpunit-${{ matrix.phpunit-version }}-${{ hashFiles('**/composer.lock') }}"
-          restore-keys: "php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}--phpunit-${{ matrix.phpunit-version }}"
+          path: "${{ env.COMPOSER_CACHE_DIR }}"
+          key: "php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-${{ hashFiles('composer.lock') }}"
+          restore-keys: "php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-"
 
       - name: "Require phpunit/phpunit"
         run: "composer require --dev phpunit/phpunit:^${{ matrix.phpunit-version }} --update-with-dependencies"
 
-      - name: "Install lowest dependencies with composer"
-        if: "matrix.dependencies == 'lowest'"
-        run: "composer update --no-interaction --no-progress --prefer-lowest"
+      - name: "Install ${{ matrix.dependencies }} dependencies with composer"
+        uses: "./.github/actions/composer/composer/install"
+        with:
+          dependencies: "${{ matrix.dependencies }}"
 
-      - name: "Install locked dependencies with composer"
-        if: "matrix.dependencies == 'locked'"
-        run: "composer install --no-interaction --no-progress"
+      - name: "Create cache directory for phpstan/phpstan"
+        run: "mkdir -p .build/phpstan"
 
-      - name: "Install highest dependencies with composer"
-        if: "matrix.dependencies == 'highest'"
-        run: "composer update --no-interaction --no-progress"
+      - name: "Cache cache directory for phpstan/phpstan"
+        uses: "actions/cache@v2.1.2"
+        with:
+          path: ".build/phpstan"
+          key: "php-${{ matrix.php-version }}-phpstan-${{ github.sha }}"
+          restore-keys: "php-${{ matrix.php-version }}-phpstan-"
 
       - name: "Show phpstan/phpstan version"
         run: "vendor/bin/phpstan --version"
@@ -128,10 +147,10 @@ jobs:
         run: "mkdir -p .build/phpstan"
 
       - name: "Run phpstan/phpstan with extension"
-        run: "vendor/bin/phpstan analyse --configuration=phpstan-with-extension.neon"
+        run: "vendor/bin/phpstan analyse --configuration=phpstan-with-extension.neon --memory-limit=-1"
 
       - name: "Run phpstan/phpstan without extension"
-        run: "vendor/bin/phpstan analyse --configuration=phpstan-without-extension.neon"
+        run: "vendor/bin/phpstan analyse --configuration=phpstan-without-extension.neon --memory-limit=-1"
 
   tests:
     name: "Tests"
@@ -151,34 +170,29 @@ jobs:
         uses: "actions/checkout@v2.3.3"
 
       - name: "Install PHP with extensions"
-        uses: "shivammathur/setup-php@v2"
+        uses: "shivammathur/setup-php@2.7.0"
         with:
           coverage: "none"
-          extensions: "${{ env.REQUIRED_PHP_EXTENSIONS }}"
+          extensions: "${{ env.PHP_EXTENSIONS }}"
           php-version: "${{ matrix.php-version }}"
 
+      - name: "Set up problem matchers for phpunit/phpunit"
+        run: "echo \"::add-matcher::${{ runner.tool_cache }}/phpunit.json\""
+
       - name: "Determine composer cache directory"
-        id: "determine-composer-cache-directory"
-        run: "echo \"::set-output name=directory::$(composer config cache-dir)\""
+        uses: "./.github/actions/composer/composer/determine-cache-directory"
 
       - name: "Cache dependencies installed with composer"
-        uses: "actions/cache@v2"
+        uses: "actions/cache@v2.1.2"
         with:
-          path: "${{ steps.determine-composer-cache-directory.outputs.directory }}"
-          key: "php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-${{ hashFiles('**/composer.lock') }}"
+          path: "${{ env.COMPOSER_CACHE_DIR }}"
+          key: "php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-${{ hashFiles('composer.lock') }}"
           restore-keys: "php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-"
 
-      - name: "Install lowest dependencies with composer"
-        if: "matrix.dependencies == 'lowest'"
-        run: "composer update --no-interaction --no-progress --prefer-lowest"
-
-      - name: "Install locked dependencies with composer"
-        if: "matrix.dependencies == 'locked'"
-        run: "composer install --no-interaction --no-progress"
-
-      - name: "Install highest dependencies with composer"
-        if: "matrix.dependencies == 'highest'"
-        run: "composer update --no-interaction --no-progress"
+      - name: "Install ${{ matrix.dependencies }} dependencies with composer"
+        uses: "./.github/actions/composer/composer/install"
+        with:
+          dependencies: "${{ matrix.dependencies }}"
 
       - name: "Run tests with phpunit/phpunit"
         run: "vendor/bin/phpunit --configuration=phpunit.xml"
@@ -200,12 +214,13 @@ jobs:
         github.event.action == 'reopened' ||
         github.event.action == 'synchronize'
       ) && (
-        github.actor == 'dependabot[bot]' && startsWith(github.event.pull_request.title, 'Build(deps-dev)')
+        (github.actor == 'dependabot[bot]' && startsWith(github.event.pull_request.title, 'composer(deps-dev)')) ||
+        (github.actor == 'dependabot[bot]' && startsWith(github.event.pull_request.title, 'github-actions(deps)'))
       )
 
     steps:
       - name: "Merge pull request"
-        uses: "actions/github-script@v3"
+        uses: "actions/github-script@v3.0.0"
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
           script: |

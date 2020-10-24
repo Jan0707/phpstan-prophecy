@@ -1,11 +1,11 @@
-# https://help.github.com/en/github/administering-a-repository/configuration-options-for-dependency-updates#target-branch
+# https://docs.github.com/en/github/administering-a-repository/configuration-options-for-dependency-updates
 
 version: 2
 
 updates:
   - commit-message:
       include: "scope"
-      prefix: "Build"
+      prefix: "composer"
     directory: "/"
     ignore:
       - dependency-name: "phpstan/phpstan"
@@ -17,10 +17,11 @@ updates:
     package-ecosystem: "composer"
     schedule:
       interval: "daily"
+    versioning-strategy: "increase"
 
   - commit-message:
       include: "scope"
-      prefix: "Build"
+      prefix: "github-actions"
     directory: "/"
     labels:
       - "dependency"

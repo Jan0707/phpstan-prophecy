@@ -241,4 +241,4 @@ Please have a look at [`CONTRIBUTING.md`](.github/CONTRIBUTING.md).
 
 This package is licensed using the MIT License.
 
-Please have a look at [LICENSE](LICENSE).
+Please have a look at [`LICENSE.md`](LICENSE.md).

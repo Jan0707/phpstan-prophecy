@@ -1,8 +1,15 @@
 .PHONY: it
 it: coding-standards static-code-analysis tests ## Runs the coding-standards, static-code-analysis, and tests targets
 
+.PHONY: code-coverage
+code-coverage: vendor ## Collects coverage from running unit tests with phpunit/phpunit
+	mkdir -p .build/phpunit
+	vendor/bin/phpunit --configuration=phpunit.xml --coverage-text
+
 .PHONY: coding-standards
-coding-standards: vendor ## Fixes code style issues with friendsofphp/php-cs-fixer
+coding-standards: vendor ## Normalizes composer.json with ergebnis/composer-normalize, lints YAML files with yamllint and fixes code style issues with friendsofphp/php-cs-fixer
+	composer normalize
+	yamllint -c .yamllint.yaml --strict .
 	mkdir -p .build/php-cs-fixer
 	vendor/bin/php-cs-fixer fix --config=.php_cs --diff --diff-format=udiff --verbose
 
@@ -17,17 +24,16 @@ static-code-analysis: vendor ## Runs a static code analysis with phpstan/phpstan
 	vendor/bin/phpstan analyse --configuration=phpstan-without-extension.neon
 
 .PHONY: static-code-analysis-baseline
-static-code-analysis-baseline: vendor ## Generates a baseline for static code analysis with phpstan/phpstan
-	echo '' > phpstan-with-extension-baseline.neon
-	vendor/bin/phpstan analyze --configuration=phpstan-with-extension.neon --error-format=baselineNeon > phpstan-with-extension-baseline.neon || true
-	echo '' > phpstan-without-extension-baseline.neon
-	vendor/bin/phpstan analyze --configuration=phpstan-without-extension.neon --error-format=baselineNeon > phpstan-without-extension-baseline.neon || true
+static-code-analysis-baseline: vendor ## Generates a baseline for static code analysis with phpstan/phpstan and vimeo/psalm
+	mkdir -p .build/phpstan
+	vendor/bin/phpstan analyze --configuration=phpstan-with-extension.neon --generate-baseline=phpstan-baseline-with-extension.neon --memory-limit=-1
+	vendor/bin/phpstan analyze --configuration=phpstan-without-extension.neon --generate-baseline=phpstan-baseline-without-extension.neon --memory-limit=-1
 
 .PHONY: tests
 tests: vendor ## Runs tests with phpunit/phpunit
+	mkdir -p .build/phpunit
 	vendor/bin/phpunit --configuration=phpunit.xml
 
 vendor: composer.json composer.lock
 	composer validate --strict
-	composer install --no-interaction --no-progress
-	composer normalize
+	composer install --no-interaction --no-progress --no-suggest

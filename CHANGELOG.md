@@ -6,7 +6,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## Unreleased
 
-For a full diff see [`0.8.1...master`][0.8.1...master].
+For a full diff see [`1.0.0...main`][1.0.0...master].
+
+## [`1.0.0`][1.0.0]
+
+For a full diff see [`0.8.1...1.0.0`][0.8.1...1.0.0].
+
+### Changed
+
+* Added support for `phpstan/phpstan:^1.0.0` and dropped support for non-stable versions of `phpstan/phpstan` ([#266]), by [@alexander-schranz]
 
 ## [`0.8.1`][0.8.1]
 
@@ -136,6 +144,7 @@ For a full diff see [`afd6fd9...0.1`][afd6fd9...0.1].
 [0.7.0]: https://github.com/Jan0707/phpstan-prophecy/releases/tag/0.7.0
 [0.8.0]: https://github.com/Jan0707/phpstan-prophecy/releases/tag/0.8.0
 [0.8.1]: https://github.com/Jan0707/phpstan-prophecy/releases/tag/0.8.1
+[1.0.0]: https://github.com/Jan0707/phpstan-prophecy/releases/tag/1.0.0
 
 [afd6fd9...0.1]: https://github.com/Jan0707/phpstan-prophecy/compare/afd6fd9...0.1
 [0.1...0.1.1]: https://github.com/Jan0707/phpstan-prophecy/compare/0.1...0.1.1
@@ -153,7 +162,8 @@ For a full diff see [`afd6fd9...0.1`][afd6fd9...0.1].
 [0.6.2...0.7.0]: https://github.com/Jan0707/phpstan-prophecy/compare/0.6.2...0.7.0
 [0.7.0...0.8.0]: https://github.com/Jan0707/phpstan-prophecy/compare/0.7.0...0.8.0
 [0.8.0...0.8.1]: https://github.com/Jan0707/phpstan-prophecy/compare/0.8.0...0.8.1
-[0.8.1...master]: https://github.com/Jan0707/phpstan-prophecy/compare/0.8.1...master
+[0.8.1...1.0.0]: https://github.com/Jan0707/phpstan-prophecy/compare/0.8.1...1.0.0
+[1.0.0...master]: https://github.com/Jan0707/phpstan-prophecy/compare/1.0.0...master
 
 [#67]: https://github.com/Jan0707/phpstan-prophecy/pull/67
 [#79]: https://github.com/Jan0707/phpstan-prophecy/pull/79
@@ -168,7 +178,9 @@ For a full diff see [`afd6fd9...0.1`][afd6fd9...0.1].
 [#165]: https://github.com/Jan0707/phpstan-prophecy/pull/165
 [#182]: https://github.com/Jan0707/phpstan-prophecy/pull/182
 [#236]: https://github.com/Jan0707/phpstan-prophecy/pull/236
+[#266]: https://github.com/Jan0707/phpstan-prophecy/pull/266
 
+[@alexander-schranz]: https://github.com/alexander-schranz
 [@Jean85]: https://github.com/Jean85
 [@localheinz]: https://github.com/localheinz
 [@ondrejmirtes ]: https://github.com/ondrejmirtes

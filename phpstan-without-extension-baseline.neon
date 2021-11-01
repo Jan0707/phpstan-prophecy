@@ -6,12 +6,12 @@ parameters:
 			path: test/StaticAnalysis/Test/BaseModelTest.php
 
 		-
-			message: "#^Parameter \\#1 \\$bar of method JanGregor\\\\Prophecy\\\\Test\\\\StaticAnalysis\\\\Src\\\\BaseModel\\:\\:bar\\(\\) expects JanGregor\\\\Prophecy\\\\Test\\\\StaticAnalysis\\\\Src\\\\Bar, object given\\.$#"
+			message: "#^Call to an undefined method Prophecy\\\\Prophecy\\\\ObjectProphecy\\:\\:baz\\(\\)\\.$#"
 			count: 1
 			path: test/StaticAnalysis/Test/BaseModelTest.php
 
 		-
-			message: "#^Call to an undefined method Prophecy\\\\Prophecy\\\\ObjectProphecy\\:\\:baz\\(\\)\\.$#"
+			message: "#^Parameter \\#1 \\$bar of method JanGregor\\\\Prophecy\\\\Test\\\\StaticAnalysis\\\\Src\\\\BaseModel\\:\\:bar\\(\\) expects JanGregor\\\\Prophecy\\\\Test\\\\StaticAnalysis\\\\Src\\\\Bar, object given\\.$#"
 			count: 1
 			path: test/StaticAnalysis/Test/BaseModelTest.php
 
@@ -21,7 +21,7 @@ parameters:
 			path: test/StaticAnalysis/Test/BaseModelTest.php
 
 		-
-			message: "#^Property JanGregor\\\\Prophecy\\\\Test\\\\StaticAnalysis\\\\Test\\\\ObjectProphecy\\\\ProphesizeTest\\:\\:\\$prophecy has no typehint specified\\.$#"
+			message: "#^Call to an undefined method Prophecy\\\\Prophecy\\\\ObjectProphecy\\:\\:doubleTheNumber\\(\\)\\.$#"
 			count: 1
 			path: test/StaticAnalysis/Test/ObjectProphecy/ProphesizeTest.php
 
@@ -31,7 +31,7 @@ parameters:
 			path: test/StaticAnalysis/Test/ObjectProphecy/ProphesizeTest.php
 
 		-
-			message: "#^Call to an undefined method Prophecy\\\\Prophecy\\\\ObjectProphecy\\:\\:doubleTheNumber\\(\\)\\.$#"
+			message: "#^Call to an undefined method object\\:\\:doubleTheNumber\\(\\)\\.$#"
 			count: 1
 			path: test/StaticAnalysis/Test/ObjectProphecy/ProphesizeTest.php
 
@@ -41,22 +41,22 @@ parameters:
 			path: test/StaticAnalysis/Test/ObjectProphecy/ProphesizeTest.php
 
 		-
-			message: "#^Call to an undefined method object\\:\\:doubleTheNumber\\(\\)\\.$#"
+			message: "#^Method JanGregor\\\\Prophecy\\\\Test\\\\StaticAnalysis\\\\Test\\\\ObjectProphecy\\\\ProphesizeTest\\:\\:createProphecy\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: test/StaticAnalysis/Test/ObjectProphecy/ProphesizeTest.php
 
 		-
-			message: "#^Method JanGregor\\\\Prophecy\\\\Test\\\\StaticAnalysis\\\\Test\\\\ObjectProphecy\\\\ProphesizeTest\\:\\:createProphecy\\(\\) has no return typehint specified\\.$#"
+			message: "#^Property JanGregor\\\\Prophecy\\\\Test\\\\StaticAnalysis\\\\Test\\\\ObjectProphecy\\\\ProphesizeTest\\:\\:\\$prophecy has no type specified\\.$#"
 			count: 1
 			path: test/StaticAnalysis/Test/ObjectProphecy/ProphesizeTest.php
 
 		-
-			message: "#^Property JanGregor\\\\Prophecy\\\\Test\\\\StaticAnalysis\\\\Test\\\\ObjectProphecy\\\\WillExtendTest\\:\\:\\$prophecy has no typehint specified\\.$#"
+			message: "#^Call to an undefined method Prophecy\\\\Prophecy\\\\ObjectProphecy\\:\\:baz\\(\\)\\.$#"
 			count: 1
 			path: test/StaticAnalysis/Test/ObjectProphecy/WillExtendTest.php
 
 		-
-			message: "#^Call to an undefined method Prophecy\\\\Prophecy\\\\ObjectProphecy\\:\\:baz\\(\\)\\.$#"
+			message: "#^Method JanGregor\\\\Prophecy\\\\Test\\\\StaticAnalysis\\\\Test\\\\ObjectProphecy\\\\WillExtendTest\\:\\:createProphecy\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: test/StaticAnalysis/Test/ObjectProphecy/WillExtendTest.php
 
@@ -66,17 +66,17 @@ parameters:
 			path: test/StaticAnalysis/Test/ObjectProphecy/WillExtendTest.php
 
 		-
-			message: "#^Method JanGregor\\\\Prophecy\\\\Test\\\\StaticAnalysis\\\\Test\\\\ObjectProphecy\\\\WillExtendTest\\:\\:createProphecy\\(\\) has no return typehint specified\\.$#"
+			message: "#^Property JanGregor\\\\Prophecy\\\\Test\\\\StaticAnalysis\\\\Test\\\\ObjectProphecy\\\\WillExtendTest\\:\\:\\$prophecy has no type specified\\.$#"
 			count: 1
 			path: test/StaticAnalysis/Test/ObjectProphecy/WillExtendTest.php
 
 		-
-			message: "#^Property JanGregor\\\\Prophecy\\\\Test\\\\StaticAnalysis\\\\Test\\\\ObjectProphecy\\\\WillImplementTest\\:\\:\\$prophecy has no typehint specified\\.$#"
+			message: "#^Call to an undefined method Prophecy\\\\Prophecy\\\\ObjectProphecy\\:\\:bar\\(\\)\\.$#"
 			count: 1
 			path: test/StaticAnalysis/Test/ObjectProphecy/WillImplementTest.php
 
 		-
-			message: "#^Call to an undefined method Prophecy\\\\Prophecy\\\\ObjectProphecy\\:\\:bar\\(\\)\\.$#"
+			message: "#^Method JanGregor\\\\Prophecy\\\\Test\\\\StaticAnalysis\\\\Test\\\\ObjectProphecy\\\\WillImplementTest\\:\\:createProphecy\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: test/StaticAnalysis/Test/ObjectProphecy/WillImplementTest.php
 
@@ -86,7 +86,7 @@ parameters:
 			path: test/StaticAnalysis/Test/ObjectProphecy/WillImplementTest.php
 
 		-
-			message: "#^Method JanGregor\\\\Prophecy\\\\Test\\\\StaticAnalysis\\\\Test\\\\ObjectProphecy\\\\WillImplementTest\\:\\:createProphecy\\(\\) has no return typehint specified\\.$#"
+			message: "#^Property JanGregor\\\\Prophecy\\\\Test\\\\StaticAnalysis\\\\Test\\\\ObjectProphecy\\\\WillImplementTest\\:\\:\\$prophecy has no type specified\\.$#"
 			count: 1
 			path: test/StaticAnalysis/Test/ObjectProphecy/WillImplementTest.php
 

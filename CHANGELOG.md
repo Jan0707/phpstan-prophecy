@@ -135,6 +135,7 @@ For a full diff see [`afd6fd9...0.1`][afd6fd9...0.1].
 [0.6.2]: https://github.com/Jan0707/phpstan-prophecy/releases/tag/0.6.2
 [0.7.0]: https://github.com/Jan0707/phpstan-prophecy/releases/tag/0.7.0
 [0.8.0]: https://github.com/Jan0707/phpstan-prophecy/releases/tag/0.8.0
+[0.8.1]: https://github.com/Jan0707/phpstan-prophecy/releases/tag/0.8.1
 
 [afd6fd9...0.1]: https://github.com/Jan0707/phpstan-prophecy/compare/afd6fd9...0.1
 [0.1...0.1.1]: https://github.com/Jan0707/phpstan-prophecy/compare/0.1...0.1.1

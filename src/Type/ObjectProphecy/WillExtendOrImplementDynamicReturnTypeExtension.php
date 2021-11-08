@@ -63,11 +63,11 @@ final class WillExtendOrImplementDynamicReturnTypeExtension implements Type\Dyna
             return $returnType;
         }
 
-        if (0 === \count($methodCall->args)) {
+        if (0 === \count($methodCall->getArgs())) {
             return $returnType;
         }
 
-        $argumentType = $scope->getType($methodCall->args[0]->value);
+        $argumentType = $scope->getType($methodCall->getArgs()[0]->value);
 
         if (!$argumentType instanceof Type\Constant\ConstantStringType) {
             return $returnType;

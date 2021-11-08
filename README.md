@@ -1,6 +1,7 @@
 # phpstan-prophecy
 
 [![Integrate](https://github.com/Jan0707/phpstan-prophecy/workflows/Integrate/badge.svg)](https://github.com/Jan0707/phpstan-prophecy/actions)
+[![Merge](https://github.com/Jan0707/phpstan-prophecy/workflows/Merge/badge.svg)](https://github.com/Jan0707/phpstan-prophecy/actions)
 
 [![Latest Stable Version](https://poser.pugx.org/jangregor/phpstan-prophecy/v/stable)](https://packagist.org/packages/jangregor/phpstan-prophecy)
 [![Total Downloads](https://poser.pugx.org/jangregor/phpstan-prophecy/downloads)](https://packagist.org/packages/jangregor/phpstan-prophecy)

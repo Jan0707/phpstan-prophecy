@@ -26,8 +26,8 @@ static-code-analysis: vendor ## Runs a static code analysis with phpstan/phpstan
 .PHONY: static-code-analysis-baseline
 static-code-analysis-baseline: vendor ## Generates a baseline for static code analysis with phpstan/phpstan and vimeo/psalm
 	mkdir -p .build/phpstan
-	vendor/bin/phpstan analyze --configuration=phpstan-with-extension.neon --generate-baseline=phpstan-baseline-with-extension.neon --memory-limit=-1
-	vendor/bin/phpstan analyze --configuration=phpstan-without-extension.neon --generate-baseline=phpstan-baseline-without-extension.neon --memory-limit=-1
+	vendor/bin/phpstan analyze --configuration=phpstan-with-extension.neon --generate-baseline=phpstan-with-extension-baseline.neon --memory-limit=-1
+	vendor/bin/phpstan analyze --configuration=phpstan-without-extension.neon --generate-baseline=phpstan-without-extension-baseline.neon --memory-limit=-1
 
 .PHONY: tests
 tests: vendor ## Runs tests with phpunit/phpunit

@@ -16,7 +16,7 @@ jobs:
 
     steps:
       - name: "Close pull requests created by violinist-bot"
-        uses: "actions/github-script@v3.1"
+        uses: "actions/github-script@v5"
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
           script: |

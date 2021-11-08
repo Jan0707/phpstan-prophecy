@@ -30,21 +30,21 @@ jobs:
             const actor = context.actor;
 
             if (actors.includes(actor)) {
-              github.issues.createComment({
+              github.rest.issues.createComment({
                 body: "I'm sorry, @" + actor + ". I'm afraid you can't do that.",
                 issue_number: pullRequest.number,
                 owner: repository.owner,
                 repo: repository.repo,
               });
 
-              github.pulls.update({
+              github.rest.pulls.update({
                 owner: repository.owner,
                 pull_number: pullRequest.number,
                 repo: repository.repo,
                 state: "closed",
               });
 
-              github.issues.lock({
+              github.rest.issues.lock({
                 issue_number: pullRequest.number,
                 lock_reason: "off-topic",
                 owner: repository.owner,

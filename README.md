@@ -17,7 +17,7 @@ Provides a [`prophecy/prophecy`](https://github.com/phpspec/prophecy) extension 
 Run
 
 ```shell
-$ composer require --dev jangregor/phpstan-prophecy
+composer require --dev jangregor/phpstan-prophecy
 ```
 
 ## Configuration

@@ -20,7 +20,7 @@ namespace Prophecy\Prophecy;
 class ObjectProphecy implements ProphecyInterface
 {
     /**
-     * @return T
+     * @return T&ObjectProphecy<T>
      */
     public function reveal()
     {

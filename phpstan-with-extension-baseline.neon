@@ -30,3 +30,13 @@ parameters:
 			count: 1
 			path: test/StaticAnalysis/Test/ObjectProphecy/WillImplementTest.php
 
+		-
+			message: "#^Method JanGregor\\\\Prophecy\\\\Test\\\\StaticAnalysis\\\\Test\\\\ObjectProphecy\\\\GetProphecyTest\\:\\:createProphecy\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/StaticAnalysis/Test/ObjectProphecy/GetProphecyTest.php
+
+		-
+			message: "#^Property JanGregor\\\\Prophecy\\\\Test\\\\StaticAnalysis\\\\Test\\\\ObjectProphecy\\\\GetProphecyTest\\:\\:\\$prophecy has no type specified\\.$#"
+			count: 1
+			path: test/StaticAnalysis/Test/ObjectProphecy/GetProphecyTest.php
+

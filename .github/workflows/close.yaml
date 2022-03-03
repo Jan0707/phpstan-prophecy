@@ -24,8 +24,8 @@ jobs:
               "violinist-bot",
             ]
 
-            const pullRequest = context.payload.pull_request
-            const repository = context.repo
+            const pullRequest = context.payload.pull_request;
+            const repository = context.repo;
 
             const actor = context.actor;
 

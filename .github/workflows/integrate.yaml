@@ -37,7 +37,7 @@ jobs:
           strict: true
 
       - name: "Install PHP with extensions"
-        uses: "shivammathur/setup-php@2.18.0"
+        uses: "shivammathur/setup-php@2.18.1"
         with:
           coverage: "none"
           extensions: "${{ env.PHP_EXTENSIONS }}"
@@ -103,7 +103,7 @@ jobs:
         uses: "actions/checkout@v3"
 
       - name: "Install PHP with extensions"
-        uses: "shivammathur/setup-php@2.18.0"
+        uses: "shivammathur/setup-php@2.18.1"
         with:
           coverage: "none"
           extensions: "${{ env.PHP_EXTENSIONS }}"
@@ -170,7 +170,7 @@ jobs:
         uses: "actions/checkout@v3"
 
       - name: "Install PHP with extensions"
-        uses: "shivammathur/setup-php@2.18.0"
+        uses: "shivammathur/setup-php@2.18.1"
         with:
           coverage: "none"
           extensions: "${{ env.PHP_EXTENSIONS }}"

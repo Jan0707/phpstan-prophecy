@@ -13,3 +13,6 @@ phpstan-with-extension.neon             export-ignore
 phpstan-without-extension-baseline.neon export-ignore
 phpstan-without-extension.neon          export-ignore
 phpunit.xml                             export-ignore
+
+# PHP syntax highlight for stub files
+*.phpstub                               linguist-language=PHP

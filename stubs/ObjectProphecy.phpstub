@@ -14,7 +14,7 @@ declare(strict_types=1);
 namespace Prophecy\Prophecy;
 
 /**
- * @template T of object
+ * @template-covariant T of object
  * @template-implements ProphecyInterface<T>
  */
 class ObjectProphecy implements ProphecyInterface

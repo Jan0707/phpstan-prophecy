@@ -66,10 +66,6 @@ final class ProphesizeDynamicReturnTypeExtension implements Type\DynamicMethodRe
 
         $className = $argumentType->getValue();
 
-        if (!$returnType instanceof Type\TypeWithClassName) {
-            throw new ShouldNotHappenException();
-        }
-
         if ('static' === $className) {
             return $returnType;
         }

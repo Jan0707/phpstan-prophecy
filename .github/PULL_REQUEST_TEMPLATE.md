@@ -1,7 +1,7 @@
 This pull request
 
-* [x]
-* [ ]
+- [x]
+- [ ]
 
 Follows #.
 Related to #.

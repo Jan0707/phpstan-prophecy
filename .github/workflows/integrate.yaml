@@ -195,6 +195,10 @@ jobs:
         if: "matrix.dependencies != 'locked'"
         run: "composer config platform.php --ansi --unset"
 
+      - name: "Remove incompatible dependencies with composer"
+        if: "matrix.dependencies != 'locked'"
+        run: "composer remove phpspec/prophecy phpunit/phpunit --ansi --dev --no-interaction --no-progress"
+
       - name: "Require phpunit/phpunit:^${{ matrix.phpunit-version }}"
         run: "composer require phpunit/phpunit:^${{ matrix.phpunit-version }} --ansi --dev --update-with-dependencies"
 

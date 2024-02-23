@@ -118,7 +118,7 @@ jobs:
           key: "php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-${{ hashFiles('composer.lock') }}"
           restore-keys: "php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-"
 
-      - name: "Require phpunit/phpunit"
+      - name: "Require phpunit/phpunit:^${{ matrix.phpunit-version }}"
         run: "composer require --ansi --dev phpunit/phpunit:^${{ matrix.phpunit-version }} --update-with-dependencies"
 
       - name: "Install ${{ matrix.dependencies }} dependencies with composer"

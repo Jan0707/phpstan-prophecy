@@ -154,6 +154,14 @@ jobs:
             php-version: "7.4"
             dependencies: "highest"
 
+          - phpunit-version: "8.0.0"
+            php-version: "8.0"
+            dependencies: "lowest"
+
+          - phpunit-version: "8.0.0"
+            php-version: "8.0"
+            dependencies: "highest"
+
           - phpunit-version: "9.0.0"
             php-version: "7.3"
             dependencies: "lowest"
@@ -168,6 +176,14 @@ jobs:
 
           - phpunit-version: "9.0.0"
             php-version: "7.4"
+            dependencies: "highest"
+
+          - phpunit-version: "9.0.0"
+            php-version: "8.0"
+            dependencies: "lowest"
+
+          - phpunit-version: "9.0.0"
+            php-version: "8.0"
             dependencies: "highest"
 
     steps:
@@ -195,8 +211,16 @@ jobs:
         if: "matrix.dependencies != 'locked'"
         run: "composer config platform.php --ansi --unset"
 
+      - name: "Remove incompatible dependencies with composer"
+        if: "matrix.dependencies != 'locked'"
+        run: "composer remove ergebnis/license ergebnis/php-cs-fixer-config phpspec/prophecy phpunit/phpunit --ansi --dev --no-interaction --no-progress"
+
       - name: "Require phpunit/phpunit:^${{ matrix.phpunit-version }}"
         run: "composer require phpunit/phpunit:^${{ matrix.phpunit-version }} --ansi --dev --update-with-dependencies"
+
+      - name: "Require phpspec/prophecy"
+        if: "matrix.phpunit-version == '8.0.0' || matrix.phpunit-version == '9.0.0'"
+        run: "composer require phpspec/prophecy --ansi --dev --update-with-dependencies"
 
       - name: "Install ${{ matrix.dependencies }} dependencies with composer"
         uses: "./.github/actions/composer/composer/install"

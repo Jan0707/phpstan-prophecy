@@ -8,6 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 For a full diff see [`1.0.0...main`][1.0.0...master].
 
+### Changed
+
+- Added support for PHP 8.0 ([#324]), by [@alexander-schranz] and [@localheinz]
+
 ## [`1.0.0`][1.0.0]
 
 For a full diff see [`0.8.1...1.0.0`][0.8.1...1.0.0].
@@ -179,6 +183,7 @@ For a full diff see [`afd6fd9...0.1`][afd6fd9...0.1].
 [#182]: https://github.com/Jan0707/phpstan-prophecy/pull/182
 [#236]: https://github.com/Jan0707/phpstan-prophecy/pull/236
 [#266]: https://github.com/Jan0707/phpstan-prophecy/pull/266
+[#324]: https://github.com/Jan0707/phpstan-prophecy/pull/324
 
 [@alexander-schranz]: https://github.com/alexander-schranz
 [@Jean85]: https://github.com/Jean85

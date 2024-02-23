@@ -14,7 +14,7 @@ For a full diff see [`0.8.1...1.0.0`][0.8.1...1.0.0].
 
 ### Changed
 
-* Added support for `phpstan/phpstan:^1.0.0` and dropped support for non-stable versions of `phpstan/phpstan` ([#266]), by [@alexander-schranz]
+- Added support for `phpstan/phpstan:^1.0.0` and dropped support for non-stable versions of `phpstan/phpstan` ([#266]), by [@alexander-schranz]
 
 ## [`0.8.1`][0.8.1]
 
@@ -22,7 +22,7 @@ For a full diff see [`0.8.0...0.8.1`][0.8.0...0.8.1].
 
 ### Changed
 
-* Allowed installation with PHP 8.0 ([#236]), by [@localheinz]
+- Allowed installation with PHP 8.0 ([#236]), by [@localheinz]
 
 ## [`0.8.0`][0.8.0]
 
@@ -30,7 +30,7 @@ For a full diff see [`0.7.0...0.8.0`][0.7.0...0.8.0].
 
 ### Removed
 
-* Removed the symbolic link from `src/extension.neon` to `extension.neon` ([#182]), by [@localheinz]
+- Removed the symbolic link from `src/extension.neon` to `extension.neon` ([#182]), by [@localheinz]
 
   When using [`phpstan/extension-installer`](https://github.com/phpstan/extension-installer), no changes on your end are required.
 
@@ -48,11 +48,11 @@ For a full diff see [`0.6.2...0.7.0`][0.6.2...0.7.0].
 
 ### Changed
 
-* Moved `src/extension.neon` to `extension.neon` ([#140]), by [@localheinz]
-* Marked classes as `@internal` ([#144]), by [@localheinz]
-* Moved and renamed internal classes ([#153]), by [@localheinz]
-* Required `phpstan/phpstan:~0.12.6` ([#165]), by [@Jean85]
-* Simplified extension by making use of generics ([#165]), by [@Jean85] and [@ondrejmirtes]
+- Moved `src/extension.neon` to `extension.neon` ([#140]), by [@localheinz]
+- Marked classes as `@internal` ([#144]), by [@localheinz]
+- Moved and renamed internal classes ([#153]), by [@localheinz]
+- Required `phpstan/phpstan:~0.12.6` ([#165]), by [@Jean85]
+- Simplified extension by making use of generics ([#165]), by [@Jean85] and [@ondrejmirtes]
 
 ## [`0.6.2`][0.6.2]
 
@@ -60,7 +60,7 @@ For a full diff see [`0.6.1...0.6.2`][0.6.1...0.6.2].
 
 ### Fixed
 
-* Allowed installation with `phpunit/phpunit:^9` ([#124]), by [@localheinz]
+- Allowed installation with `phpunit/phpunit:^9` ([#124]), by [@localheinz]
 
 ## [`0.6.1`][0.6.1]
 
@@ -68,8 +68,8 @@ For a full diff see [`0.6.0...0.6.1`][0.6.0...0.6.1].
 
 ### Changed
 
-* Marked classes as `final` ([#118]), by [@localheinz]
-* Modified return value of `ObjectPropecyMethodReflection::hasSideEffects()` as invoking methods on an instance of `Prophecy\Prophecy\ObjectProphecy` might have side effects ([#119]), by [@localheinz]
+- Marked classes as `final` ([#118]), by [@localheinz]
+- Modified return value of `ObjectPropecyMethodReflection::hasSideEffects()` as invoking methods on an instance of `Prophecy\Prophecy\ObjectProphecy` might have side effects ([#119]), by [@localheinz]
 
 ## [`0.6.0`][0.6.0]
 
@@ -77,8 +77,8 @@ For a full diff see [`0.5.1...0.6.0`][0.5.1...0.6.0].
 
 ### Added
 
-* Support for `willImplement()` ([#92]), by [@localheinz]
-* Support for `willExtend()` ([#94]), by [@localheinz]
+- Support for `willImplement()` ([#92]), by [@localheinz]
+- Support for `willExtend()` ([#94]), by [@localheinz]
 
 ## [`0.5.1`][0.5.1]
 
@@ -86,7 +86,7 @@ For a full diff see [`0.5.0...0.5.1`][0.5.0...0.5.1].
 
 ### Changed
 
-* Required at least `phpstan/phpstan:^0.12.0` ([#79]), by [@localheinz]
+- Required at least `phpstan/phpstan:^0.12.0` ([#79]), by [@localheinz]
 
 ## [`0.5.0`][0.5.0]
 
@@ -94,7 +94,7 @@ For a full diff see [`0.4.2...0.5.0`][0.4.2...0.5.0].
 
 ### Added
 
-* Allowed installation with `phpstan/phpstan:~0.12.2` ([#67]), by [@localheinz] and [@PedroTroller]
+- Allowed installation with `phpstan/phpstan:~0.12.2` ([#67]), by [@localheinz] and [@PedroTroller]
 
 ## [`0.4.2`][0.4.2]
 

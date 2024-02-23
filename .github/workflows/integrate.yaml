@@ -83,19 +83,92 @@ jobs:
       fail-fast: false
 
       matrix:
-        php-version:
-          - "7.4"
-
         phpunit-version:
           - "6.0.0"
-          - "7.0.0"
-          - "8.0.0"
-          - "9.0.0"
+
+        php-version:
+          - "7.1"
+          - "7.2"
+          - "7.3"
+          - "7.4"
 
         dependencies:
           - "lowest"
           - "locked"
           - "highest"
+
+        include:
+          - phpunit-version: "7.0.0"
+            php-version: "7.1"
+            dependencies: "lowest"
+
+          - phpunit-version: "7.0.0"
+            php-version: "7.1"
+            dependencies: "highest"
+
+          - phpunit-version: "7.0.0"
+            php-version: "7.2"
+            dependencies: "lowest"
+
+          - phpunit-version: "7.0.0"
+            php-version: "7.2"
+            dependencies: "highest"
+
+          - phpunit-version: "7.0.0"
+            php-version: "7.3"
+            dependencies: "lowest"
+
+          - phpunit-version: "7.0.0"
+            php-version: "7.3"
+            dependencies: "highest"
+
+          - phpunit-version: "7.0.0"
+            php-version: "7.4"
+            dependencies: "lowest"
+
+          - phpunit-version: "7.0.0"
+            php-version: "7.4"
+            dependencies: "highest"
+
+          - phpunit-version: "8.0.0"
+            php-version: "7.2"
+            dependencies: "lowest"
+
+          - phpunit-version: "8.0.0"
+            php-version: "7.2"
+            dependencies: "highest"
+
+          - phpunit-version: "8.0.0"
+            php-version: "7.3"
+            dependencies: "lowest"
+
+          - phpunit-version: "8.0.0"
+            php-version: "7.3"
+            dependencies: "highest"
+
+          - phpunit-version: "8.0.0"
+            php-version: "7.4"
+            dependencies: "lowest"
+
+          - phpunit-version: "8.0.0"
+            php-version: "7.4"
+            dependencies: "highest"
+
+          - phpunit-version: "9.0.0"
+            php-version: "7.3"
+            dependencies: "lowest"
+
+          - phpunit-version: "9.0.0"
+            php-version: "7.3"
+            dependencies: "highest"
+
+          - phpunit-version: "9.0.0"
+            php-version: "7.4"
+            dependencies: "lowest"
+
+          - phpunit-version: "9.0.0"
+            php-version: "7.4"
+            dependencies: "highest"
 
     steps:
       - name: "Checkout"

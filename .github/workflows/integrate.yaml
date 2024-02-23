@@ -196,7 +196,7 @@ jobs:
         run: "composer config platform.php --ansi --unset"
 
       - name: "Require phpunit/phpunit:^${{ matrix.phpunit-version }}"
-        run: "composer require --ansi --dev phpunit/phpunit:^${{ matrix.phpunit-version }} --update-with-dependencies"
+        run: "composer require phpunit/phpunit:^${{ matrix.phpunit-version }} --ansi --dev --update-with-dependencies"
 
       - name: "Install ${{ matrix.dependencies }} dependencies with composer"
         uses: "./.github/actions/composer/composer/install"

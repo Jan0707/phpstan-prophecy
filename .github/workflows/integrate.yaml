@@ -134,16 +134,16 @@ jobs:
           restore-keys: "php-${{ matrix.php-version }}-phpstan-"
 
       - name: "Show phpstan/phpstan version"
-        run: "vendor/bin/phpstan --version"
+        run: "vendor/bin/phpstan --ansi --version"
 
       - name: "Show phpunit/phpunit version"
         run: "vendor/bin/phpunit --version"
 
       - name: "Run phpstan/phpstan with extension"
-        run: "vendor/bin/phpstan analyse --configuration=phpstan-with-extension.neon --memory-limit=-1"
+        run: "vendor/bin/phpstan analyse --ansi --configuration=phpstan-with-extension.neon --memory-limit=-1"
 
       - name: "Run phpstan/phpstan without extension"
-        run: "vendor/bin/phpstan analyse --configuration=phpstan-without-extension.neon --memory-limit=-1"
+        run: "vendor/bin/phpstan analyse --ansi --configuration=phpstan-without-extension.neon --memory-limit=-1"
 
   tests:
     name: "Tests"

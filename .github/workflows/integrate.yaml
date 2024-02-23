@@ -64,9 +64,6 @@ jobs:
       - name: "Run ergebnis/composer-normalize"
         run: "composer normalize --ansi --dry-run"
 
-      - name: "Create cache directory for friendsofphp/php-cs-fixer"
-        run: "mkdir -p .build/php-cs-fixer"
-
       - name: "Cache cache directory for friendsofphp/php-cs-fixer"
         uses: "actions/cache@v4"
         with:
@@ -127,9 +124,6 @@ jobs:
         with:
           dependencies: "${{ matrix.dependencies }}"
 
-      - name: "Create cache directory for phpstan/phpstan"
-        run: "mkdir -p .build/phpstan"
-
       - name: "Cache cache directory for phpstan/phpstan"
         uses: "actions/cache@v4"
         with:
@@ -142,9 +136,6 @@ jobs:
 
       - name: "Show phpunit/phpunit version"
         run: "vendor/bin/phpunit --version"
-
-      - name: "Create cache directory for phpstan/phpstan"
-        run: "mkdir -p .build/phpstan"
 
       - name: "Run phpstan/phpstan with extension"
         run: "vendor/bin/phpstan analyse --configuration=phpstan-with-extension.neon --memory-limit=-1"

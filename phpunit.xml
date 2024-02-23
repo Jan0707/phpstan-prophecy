@@ -11,6 +11,7 @@
     colors="true"
     failOnRisky="true"
     failOnWarning="true"
+    verbose="true"
 >
     <testsuites>
         <testsuite name="Static Analysis">

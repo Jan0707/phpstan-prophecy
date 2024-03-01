@@ -1,8 +1,3 @@
-parameters:
-    stubFiles:
-        - stubs/ObjectProphecy.phpstub
-        - stubs/ProphecyInterface.phpstub
-
 services:
 	-
 		class: JanGregor\Prophecy\PhpDoc\ObjectProphecy\TypeNodeResolverExtension

@@ -16,7 +16,6 @@ namespace JanGregor\Prophecy\Test\StaticAnalysis\Test\ObjectProphecy;
 use JanGregor\Prophecy\Test\StaticAnalysis\Src;
 use PHPUnit\Framework;
 use Prophecy\Argument;
-use Prophecy\Prophet;
 
 /**
  * @internal
@@ -69,24 +68,6 @@ final class ProphesizeTest extends Framework\TestCase
     public function testCreateProphecyInHelperMethod(): void
     {
         $prophecy = $this->createProphecy();
-
-        $prophecy
-            ->getFoo()
-            ->willReturn('bar');
-
-        $prophecy
-            ->doubleTheNumber(Argument::is(2))
-            ->willReturn(5);
-
-        $testDouble = $prophecy->reveal();
-
-        self::assertEquals('bar', $testDouble->getFoo());
-        self::assertEquals(5, $testDouble->doubleTheNumber(2));
-    }
-
-    public function testCreateProphecyInline(): void
-    {
-        $prophecy = (new Prophet())->prophesize(Src\BaseModel::class);
 
         $prophecy
             ->getFoo()

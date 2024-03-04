@@ -22,22 +22,22 @@ parameters:
 
 		-
 			message: "#^Call to an undefined method Prophecy\\\\Prophecy\\\\ObjectProphecy\\:\\:doubleTheNumber\\(\\)\\.$#"
-			count: 1
+			count: 2
 			path: test/StaticAnalysis/Test/ObjectProphecy/ProphesizeTest.php
 
 		-
 			message: "#^Call to an undefined method Prophecy\\\\Prophecy\\\\ObjectProphecy\\:\\:getFoo\\(\\)\\.$#"
-			count: 1
+			count: 2
 			path: test/StaticAnalysis/Test/ObjectProphecy/ProphesizeTest.php
 
 		-
 			message: "#^Call to an undefined method object\\:\\:doubleTheNumber\\(\\)\\.$#"
-			count: 1
+			count: 2
 			path: test/StaticAnalysis/Test/ObjectProphecy/ProphesizeTest.php
 
 		-
 			message: "#^Call to an undefined method object\\:\\:getFoo\\(\\)\\.$#"
-			count: 1
+			count: 2
 			path: test/StaticAnalysis/Test/ObjectProphecy/ProphesizeTest.php
 
 		-

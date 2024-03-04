@@ -10,7 +10,7 @@
 
 [![Violinist Enabled](https://img.shields.io/badge/violinist-enabled-brightgreen.svg)](https://violinist.io)
 
-Provides a [`prophecy/prophecy`](https://github.com/phpspec/prophecy) extension for [`phpstan/phpstan`](https://github.com/phpstan/phpstan).
+Provides a [`phpspec/prophecy`](https://github.com/phpspec/prophecy) extension for [`phpstan/phpstan`](https://github.com/phpstan/phpstan).
 
 ## Installation
 

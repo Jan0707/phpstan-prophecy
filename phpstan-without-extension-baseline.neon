@@ -95,3 +95,18 @@ parameters:
 			count: 2
 			path: test/Unit/Reflection/ObjectProphecy/MethodReflectionTest.php
 
+
+		-
+			message: "#^Call to an undefined method object\\:\\:getProphecy\\(\\)\\.$#"
+			count: 3
+			path: test/StaticAnalysis/Test/ObjectProphecy/GetProphecyTest.php
+
+		-
+			message: "#^Method JanGregor\\\\Prophecy\\\\Test\\\\StaticAnalysis\\\\Test\\\\ObjectProphecy\\\\GetProphecyTest\\:\\:createProphecy\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/StaticAnalysis/Test/ObjectProphecy/GetProphecyTest.php
+
+		-
+			message: "#^Property JanGregor\\\\Prophecy\\\\Test\\\\StaticAnalysis\\\\Test\\\\ObjectProphecy\\\\GetProphecyTest\\:\\:\\$prophecy has no type specified\\.$#"
+			count: 1
+			path: test/StaticAnalysis/Test/ObjectProphecy/GetProphecyTest.php

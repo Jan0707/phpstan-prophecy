@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "28cf25d15330351ee73e1d03d1ac7bfb",
+    "content-hash": "74e18f4c33faa2603af60f97f3d984e7",
     "packages": [
         {
             "name": "phpstan/phpstan",
@@ -670,38 +670,34 @@
         },
         {
             "name": "ergebnis/license",
-            "version": "1.0.0",
+            "version": "2.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ergebnis/license.git",
-                "reference": "d36cbe3a4ca62c9df902e4133f0a84307a75034a"
+                "reference": "124f72689988a988cd32910ca8504030b0987117"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ergebnis/license/zipball/d36cbe3a4ca62c9df902e4133f0a84307a75034a",
-                "reference": "d36cbe3a4ca62c9df902e4133f0a84307a75034a",
+                "url": "https://api.github.com/repos/ergebnis/license/zipball/124f72689988a988cd32910ca8504030b0987117",
+                "reference": "124f72689988a988cd32910ca8504030b0987117",
                 "shasum": ""
             },
             "require": {
                 "ext-filter": "*",
-                "php": "^7.1"
+                "php": "~7.4.0 || ~8.0.0 || ~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0"
             },
             "require-dev": {
-                "ergebnis/composer-normalize": "^2.5.1",
-                "ergebnis/php-cs-fixer-config": "~2.1.2",
-                "ergebnis/phpstan-rules": "~0.14.4",
-                "ergebnis/test-util": "~1.0.0",
-                "infection/infection": "~0.13.6",
-                "jangregor/phpstan-prophecy": "~0.6.2",
-                "phpstan/extension-installer": "^1.0.4",
-                "phpstan/phpstan": "~0.12.22",
-                "phpstan/phpstan-deprecation-rules": "~0.12.2",
-                "phpstan/phpstan-phpunit": "~0.12.8",
-                "phpstan/phpstan-strict-rules": "~0.12.2",
-                "phpunit/phpunit": "^7.5.20",
-                "psalm/plugin-phpunit": "~0.10.0",
-                "symfony/filesystem": "^4.4.8",
-                "vimeo/psalm": "^3.11.2"
+                "ergebnis/composer-normalize": "^2.43.0",
+                "ergebnis/data-provider": "^3.2.0",
+                "ergebnis/php-cs-fixer-config": "^6.36.0",
+                "ergebnis/phpunit-slow-test-detector": "^2.15.1",
+                "fakerphp/faker": "^1.23.1",
+                "infection/infection": "~0.26.6",
+                "phpunit/phpunit": "^9.6.19",
+                "psalm/plugin-phpunit": "~0.19.0",
+                "rector/rector": "^1.2.5",
+                "symfony/filesystem": "^5.4.41",
+                "vimeo/psalm": "^5.26.1"
             },
             "type": "library",
             "autoload": {
@@ -716,7 +712,8 @@
             "authors": [
                 {
                     "name": "Andreas Möller",
-                    "email": "am@localheinz.com"
+                    "email": "am@localheinz.com",
+                    "homepage": "https://localheinz.com"
                 }
             ],
             "description": "Provides an abstraction of an open-source license.",
@@ -726,27 +723,10 @@
             ],
             "support": {
                 "issues": "https://github.com/ergebnis/license/issues",
+                "security": "https://github.com/ergebnis/license/blob/main/.github/SECURITY.md",
                 "source": "https://github.com/ergebnis/license"
             },
-            "funding": [
-                {
-                    "url": "https://paypal.me/localheinz",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://www.amazon.de/hz/wishlist/ls/2NCHMSJ4BC1OW",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://www.buymeacoffee.com/localheinz",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/localheinz",
-                    "type": "github"
-                }
-            ],
-            "time": "2020-05-04T17:36:52+00:00"
+            "time": "2024-09-27T14:52:18+00:00"
         },
         {
             "name": "ergebnis/php-cs-fixer-config",

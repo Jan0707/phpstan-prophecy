@@ -46,9 +46,11 @@ final class ProphesizeDynamicReturnTypeExtension implements Type\DynamicMethodRe
         Node\Expr\MethodCall $methodCall,
         Analyser\Scope $scope
     ): Type\Type {
-        $parametersAcceptor = Reflection\ParametersAcceptorSelector::selectSingle($methodReflection->getVariants());
-
-        $returnType = $parametersAcceptor->getReturnType();
+        $returnType = Reflection\ParametersAcceptorSelector::selectFromArgs(
+            $scope,
+            $methodCall->getArgs(),
+            $methodReflection->getVariants()
+        )->getReturnType();
 
         if (0 === \count($methodCall->getArgs())) {
             return new Type\Generic\GenericObjectType(

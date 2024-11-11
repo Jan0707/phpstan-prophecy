@@ -49,11 +49,13 @@ final class WillExtendOrImplementDynamicReturnTypeExtension implements Type\Dyna
         Node\Expr\MethodCall $methodCall,
         Analyser\Scope $scope
     ): Type\Type {
-        $parametersAcceptor = Reflection\ParametersAcceptorSelector::selectSingle($methodReflection->getVariants());
+        $returnType = Reflection\ParametersAcceptorSelector::selectFromArgs(
+            $scope,
+            $methodCall->getArgs(),
+            $methodReflection->getVariants()
+        )->getReturnType();
 
         $calledOnType = $scope->getType($methodCall->var);
-
-        $returnType = $parametersAcceptor->getReturnType();
 
         if (!$calledOnType instanceof Type\Generic\GenericObjectType) {
             return $returnType;

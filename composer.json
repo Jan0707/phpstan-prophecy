@@ -1,8 +1,8 @@
 {
   "name": "jangregor/phpstan-prophecy",
-  "type": "phpstan-extension",
   "description": "Provides a phpstan/phpstan extension for phpspec/prophecy",
   "license": "MIT",
+  "type": "phpstan-extension",
   "authors": [
     {
       "name": "Jan Gregor Emge-Triebel",
@@ -13,16 +13,26 @@
     "php": "^7.4 || ^8.0",
     "phpstan/phpstan": "^2.0.0"
   },
-  "conflict": {
-    "phpspec/prophecy": "<1.7.0 || >=2.0.0",
-    "phpunit/phpunit": "<8.0.0 || >=12.0.0"
-  },
   "require-dev": {
     "ergebnis/composer-normalize": "^2.1.1",
     "ergebnis/license": "^1.0.0",
     "ergebnis/php-cs-fixer-config": "~2.2.0",
     "phpspec/prophecy": "^1.7.0",
     "phpunit/phpunit": "^6.0.0 || ^7.0.0 || ^8.0.0 || ^9.0.0"
+  },
+  "conflict": {
+    "phpspec/prophecy": "<1.7.0 || >=2.0.0",
+    "phpunit/phpunit": "<8.0.0 || >=12.0.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "JanGregor\\Prophecy\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "JanGregor\\Prophecy\\Test\\": "test/"
+    }
   },
   "config": {
     "allow-plugins": {
@@ -35,16 +45,6 @@
       "includes": [
         "extension.neon"
       ]
-    }
-  },
-  "autoload": {
-    "psr-4": {
-      "JanGregor\\Prophecy\\": "src/"
-    }
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "JanGregor\\Prophecy\\Test\\": "test/"
     }
   }
 }

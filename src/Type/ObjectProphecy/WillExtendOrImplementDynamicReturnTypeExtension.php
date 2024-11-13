@@ -57,11 +57,7 @@ final class WillExtendOrImplementDynamicReturnTypeExtension implements Type\Dyna
 
         $calledOnType = $scope->getType($methodCall->var);
 
-        if (!$calledOnType instanceof Type\Generic\GenericObjectType) {
-            return $returnType;
-        }
-
-        if (Prophecy\ObjectProphecy::class !== $calledOnType->getClassName()) {
+        if ((new Type\ObjectType(Prophecy\ObjectProphecy::class))->isSuperTypeOf($calledOnType)->no()) {
             return $returnType;
         }
 
@@ -71,13 +67,23 @@ final class WillExtendOrImplementDynamicReturnTypeExtension implements Type\Dyna
 
         $argumentType = $scope->getType($methodCall->getArgs()[0]->value);
 
-        if (!$argumentType instanceof Type\Constant\ConstantStringType) {
+        if ($argumentType->isConstantScalarValue()->no() || $argumentType->isString()->no()) {
             return $returnType;
         }
 
-        $className = $argumentType->getValue();
+        $classNames = $argumentType->getConstantScalarValues();
 
-        if (!$returnType instanceof Type\TypeWithClassName) {
+        if (1 !== \count($classNames)) {
+            throw new ShouldNotHappenException();
+        }
+
+        $className = $classNames[0];
+
+        if (!\is_string($className)) {
+            return $returnType;
+        }
+
+        if ($returnType->isObject()->no()) {
             throw new ShouldNotHappenException();
         }
 
@@ -94,7 +100,7 @@ final class WillExtendOrImplementDynamicReturnTypeExtension implements Type\Dyna
             [
                 Type\TypeCombinator::intersect(
                     new Type\ObjectType($className),
-                    ...$calledOnType->getTypes()
+                    //...$calledOnType->templ
                 ),
             ]
         );

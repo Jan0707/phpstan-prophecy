@@ -36,7 +36,7 @@ final class TypeNodeResolverExtension implements PhpDoc\TypeNodeResolverAwareExt
 
     public function getCacheKey(): string
     {
-        return 'prophecy-with-generics-v1';
+        return 'prophecy-with-generics-v2';
     }
 
     public function resolve(PhpDocParser\Ast\Type\TypeNode $typeNode, Analyser\NameScope $nameScope): ?Type\Type
@@ -52,8 +52,8 @@ final class TypeNodeResolverExtension implements PhpDoc\TypeNodeResolverAwareExt
             foreach ($typeNode->types as $innerType) {
                 $type = $this->typeNodeResolver->resolve($innerType, $nameScope);
 
-                if ($type instanceof Type\TypeWithClassName) {
-                    if (Prophecy\ObjectProphecy::class === $type->getClassName()) {
+                if ($type->isObject()->yes()) {
+                    if ((new Type\ObjectType(Prophecy\ObjectProphecy::class))->isSuperTypeOf($type)->yes()) {
                         $objectProphecyType = $type;
                     } else {
                         $prophesizedType = $type;

@@ -16,6 +16,7 @@ namespace JanGregor\Prophecy\Type\Prophet;
 use PhpParser\Node;
 use PHPStan\Analyser;
 use PHPStan\Reflection;
+use PHPStan\ShouldNotHappenException;
 use PHPStan\Type;
 use Prophecy\Prophecy;
 
@@ -24,8 +25,14 @@ use Prophecy\Prophecy;
  */
 final class ProphesizeDynamicReturnTypeExtension implements Type\DynamicMethodReturnTypeExtension
 {
+    /**
+     * @var class-string
+     */
     private $className;
 
+    /**
+     * @param class-string $className
+     */
     public function __construct(string $className)
     {
         $this->className = $className;
@@ -61,11 +68,25 @@ final class ProphesizeDynamicReturnTypeExtension implements Type\DynamicMethodRe
 
         $argumentType = $scope->getType($methodCall->getArgs()[0]->value);
 
-        if (!$argumentType instanceof Type\Constant\ConstantStringType) {
+        if (!$argumentType->isConstantScalarValue()->yes()) {
             return $returnType;
         }
 
-        $className = $argumentType->getValue();
+        if (!$argumentType->isString()->yes()) {
+            return $returnType;
+        }
+
+        $classNames = $argumentType->getConstantScalarValues();
+
+        if (1 !== \count($classNames)) {
+            throw new ShouldNotHappenException();
+        }
+
+        $className = $classNames[0];
+
+        if (!\is_string($className)) {
+            throw new ShouldNotHappenException();
+        }
 
         if ('static' === $className) {
             return $returnType;

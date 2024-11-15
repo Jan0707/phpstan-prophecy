@@ -23,6 +23,9 @@ use PHPUnit\Framework;
  */
 final class WillImplementTest extends Framework\TestCase
 {
+    /**
+     * @var \Prophecy\Prophecy\ObjectProphecy<Src\Bar>
+     */
     private $prophecy;
 
     protected function setUp(): void
@@ -70,6 +73,9 @@ final class WillImplementTest extends Framework\TestCase
         self::assertSame('Oh', $subject->bar($prophecy->reveal()));
     }
 
+    /**
+     * @return \Prophecy\Prophecy\ObjectProphecy<Src\Bar>
+     */
     private function createProphecy()
     {
         return $this->prophesize(Src\Foo::class)->willImplement(Src\Bar::class);

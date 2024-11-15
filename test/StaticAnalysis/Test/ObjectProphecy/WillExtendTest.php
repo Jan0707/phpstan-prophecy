@@ -23,6 +23,9 @@ use PHPUnit\Framework;
  */
 final class WillExtendTest extends Framework\TestCase
 {
+    /**
+     * @var \Prophecy\Prophecy\ObjectProphecy<Src\Baz>
+     */
     private $prophecy;
 
     protected function setUp(): void
@@ -70,6 +73,9 @@ final class WillExtendTest extends Framework\TestCase
         self::assertSame('Hmm', $subject->baz($prophecy->reveal()));
     }
 
+    /**
+     * @return \Prophecy\Prophecy\ObjectProphecy<Src\Baz>
+     */
     private function createProphecy()
     {
         return $this->prophesize()->willExtend(Src\Baz::class);

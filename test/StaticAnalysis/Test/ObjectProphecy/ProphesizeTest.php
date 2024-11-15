@@ -24,6 +24,9 @@ use Prophecy\Argument;
  */
 final class ProphesizeTest extends Framework\TestCase
 {
+    /**
+     * @var \Prophecy\Prophecy\ObjectProphecy<Src\BaseModel>
+     */
     private $prophecy;
 
     protected function setUp(): void
@@ -83,6 +86,9 @@ final class ProphesizeTest extends Framework\TestCase
         self::assertEquals(5, $testDouble->doubleTheNumber(2));
     }
 
+    /**
+     * @return \Prophecy\Prophecy\ObjectProphecy<Src\BaseModel>
+     */
     private function createProphecy()
     {
         return $this->prophesize(Src\BaseModel::class);

@@ -30,7 +30,7 @@ final class ProphesizeTest extends Framework\TestCase
     /**
      * @var \Prophecy\Prophecy\ObjectProphecy<Src\BaseModel>
      */
-    private $prophecy;
+    private \Prophecy\Prophecy\ObjectProphecy $prophecy;
 
     protected function setUp(): void
     {

@@ -40,7 +40,7 @@ final class WillExtendOrImplementDynamicReturnTypeExtension implements Type\Dyna
         return \in_array(
             $methodReflection->getName(),
             $methodNames,
-            true
+            true,
         );
     }
 
@@ -52,7 +52,7 @@ final class WillExtendOrImplementDynamicReturnTypeExtension implements Type\Dyna
         $returnType = Reflection\ParametersAcceptorSelector::selectFromArgs(
             $scope,
             $methodCall->getArgs(),
-            $methodReflection->getVariants()
+            $methodReflection->getVariants(),
         )->getReturnType();
 
         $calledOnType = $scope->getType($methodCall->var);
@@ -102,7 +102,7 @@ final class WillExtendOrImplementDynamicReturnTypeExtension implements Type\Dyna
                     new Type\ObjectType($className),
                     //...$calledOnType->templ
                 ),
-            ]
+            ],
         );
     }
 }

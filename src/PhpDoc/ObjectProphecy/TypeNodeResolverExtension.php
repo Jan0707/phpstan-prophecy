@@ -24,10 +24,7 @@ use Prophecy\Prophecy;
  */
 final class TypeNodeResolverExtension implements PhpDoc\TypeNodeResolverAwareExtension, PhpDoc\TypeNodeResolverExtension
 {
-    /**
-     * @var PhpDoc\TypeNodeResolver
-     */
-    private $typeNodeResolver;
+    private PhpDoc\TypeNodeResolver $typeNodeResolver;
 
     public function setTypeNodeResolver(PhpDoc\TypeNodeResolver $typeNodeResolver): void
     {
@@ -68,7 +65,7 @@ final class TypeNodeResolverExtension implements PhpDoc\TypeNodeResolverAwareExt
                     Prophecy\ObjectProphecy::class,
                     [
                         $prophesizedType,
-                    ]
+                    ],
                 );
             }
         }

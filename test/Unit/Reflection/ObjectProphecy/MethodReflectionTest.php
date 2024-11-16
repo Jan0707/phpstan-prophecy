@@ -35,7 +35,7 @@ final class MethodReflectionTest extends Framework\TestCase
 
         $reflection = new MethodReflection(
             $classReflection,
-            $name
+            $name,
         );
 
         self::assertSame($classReflection, $reflection->getDeclaringClass());
@@ -49,7 +49,7 @@ final class MethodReflectionTest extends Framework\TestCase
 
         $reflection = new MethodReflection(
             $classReflection,
-            'hmm'
+            'hmm',
         );
 
         self::assertNull($reflection->getDeprecatedDescription());
@@ -63,7 +63,7 @@ final class MethodReflectionTest extends Framework\TestCase
                 null,
                 [],
                 true,
-                new Type\ObjectType(Prophecy\MethodProphecy::class)
+                new Type\ObjectType(Prophecy\MethodProphecy::class),
             ),
         ];
 

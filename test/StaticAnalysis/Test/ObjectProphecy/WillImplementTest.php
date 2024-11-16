@@ -29,7 +29,7 @@ final class WillImplementTest extends Framework\TestCase
     /**
      * @var \Prophecy\Prophecy\ObjectProphecy<Src\Bar>
      */
-    private $prophecy;
+    private \Prophecy\Prophecy\ObjectProphecy $prophecy;
 
     protected function setUp(): void
     {

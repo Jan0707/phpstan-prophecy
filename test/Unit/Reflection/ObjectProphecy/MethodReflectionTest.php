@@ -29,22 +29,26 @@ final class MethodReflectionTest extends Framework\TestCase
 {
     public function testConstructorSetsValues(): void
     {
-        $classReflection = $this->prophesize(Reflection\ClassReflection::class);
+        $classReflection = (new \ReflectionClass(Reflection\ClassReflection::class))
+            ->newInstanceWithoutConstructor();
         $name = 'hmm';
 
         $reflection = new MethodReflection(
-            $classReflection->reveal(),
+            $classReflection,
             $name
         );
 
-        self::assertSame($classReflection->reveal(), $reflection->getDeclaringClass());
+        self::assertSame($classReflection, $reflection->getDeclaringClass());
         self::assertSame($name, $reflection->getName());
     }
 
     public function testDefaults(): void
     {
+        $classReflection = (new \ReflectionClass(Reflection\ClassReflection::class))
+            ->newInstanceWithoutConstructor();
+
         $reflection = new MethodReflection(
-            $this->prophesize(Reflection\ClassReflection::class)->reveal(),
+            $classReflection,
             'hmm'
         );
 

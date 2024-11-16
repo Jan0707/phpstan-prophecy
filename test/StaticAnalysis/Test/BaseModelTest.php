@@ -15,6 +15,7 @@ namespace JanGregor\Prophecy\Test\StaticAnalysis\Test;
 
 use JanGregor\Prophecy\Test\StaticAnalysis\Src;
 use PHPUnit\Framework;
+use Prophecy\PhpUnit\ProphecyTrait;
 
 /**
  * @internal
@@ -23,6 +24,8 @@ use PHPUnit\Framework;
  */
 final class BaseModelTest extends Framework\TestCase
 {
+    use ProphecyTrait;
+
     public function testDefaults(): void
     {
         $model = new Src\BaseModel();

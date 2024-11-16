@@ -15,6 +15,7 @@ namespace JanGregor\Prophecy\Test\StaticAnalysis\Test\ObjectProphecy;
 
 use JanGregor\Prophecy\Test\StaticAnalysis\Src;
 use PHPUnit\Framework;
+use Prophecy\PhpUnit\ProphecyTrait;
 
 /**
  * @internal
@@ -23,6 +24,8 @@ use PHPUnit\Framework;
  */
 final class WillImplementTest extends Framework\TestCase
 {
+    use ProphecyTrait;
+
     /**
      * @var \Prophecy\Prophecy\ObjectProphecy<Src\Bar>
      */

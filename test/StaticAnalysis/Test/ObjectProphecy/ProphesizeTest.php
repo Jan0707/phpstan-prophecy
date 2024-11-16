@@ -16,6 +16,7 @@ namespace JanGregor\Prophecy\Test\StaticAnalysis\Test\ObjectProphecy;
 use JanGregor\Prophecy\Test\StaticAnalysis\Src;
 use PHPUnit\Framework;
 use Prophecy\Argument;
+use Prophecy\PhpUnit\ProphecyTrait;
 
 /**
  * @internal
@@ -24,6 +25,8 @@ use Prophecy\Argument;
  */
 final class ProphesizeTest extends Framework\TestCase
 {
+    use ProphecyTrait;
+
     /**
      * @var \Prophecy\Prophecy\ObjectProphecy<Src\BaseModel>
      */

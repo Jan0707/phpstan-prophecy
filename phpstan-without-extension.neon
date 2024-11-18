@@ -3,7 +3,7 @@ includes:
 
 parameters:
 	inferPrivatePropertyTypeFromConstructor: true
-	level: max
+	level: 9
 	paths:
 		- src/
 		- test/

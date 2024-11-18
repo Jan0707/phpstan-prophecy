@@ -1,10 +1,5 @@
 services:
 	-
-		class: JanGregor\Prophecy\PhpDoc\ObjectProphecy\TypeNodeResolverExtension
-		tags:
-			- phpstan.phpDoc.typeNodeResolverExtension
-
-	-
 		class: JanGregor\Prophecy\Reflection\ObjectProphecy\MethodsClassReflectionExtension
 		tags:
 			- phpstan.broker.methodsClassReflectionExtension

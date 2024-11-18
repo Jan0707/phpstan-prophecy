@@ -16,6 +16,7 @@ namespace JanGregor\Prophecy\Test\StaticAnalysis\Test\ObjectProphecy;
 use JanGregor\Prophecy\Test\StaticAnalysis\Src;
 use PHPUnit\Framework;
 use Prophecy\PhpUnit\ProphecyTrait;
+use Prophecy\Prophecy\ObjectProphecy;
 
 /**
  * @internal
@@ -27,7 +28,7 @@ final class WillExtendTest extends Framework\TestCase
     use ProphecyTrait;
 
     /**
-     * @var \Prophecy\Prophecy\ObjectProphecy<Src\Baz>
+     * @var ObjectProphecy<Src\Baz>
      */
     private \Prophecy\Prophecy\ObjectProphecy $prophecy;
 
@@ -77,7 +78,7 @@ final class WillExtendTest extends Framework\TestCase
     }
 
     /**
-     * @return \Prophecy\Prophecy\ObjectProphecy<Src\Baz>
+     * @return ObjectProphecy<Src\Baz>
      */
     private function createProphecy()
     {

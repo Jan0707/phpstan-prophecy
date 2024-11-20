@@ -1,3 +1,8 @@
 parameters:
-	ignoreErrors: []
+	ignoreErrors:
+		-
+			message: '#^Doing instanceof PHPStan\\Type\\Generic\\GenericObjectType is error\-prone and deprecated\.$#'
+			identifier: phpstanApi.instanceofType
+			count: 1
+			path: src/Type/ObjectProphecy/WillExtendOrImplementDynamicReturnTypeExtension.php
 

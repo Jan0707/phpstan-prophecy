@@ -1,6 +1,12 @@
 parameters:
 	ignoreErrors:
 		-
+			message: '#^Doing instanceof PHPStan\\Type\\Generic\\GenericObjectType is error\-prone and deprecated\.$#'
+			identifier: phpstanApi.instanceofType
+			count: 1
+			path: src/Type/ObjectProphecy/WillExtendOrImplementDynamicReturnTypeExtension.php
+
+		-
 			message: '#^Call to an undefined method Prophecy\\Prophecy\\ObjectProphecy\<JanGregor\\Prophecy\\Test\\StaticAnalysis\\Src\\Bar\>\:\:bar\(\)\.$#'
 			identifier: method.notFound
 			count: 1

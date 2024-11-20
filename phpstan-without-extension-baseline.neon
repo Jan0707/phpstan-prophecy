@@ -85,15 +85,21 @@ parameters:
 			path: test/StaticAnalysis/Test/ObjectProphecy/WillImplementTest.php
 
 		-
+			message: '#^Call to an undefined method Prophecy\\Prophecy\\ObjectProphecy\<JanGregor\\Prophecy\\Test\\StaticAnalysis\\Src\\Foo\>\:\:foo\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: test/StaticAnalysis/Test/ObjectProphecy/WillImplementTest.php
+
+		-
 			message: '#^Cannot call method shouldBeCalled\(\) on mixed\.$#'
 			identifier: method.nonObject
-			count: 3
+			count: 4
 			path: test/StaticAnalysis/Test/ObjectProphecy/WillImplementTest.php
 
 		-
 			message: '#^Cannot call method willReturn\(\) on mixed\.$#'
 			identifier: method.nonObject
-			count: 3
+			count: 4
 			path: test/StaticAnalysis/Test/ObjectProphecy/WillImplementTest.php
 
 		-

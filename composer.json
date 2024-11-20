@@ -15,7 +15,7 @@
   },
   "conflict": {
     "phpspec/prophecy": "<1.17.0 || >=2.0.0",
-    "phpspec/prophecy-phpunit":  "<2.3.0 || >=3.0.0",
+    "phpspec/prophecy-phpunit": "<2.3.0 || >=3.0.0",
     "phpunit/phpunit": "<9.1.0 || >=12.0.0"
   },
   "require-dev": {

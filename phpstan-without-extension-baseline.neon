@@ -1,13 +1,13 @@
 parameters:
 	ignoreErrors:
 		-
-			message: '#^Call to an undefined method Prophecy\\Prophecy\\ObjectProphecy\:\:bar\(\)\.$#'
+			message: '#^Call to an undefined method Prophecy\\Prophecy\\ObjectProphecy\<JanGregor\\Prophecy\\Test\\StaticAnalysis\\Src\\Bar\>\:\:bar\(\)\.$#'
 			identifier: method.notFound
 			count: 1
 			path: test/StaticAnalysis/Test/BaseModelTest.php
 
 		-
-			message: '#^Call to an undefined method Prophecy\\Prophecy\\ObjectProphecy\:\:baz\(\)\.$#'
+			message: '#^Call to an undefined method Prophecy\\Prophecy\\ObjectProphecy\<JanGregor\\Prophecy\\Test\\StaticAnalysis\\Src\\Baz\>\:\:baz\(\)\.$#'
 			identifier: method.notFound
 			count: 1
 			path: test/StaticAnalysis/Test/BaseModelTest.php
@@ -19,51 +19,15 @@ parameters:
 			path: test/StaticAnalysis/Test/BaseModelTest.php
 
 		-
-			message: '#^Parameter \#1 \$bar of method JanGregor\\Prophecy\\Test\\StaticAnalysis\\Src\\BaseModel\:\:bar\(\) expects JanGregor\\Prophecy\\Test\\StaticAnalysis\\Src\\Bar, object given\.$#'
-			identifier: argument.type
-			count: 1
-			path: test/StaticAnalysis/Test/BaseModelTest.php
-
-		-
-			message: '#^Parameter \#1 \$baz of method JanGregor\\Prophecy\\Test\\StaticAnalysis\\Src\\BaseModel\:\:baz\(\) expects JanGregor\\Prophecy\\Test\\StaticAnalysis\\Src\\Baz, object given\.$#'
-			identifier: argument.type
-			count: 1
-			path: test/StaticAnalysis/Test/BaseModelTest.php
-
-		-
-			message: '#^Call to an undefined method Prophecy\\Prophecy\\ObjectProphecy\:\:doubleTheNumber\(\)\.$#'
-			identifier: method.notFound
-			count: 1
-			path: test/StaticAnalysis/Test/ObjectProphecy/ProphesizeTest.php
-
-		-
-			message: '#^Call to an undefined method Prophecy\\Prophecy\\ObjectProphecy\:\:getFoo\(\)\.$#'
-			identifier: method.notFound
-			count: 1
-			path: test/StaticAnalysis/Test/ObjectProphecy/ProphesizeTest.php
-
-		-
 			message: '#^Call to an undefined method Prophecy\\Prophecy\\ObjectProphecy\<JanGregor\\Prophecy\\Test\\StaticAnalysis\\Src\\BaseModel\>\:\:doubleTheNumber\(\)\.$#'
 			identifier: method.notFound
-			count: 2
+			count: 3
 			path: test/StaticAnalysis/Test/ObjectProphecy/ProphesizeTest.php
 
 		-
 			message: '#^Call to an undefined method Prophecy\\Prophecy\\ObjectProphecy\<JanGregor\\Prophecy\\Test\\StaticAnalysis\\Src\\BaseModel\>\:\:getFoo\(\)\.$#'
 			identifier: method.notFound
-			count: 2
-			path: test/StaticAnalysis/Test/ObjectProphecy/ProphesizeTest.php
-
-		-
-			message: '#^Call to an undefined method object\:\:doubleTheNumber\(\)\.$#'
-			identifier: method.notFound
-			count: 1
-			path: test/StaticAnalysis/Test/ObjectProphecy/ProphesizeTest.php
-
-		-
-			message: '#^Call to an undefined method object\:\:getFoo\(\)\.$#'
-			identifier: method.notFound
-			count: 1
+			count: 3
 			path: test/StaticAnalysis/Test/ObjectProphecy/ProphesizeTest.php
 
 		-
@@ -73,15 +37,15 @@ parameters:
 			path: test/StaticAnalysis/Test/ObjectProphecy/ProphesizeTest.php
 
 		-
-			message: '#^Call to an undefined method Prophecy\\Prophecy\\ObjectProphecy\:\:baz\(\)\.$#'
-			identifier: method.notFound
-			count: 1
-			path: test/StaticAnalysis/Test/ObjectProphecy/WillExtendTest.php
-
-		-
 			message: '#^Call to an undefined method Prophecy\\Prophecy\\ObjectProphecy\<JanGregor\\Prophecy\\Test\\StaticAnalysis\\Src\\Baz\>\:\:baz\(\)\.$#'
 			identifier: method.notFound
 			count: 2
+			path: test/StaticAnalysis/Test/ObjectProphecy/WillExtendTest.php
+
+		-
+			message: '#^Call to an undefined method Prophecy\\Prophecy\\ObjectProphecy\<object\>\:\:baz\(\)\.$#'
+			identifier: method.notFound
+			count: 1
 			path: test/StaticAnalysis/Test/ObjectProphecy/WillExtendTest.php
 
 		-
@@ -94,6 +58,12 @@ parameters:
 			message: '#^Cannot call method willReturn\(\) on mixed\.$#'
 			identifier: method.nonObject
 			count: 3
+			path: test/StaticAnalysis/Test/ObjectProphecy/WillExtendTest.php
+
+		-
+			message: '#^Method JanGregor\\Prophecy\\Test\\StaticAnalysis\\Test\\ObjectProphecy\\WillExtendTest\:\:createProphecy\(\) should return Prophecy\\Prophecy\\ObjectProphecy\<JanGregor\\Prophecy\\Test\\StaticAnalysis\\Src\\Baz\> but returns Prophecy\\Prophecy\\ObjectProphecy\<object\>\.$#'
+			identifier: return.type
+			count: 1
 			path: test/StaticAnalysis/Test/ObjectProphecy/WillExtendTest.php
 
 		-
@@ -103,15 +73,15 @@ parameters:
 			path: test/StaticAnalysis/Test/ObjectProphecy/WillExtendTest.php
 
 		-
-			message: '#^Call to an undefined method Prophecy\\Prophecy\\ObjectProphecy\:\:bar\(\)\.$#'
-			identifier: method.notFound
-			count: 1
-			path: test/StaticAnalysis/Test/ObjectProphecy/WillImplementTest.php
-
-		-
 			message: '#^Call to an undefined method Prophecy\\Prophecy\\ObjectProphecy\<JanGregor\\Prophecy\\Test\\StaticAnalysis\\Src\\Bar\>\:\:bar\(\)\.$#'
 			identifier: method.notFound
 			count: 2
+			path: test/StaticAnalysis/Test/ObjectProphecy/WillImplementTest.php
+
+		-
+			message: '#^Call to an undefined method Prophecy\\Prophecy\\ObjectProphecy\<JanGregor\\Prophecy\\Test\\StaticAnalysis\\Src\\Foo\>\:\:bar\(\)\.$#'
+			identifier: method.notFound
+			count: 1
 			path: test/StaticAnalysis/Test/ObjectProphecy/WillImplementTest.php
 
 		-
@@ -127,7 +97,13 @@ parameters:
 			path: test/StaticAnalysis/Test/ObjectProphecy/WillImplementTest.php
 
 		-
-			message: '#^Parameter \#1 \$bar of method JanGregor\\Prophecy\\Test\\StaticAnalysis\\Src\\BaseModel\:\:bar\(\) expects JanGregor\\Prophecy\\Test\\StaticAnalysis\\Src\\Bar, object given\.$#'
+			message: '#^Method JanGregor\\Prophecy\\Test\\StaticAnalysis\\Test\\ObjectProphecy\\WillImplementTest\:\:createProphecy\(\) should return Prophecy\\Prophecy\\ObjectProphecy\<JanGregor\\Prophecy\\Test\\StaticAnalysis\\Src\\Bar\> but returns Prophecy\\Prophecy\\ObjectProphecy\<JanGregor\\Prophecy\\Test\\StaticAnalysis\\Src\\Foo\>\.$#'
+			identifier: return.type
+			count: 1
+			path: test/StaticAnalysis/Test/ObjectProphecy/WillImplementTest.php
+
+		-
+			message: '#^Parameter \#1 \$bar of method JanGregor\\Prophecy\\Test\\StaticAnalysis\\Src\\BaseModel\:\:bar\(\) expects JanGregor\\Prophecy\\Test\\StaticAnalysis\\Src\\Bar, JanGregor\\Prophecy\\Test\\StaticAnalysis\\Src\\Foo given\.$#'
 			identifier: argument.type
 			count: 1
 			path: test/StaticAnalysis/Test/ObjectProphecy/WillImplementTest.php

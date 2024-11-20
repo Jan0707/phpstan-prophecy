@@ -95,12 +95,14 @@ final class WillExtendOrImplementDynamicReturnTypeExtension implements Type\Dyna
             $className = $scope->getClassReflection()->getName();
         }
 
+        assert(get_class($calledOnType) === Type\Generic\GenericObjectType::class);
+
         return new Type\Generic\GenericObjectType(
             Prophecy\ObjectProphecy::class,
             [
                 Type\TypeCombinator::intersect(
                     new Type\ObjectType($className),
-                    //...$calledOnType->templ
+                    ...$calledOnType->getTypes(),
                 ),
             ],
         );

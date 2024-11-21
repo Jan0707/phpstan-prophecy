@@ -1,14 +1,4 @@
-parameters:
-    stubFiles:
-        - stubs/ObjectProphecy.phpstub
-        - stubs/ProphecyInterface.phpstub
-
 services:
-	-
-		class: JanGregor\Prophecy\PhpDoc\ObjectProphecy\TypeNodeResolverExtension
-		tags:
-			- phpstan.phpDoc.typeNodeResolverExtension
-
 	-
 		class: JanGregor\Prophecy\Reflection\ObjectProphecy\MethodsClassReflectionExtension
 		tags:
@@ -16,21 +6,5 @@ services:
 
 	-
 		class: JanGregor\Prophecy\Type\ObjectProphecy\WillExtendOrImplementDynamicReturnTypeExtension
-		tags:
-			- phpstan.broker.dynamicMethodReturnTypeExtension
-
-	-
-		class: JanGregor\Prophecy\Type\Prophet\ProphesizeDynamicReturnTypeExtension
-		arguments:
-			className: Prophecy\Prophet
-		autowired: false
-		tags:
-			- phpstan.broker.dynamicMethodReturnTypeExtension
-
-	-
-		class: JanGregor\Prophecy\Type\Prophet\ProphesizeDynamicReturnTypeExtension
-		arguments:
-			className: PHPUnit\Framework\TestCase
-		autowired: false
 		tags:
 			- phpstan.broker.dynamicMethodReturnTypeExtension

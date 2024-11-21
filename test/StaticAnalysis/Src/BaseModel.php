@@ -15,10 +15,12 @@ namespace JanGregor\Prophecy\Test\StaticAnalysis\Src;
 
 class BaseModel
 {
-    /**
-     * @var null|string
-     */
-    private $foo;
+    private ?string $foo;
+
+    public function __construct(?string $foo = null)
+    {
+        $this->foo = $foo;
+    }
 
     public function getFoo(): ?string
     {

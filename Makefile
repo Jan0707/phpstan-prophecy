@@ -11,7 +11,7 @@ coding-standards: vendor ## Normalizes composer.json with ergebnis/composer-norm
 	composer normalize
 	yamllint -c .yamllint.yaml --strict .
 	mkdir -p .build/php-cs-fixer
-	vendor/bin/php-cs-fixer fix --config=.php_cs --diff --diff-format=udiff --verbose
+	export PHP_CS_FIXER_IGNORE_ENV=1 && vendor/bin/php-cs-fixer fix --config=.php-cs-fixer.php --diff --verbose
 
 .PHONY: help
 help: ## Displays this list of targets with descriptions
@@ -26,7 +26,7 @@ static-code-analysis: vendor ## Runs a static code analysis with phpstan/phpstan
 .PHONY: static-code-analysis-baseline
 static-code-analysis-baseline: vendor ## Generates a baseline for static code analysis with phpstan/phpstan and vimeo/psalm
 	mkdir -p .build/phpstan
-	vendor/bin/phpstan analyze --configuration=phpstan-with-extension.neon --generate-baseline=phpstan-with-extension-baseline.neon --memory-limit=-1
+	vendor/bin/phpstan analyze --configuration=phpstan-with-extension.neon --generate-baseline=phpstan-with-extension-baseline.neon --allow-empty-baseline --memory-limit=-1
 	vendor/bin/phpstan analyze --configuration=phpstan-without-extension.neon --generate-baseline=phpstan-without-extension-baseline.neon --memory-limit=-1
 
 .PHONY: tests

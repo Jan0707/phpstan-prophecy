@@ -24,7 +24,6 @@ use Prophecy\Prophecy;
 final class MethodReflection implements Reflection\MethodReflection
 {
     private $declaringClass;
-
     private $name;
 
     public function __construct(Reflection\ClassReflection $declaringClass, string $name)
@@ -66,7 +65,7 @@ final class MethodReflection implements Reflection\MethodReflection
                 null,
                 [],
                 true,
-                new Type\ObjectType(Prophecy\MethodProphecy::class)
+                new Type\ObjectType(Prophecy\MethodProphecy::class),
             ),
         ];
     }

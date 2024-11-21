@@ -15,6 +15,7 @@ namespace JanGregor\Prophecy\Test\StaticAnalysis\Test\ObjectProphecy;
 
 use JanGregor\Prophecy\Test\StaticAnalysis\Src;
 use PHPUnit\Framework;
+use Prophecy\PhpUnit\ProphecyTrait;
 
 /**
  * @internal
@@ -23,7 +24,12 @@ use PHPUnit\Framework;
  */
 final class WillImplementTest extends Framework\TestCase
 {
-    private $prophecy;
+    use ProphecyTrait;
+
+    /**
+     * @var \Prophecy\Prophecy\ObjectProphecy<Src\Bar>
+     */
+    private \Prophecy\Prophecy\ObjectProphecy $prophecy;
 
     protected function setUp(): void
     {
@@ -47,13 +53,20 @@ final class WillImplementTest extends Framework\TestCase
         $prophecy = $this->prophesize(Src\Foo::class)->willImplement(Src\Bar::class);
 
         $prophecy
+            ->foo()
+            ->shouldBeCalled()
+            ->willReturn('foo');
+
+        $prophecy
             ->bar()
             ->shouldBeCalled()
             ->willReturn('Oh');
 
         $subject = new Src\BaseModel();
 
-        self::assertSame('Oh', $subject->bar($prophecy->reveal()));
+        $fooBar = $prophecy->reveal();
+        self::assertSame('foo', $fooBar->foo());
+        self::assertSame('Oh', $subject->bar($fooBar));
     }
 
     public function testCreateProphecyInHelperMethod(): void
@@ -70,6 +83,9 @@ final class WillImplementTest extends Framework\TestCase
         self::assertSame('Oh', $subject->bar($prophecy->reveal()));
     }
 
+    /**
+     * @return \Prophecy\Prophecy\ObjectProphecy<Src\Bar>
+     */
     private function createProphecy()
     {
         return $this->prophesize(Src\Foo::class)->willImplement(Src\Bar::class);

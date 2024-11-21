@@ -46,13 +46,6 @@ use PHPUnit\Framework;
 
 final class ExampleTest extends Framework\TestCase
 {
-    private $prophecy;
-
-    protected function setUp()
-    {
-        $this->prophecy = $this->prophesize(SomeModel::class);
-    }
-
     public function testSomething(): void
     {
         $prophecy = $this->prophesize(SomeModel::class);
@@ -61,26 +54,6 @@ final class ExampleTest extends Framework\TestCase
 
         // ...
     }
-
-    public function testSomethingElse(): void
-    {
-        $testDouble = $this->prophecy->reveal();
-
-        // ...
-    }
-
-    public function testSomethingDifferent(): void
-    {
-        $testDouble = $this->createProphecy()->reveal();
-
-        // ...
-    }
-
-    private function createProphecy()
-    {
-        return $this->prophesize(SomeModel::class);
-    }
-
 }
 ```
 
@@ -95,13 +68,6 @@ use PHPUnit\Framework;
 
 final class ExampleTest extends Framework\TestCase
 {
-    private $prophecy;
-
-    protected function setUp()
-    {
-        $this->prophecy = $this->prophesize()->willExtend(SomeModel::class);
-    }
-
     public function testSomething(): void
     {
         $prophecy = $this->prophesize()->willExtend(SomeModel::class);
@@ -109,25 +75,6 @@ final class ExampleTest extends Framework\TestCase
         $testDouble = $prophecy->reveal();
 
         // ...
-    }
-
-    public function testSomethingElse(): void
-    {
-        $testDouble = $this->prophecy->reveal();
-
-        // ...
-    }
-
-    public function testSomethingDifferent(): void
-    {
-        $testDouble = $this->createProphecy()->reveal();
-
-        // ...
-    }
-
-    private function createProphecy()
-    {
-        return $this->prophesize(SomeModel::class)->willExtend(SomeInterface::class);
     }
 }
 ```
@@ -143,13 +90,6 @@ use PHPUnit\Framework;
 
 final class ExampleTest extends Framework\TestCase
 {
-    private $prophecy;
-
-    protected function setUp()
-    {
-        $this->prophecy = $this->prophesize(SomeModel::class)->willImplement(SomeInterface::class);
-    }
-
     public function testSomething(): void
     {
         $prophecy = $this->prophesize(SomeModel::class)->willImplement(SomeInterface::class);
@@ -157,25 +97,6 @@ final class ExampleTest extends Framework\TestCase
         $testDouble = $prophecy->reveal();
 
         // ...
-    }
-
-    public function testSomethingElse(): void
-    {
-        $testDouble = $this->prophecy->reveal();
-
-        // ...
-    }
-
-    public function testSomethingDifferent(): void
-    {
-        $testDouble = $this->createProphecy()->reveal();
-
-        // ...
-    }
-
-    private function createProphecy()
-    {
-        return $this->prophesize(SomeModel::class)->willImplement(SomeInterface::class);
     }
 }
 ```

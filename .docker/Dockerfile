@@ -1,19 +1,8 @@
-FROM php:7.1-cli
+FROM php:7.4-cli
 
-# Install GD
-RUN apt-get update && apt-get install -y \
-        libfreetype6-dev \
-        libjpeg62-turbo-dev \
-        libpng-dev \
-    && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
-    && docker-php-ext-install gd
+ADD --chmod=0755 https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
 
-# Install ZIP
-RUN apt-get update && apt-get install -y \
-        libzip-dev \
-        zip \
-    && docker-php-ext-configure zip --with-libzip \
-    && docker-php-ext-install zip
+RUN install-php-extensions zip opcache
 
 # Install tools
 RUN apt-get update && apt-get install -y \
@@ -22,7 +11,3 @@ RUN apt-get update && apt-get install -y \
 ENV COMPOSER_ALLOW_SUPERUSER 1
 RUN curl -sS https://getcomposer.org/installer | \
     php -- --install-dir=/usr/bin/ --filename=composer
-
-RUN curl -LO https://deployer.org/deployer.phar \
-    && mv deployer.phar /usr/local/bin/dep \
-    && chmod +x /usr/local/bin/dep

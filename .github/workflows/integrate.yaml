@@ -46,20 +46,9 @@ jobs:
       - name: "Validate composer.json and composer.lock"
         run: "composer validate --ansi --strict"
 
-      - name: "Determine composer cache directory"
-        uses: "./.github/actions/composer/composer/determine-cache-directory"
-
-      - name: "Cache dependencies installed with composer"
-        uses: "actions/cache@v4"
+      - uses: "ramsey/composer-install@v3"
         with:
-          path: "${{ env.COMPOSER_CACHE_DIR }}"
-          key: "php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-${{ hashFiles('composer.lock') }}"
-          restore-keys: "php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-"
-
-      - name: "Install ${{ matrix.dependencies }} dependencies with composer"
-        uses: "./.github/actions/composer/composer/install"
-        with:
-          dependencies: "${{ matrix.dependencies }}"
+          dependency-versions: "${{ matrix.dependencies }}"
 
       - name: "Run ergebnis/composer-normalize"
         run: "composer normalize --ansi --dry-run"
@@ -117,23 +106,12 @@ jobs:
           extensions: "${{ env.PHP_EXTENSIONS }}"
           php-version: "${{ matrix.php-version }}"
 
-      - name: "Determine composer cache directory"
-        uses: "./.github/actions/composer/composer/determine-cache-directory"
-
-      - name: "Cache dependencies installed with composer"
-        uses: "actions/cache@v4"
-        with:
-          path: "${{ env.COMPOSER_CACHE_DIR }}"
-          key: "php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-${{ hashFiles('composer.lock') }}"
-          restore-keys: "php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-"
-
       - name: "Require phpunit/phpunit:^${{ matrix.phpunit-version }}"
         run: "composer require phpunit/phpunit:^${{ matrix.phpunit-version }} --ansi --dev --no-update"
 
-      - name: "Install ${{ matrix.dependencies }} dependencies with composer"
-        uses: "./.github/actions/composer/composer/install"
+      - uses: "ramsey/composer-install@v3"
         with:
-          dependencies: "${{ matrix.dependencies }}"
+          dependency-versions: "${{ matrix.dependencies }}"
 
       - name: "Cache cache directory for phpstan/phpstan"
         uses: "actions/cache@v4"
@@ -187,20 +165,9 @@ jobs:
       - name: "Set up problem matchers for phpunit/phpunit"
         run: "echo \"::add-matcher::${{ runner.tool_cache }}/phpunit.json\""
 
-      - name: "Determine composer cache directory"
-        uses: "./.github/actions/composer/composer/determine-cache-directory"
-
-      - name: "Cache dependencies installed with composer"
-        uses: "actions/cache@v4"
+      - uses: "ramsey/composer-install@v3"
         with:
-          path: "${{ env.COMPOSER_CACHE_DIR }}"
-          key: "php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-${{ hashFiles('composer.lock') }}"
-          restore-keys: "php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-"
-
-      - name: "Install ${{ matrix.dependencies }} dependencies with composer"
-        uses: "./.github/actions/composer/composer/install"
-        with:
-          dependencies: "${{ matrix.dependencies }}"
+          dependency-versions: "${{ matrix.dependencies }}"
 
       - name: "Run tests with phpunit/phpunit"
         run: "vendor/bin/phpunit --configuration=phpunit.xml"

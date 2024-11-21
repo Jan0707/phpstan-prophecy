@@ -128,7 +128,7 @@ jobs:
           restore-keys: "php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-"
 
       - name: "Require phpunit/phpunit:^${{ matrix.phpunit-version }}"
-        run: "composer require phpunit/phpunit:^${{ matrix.phpunit-version }} --ansi --dev --update-with-dependencies"
+        run: "composer require phpunit/phpunit:^${{ matrix.phpunit-version }} --ansi --dev --no-update"
 
       - name: "Install ${{ matrix.dependencies }} dependencies with composer"
         uses: "./.github/actions/composer/composer/install"

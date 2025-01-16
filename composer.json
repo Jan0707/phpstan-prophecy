@@ -21,7 +21,7 @@
   "require-dev": {
     "ergebnis/composer-normalize": "^2.1.1",
     "ergebnis/license": "^2.6.0",
-    "ergebnis/php-cs-fixer-config": "^4.0 || ^5.0 || ^6.0",
+    "ergebnis/php-cs-fixer-config": "^6.42.0",
     "phpspec/prophecy": "^1.7.0",
     "phpspec/prophecy-phpunit": "^2.3",
     "phpunit/phpunit": "^9.1.0"

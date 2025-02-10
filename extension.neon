@@ -3,8 +3,3 @@ services:
 		class: JanGregor\Prophecy\Reflection\ObjectProphecy\MethodsClassReflectionExtension
 		tags:
 			- phpstan.broker.methodsClassReflectionExtension
-
-	-
-		class: JanGregor\Prophecy\Type\ObjectProphecy\WillExtendOrImplementDynamicReturnTypeExtension
-		tags:
-			- phpstan.broker.dynamicMethodReturnTypeExtension

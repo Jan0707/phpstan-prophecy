@@ -32,9 +32,15 @@ final class WillExtendTest extends Framework\TestCase
      */
     private \Prophecy\Prophecy\ObjectProphecy $prophecy;
 
+    /**
+     * @var ObjectProphecy<Src\Baz&Src\Bar>
+     */
+    private \Prophecy\Prophecy\ObjectProphecy $prophecyWithInterface;
+
     protected function setUp(): void
     {
         $this->prophecy = $this->prophesize()->willExtend(Src\Baz::class);
+        $this->prophecyWithInterface = $this->prophesize(Src\Bar::class)->willExtend(Src\Baz::class);
     }
 
     public function testCreateProphecyInSetUp(): void
@@ -47,6 +53,18 @@ final class WillExtendTest extends Framework\TestCase
         $subject = new Src\BaseModel();
 
         self::assertSame('Hmm', $subject->baz($this->prophecy->reveal()));
+    }
+
+    public function testCreateProphecyInSetUpWithInterface(): void
+    {
+        $this->prophecyWithInterface
+            ->bar()
+            ->shouldBeCalled()
+            ->willReturn('Hmm');
+
+        $subject = new Src\BaseModel();
+
+        self::assertSame('Hmm', $subject->bar($this->prophecyWithInterface->reveal()));
     }
 
     public function testCreateProphecyInTestMethod(): void

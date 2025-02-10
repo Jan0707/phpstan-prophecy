@@ -27,13 +27,14 @@ final class WillImplementTest extends Framework\TestCase
     use ProphecyTrait;
 
     /**
-     * @var \Prophecy\Prophecy\ObjectProphecy<Src\Bar>
+     * @var \Prophecy\Prophecy\ObjectProphecy<Src\Foo&Src\Bar>
      */
     private \Prophecy\Prophecy\ObjectProphecy $prophecy;
 
     protected function setUp(): void
     {
-        $this->prophecy = $this->prophesize(Src\Foo::class)->willImplement(Src\Bar::class);
+        $this->prophecy = $this->prophesize(Src\Foo::class)
+            ->willImplement(Src\Bar::class);
     }
 
     public function testCreateProphecyInSetUp(): void
@@ -43,9 +44,15 @@ final class WillImplementTest extends Framework\TestCase
             ->shouldBeCalled()
             ->willReturn('Oh');
 
+        $this->prophecy
+            ->foo()
+            ->shouldBeCalled()
+            ->willReturn('Oh2');
+
         $subject = new Src\BaseModel();
 
         self::assertSame('Oh', $subject->bar($this->prophecy->reveal()));
+        self::assertSame('Oh2', $subject->foo($this->prophecy->reveal()));
     }
 
     public function testCreateProphecyInTestMethod(): void
@@ -84,7 +91,7 @@ final class WillImplementTest extends Framework\TestCase
     }
 
     /**
-     * @return \Prophecy\Prophecy\ObjectProphecy<Src\Bar>
+     * @return \Prophecy\Prophecy\ObjectProphecy<Src\Foo&Src\Bar>
      */
     private function createProphecy()
     {

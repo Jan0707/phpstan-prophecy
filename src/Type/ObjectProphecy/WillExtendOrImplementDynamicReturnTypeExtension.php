@@ -72,6 +72,7 @@ final class WillExtendOrImplementDynamicReturnTypeExtension implements Type\Dyna
         $templateObjectType = $calledOnType->getTemplateType(Prophecy\ObjectProphecy::class, 'T');
 
         $objects = [];
+
         if ($templateObjectType->isObject()->no()
             || \count($templateObjectType->getObjectClassNames()) !== 0) {
             $objects[] = $templateObjectType;

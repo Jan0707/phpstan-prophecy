@@ -16,7 +16,6 @@ namespace JanGregor\Prophecy\Type\ObjectProphecy;
 use PhpParser\Node;
 use PHPStan\Analyser;
 use PHPStan\Reflection;
-use PHPStan\ShouldNotHappenException;
 use PHPStan\Type;
 use Prophecy\Prophecy;
 

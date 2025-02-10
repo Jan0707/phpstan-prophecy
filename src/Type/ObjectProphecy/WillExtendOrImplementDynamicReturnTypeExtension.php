@@ -61,49 +61,35 @@ final class WillExtendOrImplementDynamicReturnTypeExtension implements Type\Dyna
             return $returnType;
         }
 
-        if (0 === \count($methodCall->getArgs())) {
+        $args = $methodCall->getArgs();
+
+        if (0 === \count($args)) {
             return $returnType;
         }
 
-        $argumentType = $scope->getType($methodCall->getArgs()[0]->value);
+        $argumentType = $scope->getType($args[0]->value);
 
-        if ($argumentType->isConstantScalarValue()->no() || $argumentType->isString()->no()) {
+        $templateObjectType = $calledOnType->getTemplateType(Prophecy\ObjectProphecy::class, 'T');
+        $classObjectType = $argumentType->getClassStringObjectType();
+
+        if ($templateObjectType->isObject()->no()) {
             return $returnType;
         }
 
-        $classNames = $argumentType->getConstantScalarValues();
-
-        if (1 !== \count($classNames)) {
-            throw new ShouldNotHappenException();
-        }
-
-        $className = $classNames[0];
-
-        if (!\is_string($className)) {
+        if ($classObjectType->isObject()->no()) {
             return $returnType;
         }
 
-        if ($returnType->isObject()->no()) {
-            throw new ShouldNotHappenException();
+        $objects = [];
+        if (\count($templateObjectType->getObjectClassNames()) !== 0) {
+            $objects[] = $templateObjectType;
         }
-
-        if ('static' === $className) {
-            return $returnType;
-        }
-
-        if ('self' === $className && null !== $scope->getClassReflection()) {
-            $className = $scope->getClassReflection()->getName();
-        }
-
-        \assert($calledOnType instanceof Type\Generic\GenericObjectType);
+        $objects[] = $classObjectType;
 
         return new Type\Generic\GenericObjectType(
             Prophecy\ObjectProphecy::class,
             [
-                Type\TypeCombinator::intersect(
-                    new Type\ObjectType($className),
-                    ...$calledOnType->getTypes(),
-                ),
+                Type\TypeCombinator::intersect(...$objects),
             ],
         );
     }

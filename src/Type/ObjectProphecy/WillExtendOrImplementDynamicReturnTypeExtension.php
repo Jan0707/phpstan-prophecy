@@ -70,20 +70,19 @@ final class WillExtendOrImplementDynamicReturnTypeExtension implements Type\Dyna
         $argumentType = $scope->getType($args[0]->value);
 
         $templateObjectType = $calledOnType->getTemplateType(Prophecy\ObjectProphecy::class, 'T');
-        $classObjectType = $argumentType->getClassStringObjectType();
 
-        if ($templateObjectType->isObject()->no()) {
-            return $returnType;
+        $objects = [];
+        if ($templateObjectType->isObject()->no()
+            || \count($templateObjectType->getObjectClassNames()) !== 0) {
+            $objects[] = $templateObjectType;
         }
+
+        $classObjectType = $argumentType->getClassStringObjectType();
 
         if ($classObjectType->isObject()->no()) {
             return $returnType;
         }
 
-        $objects = [];
-        if (\count($templateObjectType->getObjectClassNames()) !== 0) {
-            $objects[] = $templateObjectType;
-        }
         $objects[] = $classObjectType;
 
         return new Type\Generic\GenericObjectType(

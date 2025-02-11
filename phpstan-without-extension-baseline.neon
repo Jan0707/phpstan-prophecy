@@ -45,13 +45,7 @@ parameters:
 		-
 			message: '#^Call to an undefined method Prophecy\\Prophecy\\ObjectProphecy\<JanGregor\\Prophecy\\Test\\StaticAnalysis\\Src\\Baz\>\:\:baz\(\)\.$#'
 			identifier: method.notFound
-			count: 3
-			path: test/StaticAnalysis/Test/ObjectProphecy/WillExtendTest.php
-
-		-
-			message: '#^Call to an undefined method Prophecy\\Prophecy\\ObjectProphecy\<object\>\:\:baz\(\)\.$#'
-			identifier: method.notFound
-			count: 1
+			count: 4
 			path: test/StaticAnalysis/Test/ObjectProphecy/WillExtendTest.php
 
 		-
@@ -67,45 +61,15 @@ parameters:
 			path: test/StaticAnalysis/Test/ObjectProphecy/WillExtendTest.php
 
 		-
-			message: '#^Method JanGregor\\Prophecy\\Test\\StaticAnalysis\\Test\\ObjectProphecy\\WillExtendTest\:\:createProphecy\(\) should return Prophecy\\Prophecy\\ObjectProphecy\<JanGregor\\Prophecy\\Test\\StaticAnalysis\\Src\\Baz\> but returns Prophecy\\Prophecy\\ObjectProphecy\<object\>\.$#'
-			identifier: return.type
-			count: 1
-			path: test/StaticAnalysis/Test/ObjectProphecy/WillExtendTest.php
-
-		-
-			message: '#^Parameter \#1 \$baz of method JanGregor\\Prophecy\\Test\\StaticAnalysis\\Src\\BaseModel\:\:baz\(\) expects JanGregor\\Prophecy\\Test\\StaticAnalysis\\Src\\Baz, object given\.$#'
-			identifier: argument.type
-			count: 1
-			path: test/StaticAnalysis/Test/ObjectProphecy/WillExtendTest.php
-
-		-
-			message: '#^Property JanGregor\\Prophecy\\Test\\StaticAnalysis\\Test\\ObjectProphecy\\WillExtendTest\:\:\$prophecy \(Prophecy\\Prophecy\\ObjectProphecy\<JanGregor\\Prophecy\\Test\\StaticAnalysis\\Src\\Baz\>\) does not accept \$this\(JanGregor\\Prophecy\\Test\\StaticAnalysis\\Test\\ObjectProphecy\\WillExtendTest\)\.$#'
-			identifier: assign.propertyType
-			count: 1
-			path: test/StaticAnalysis/Test/ObjectProphecy/WillExtendTest.php
-
-		-
-			message: '#^Property JanGregor\\Prophecy\\Test\\StaticAnalysis\\Test\\ObjectProphecy\\WillExtendTest\:\:\$prophecyOnlyClass \(Prophecy\\Prophecy\\ObjectProphecy\<JanGregor\\Prophecy\\Test\\StaticAnalysis\\Src\\Baz\>\) does not accept \$this\(JanGregor\\Prophecy\\Test\\StaticAnalysis\\Test\\ObjectProphecy\\WillExtendTest\)\.$#'
-			identifier: assign.propertyType
-			count: 1
-			path: test/StaticAnalysis/Test/ObjectProphecy/WillExtendTest.php
-
-		-
-			message: '#^Property JanGregor\\Prophecy\\Test\\StaticAnalysis\\Test\\ObjectProphecy\\WillExtendTest\:\:\$prophecyWithInterface \(Prophecy\\Prophecy\\ObjectProphecy\<JanGregor\\Prophecy\\Test\\StaticAnalysis\\Src\\Bar&JanGregor\\Prophecy\\Test\\StaticAnalysis\\Src\\Baz\>\) does not accept \$this\(JanGregor\\Prophecy\\Test\\StaticAnalysis\\Test\\ObjectProphecy\\WillExtendTest\)\.$#'
-			identifier: assign.propertyType
-			count: 1
-			path: test/StaticAnalysis/Test/ObjectProphecy/WillExtendTest.php
-
-		-
 			message: '#^Call to an undefined method Prophecy\\Prophecy\\ObjectProphecy\<JanGregor\\Prophecy\\Test\\StaticAnalysis\\Src\\Bar&JanGregor\\Prophecy\\Test\\StaticAnalysis\\Src\\Foo\>\:\:bar\(\)\.$#'
 			identifier: method.notFound
-			count: 2
+			count: 3
 			path: test/StaticAnalysis/Test/ObjectProphecy/WillImplementTest.php
 
 		-
 			message: '#^Call to an undefined method Prophecy\\Prophecy\\ObjectProphecy\<JanGregor\\Prophecy\\Test\\StaticAnalysis\\Src\\Bar&JanGregor\\Prophecy\\Test\\StaticAnalysis\\Src\\Foo\>\:\:foo\(\)\.$#'
 			identifier: method.notFound
-			count: 1
+			count: 2
 			path: test/StaticAnalysis/Test/ObjectProphecy/WillImplementTest.php
 
 		-
@@ -115,15 +79,9 @@ parameters:
 			path: test/StaticAnalysis/Test/ObjectProphecy/WillImplementTest.php
 
 		-
-			message: '#^Call to an undefined method Prophecy\\Prophecy\\ObjectProphecy\<JanGregor\\Prophecy\\Test\\StaticAnalysis\\Src\\Foo\>\:\:bar\(\)\.$#'
-			identifier: method.notFound
-			count: 1
-			path: test/StaticAnalysis/Test/ObjectProphecy/WillImplementTest.php
-
-		-
 			message: '#^Call to an undefined method Prophecy\\Prophecy\\ObjectProphecy\<JanGregor\\Prophecy\\Test\\StaticAnalysis\\Src\\Foo\>\:\:foo\(\)\.$#'
 			identifier: method.notFound
-			count: 2
+			count: 1
 			path: test/StaticAnalysis/Test/ObjectProphecy/WillImplementTest.php
 
 		-
@@ -136,40 +94,4 @@ parameters:
 			message: '#^Cannot call method willReturn\(\) on mixed\.$#'
 			identifier: method.nonObject
 			count: 8
-			path: test/StaticAnalysis/Test/ObjectProphecy/WillImplementTest.php
-
-		-
-			message: '#^Method JanGregor\\Prophecy\\Test\\StaticAnalysis\\Test\\ObjectProphecy\\WillImplementTest\:\:createProphecy\(\) should return Prophecy\\Prophecy\\ObjectProphecy\<JanGregor\\Prophecy\\Test\\StaticAnalysis\\Src\\Bar&JanGregor\\Prophecy\\Test\\StaticAnalysis\\Src\\Foo\> but returns Prophecy\\Prophecy\\ObjectProphecy\<JanGregor\\Prophecy\\Test\\StaticAnalysis\\Src\\Foo\>\.$#'
-			identifier: return.type
-			count: 1
-			path: test/StaticAnalysis/Test/ObjectProphecy/WillImplementTest.php
-
-		-
-			message: '#^Parameter \#1 \$bar of method JanGregor\\Prophecy\\Test\\StaticAnalysis\\Src\\BaseModel\:\:bar\(\) expects JanGregor\\Prophecy\\Test\\StaticAnalysis\\Src\\Bar, JanGregor\\Prophecy\\Test\\StaticAnalysis\\Src\\Foo given\.$#'
-			identifier: argument.type
-			count: 1
-			path: test/StaticAnalysis/Test/ObjectProphecy/WillImplementTest.php
-
-		-
-			message: '#^Property JanGregor\\Prophecy\\Test\\StaticAnalysis\\Test\\ObjectProphecy\\WillImplementTest\:\:\$prophecy \(Prophecy\\Prophecy\\ObjectProphecy\<JanGregor\\Prophecy\\Test\\StaticAnalysis\\Src\\Bar&JanGregor\\Prophecy\\Test\\StaticAnalysis\\Src\\Foo\>\) does not accept \$this\(JanGregor\\Prophecy\\Test\\StaticAnalysis\\Test\\ObjectProphecy\\WillImplementTest\)\.$#'
-			identifier: assign.propertyType
-			count: 1
-			path: test/StaticAnalysis/Test/ObjectProphecy/WillImplementTest.php
-
-		-
-			message: '#^Property JanGregor\\Prophecy\\Test\\StaticAnalysis\\Test\\ObjectProphecy\\WillImplementTest\:\:\$prophecyBar \(Prophecy\\Prophecy\\ObjectProphecy\<JanGregor\\Prophecy\\Test\\StaticAnalysis\\Src\\Bar\>\) does not accept \$this\(JanGregor\\Prophecy\\Test\\StaticAnalysis\\Test\\ObjectProphecy\\WillImplementTest\)\.$#'
-			identifier: assign.propertyType
-			count: 1
-			path: test/StaticAnalysis/Test/ObjectProphecy/WillImplementTest.php
-
-		-
-			message: '#^Property JanGregor\\Prophecy\\Test\\StaticAnalysis\\Test\\ObjectProphecy\\WillImplementTest\:\:\$prophecyFoo \(Prophecy\\Prophecy\\ObjectProphecy\<JanGregor\\Prophecy\\Test\\StaticAnalysis\\Src\\Foo\>\) does not accept \$this\(JanGregor\\Prophecy\\Test\\StaticAnalysis\\Test\\ObjectProphecy\\WillImplementTest\)\.$#'
-			identifier: assign.propertyType
-			count: 1
-			path: test/StaticAnalysis/Test/ObjectProphecy/WillImplementTest.php
-
-		-
-			message: '#^Property JanGregor\\Prophecy\\Test\\StaticAnalysis\\Test\\ObjectProphecy\\WillImplementTest\:\:\$prophecyOnlyInterface \(Prophecy\\Prophecy\\ObjectProphecy\<JanGregor\\Prophecy\\Test\\StaticAnalysis\\Src\\Bar\>\) does not accept \$this\(JanGregor\\Prophecy\\Test\\StaticAnalysis\\Test\\ObjectProphecy\\WillImplementTest\)\.$#'
-			identifier: assign.propertyType
-			count: 1
 			path: test/StaticAnalysis/Test/ObjectProphecy/WillImplementTest.php

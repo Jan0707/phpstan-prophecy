@@ -11,7 +11,7 @@
   ],
   "require": {
     "php": "^7.4 || ^8.0",
-    "phpstan/phpstan": "^2.0.0"
+    "phpstan/phpstan": "^2.1.5"
   },
   "require-dev": {
     "ergebnis/composer-normalize": "^2.1.1",
@@ -42,6 +42,8 @@
     },
     "sort-packages": true
   },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
   "extra": {
     "phpstan": {
       "includes": [

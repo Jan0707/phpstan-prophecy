@@ -38,7 +38,7 @@ final class WillExtendTest extends Framework\TestCase
     private \Prophecy\Prophecy\ObjectProphecy $prophecyWithInterface;
 
     /**
-     * @var ObjectProphecy<Src\Bar>
+     * @var ObjectProphecy<Src\Baz>
      */
     private \Prophecy\Prophecy\ObjectProphecy $prophecyOnlyClass;
 

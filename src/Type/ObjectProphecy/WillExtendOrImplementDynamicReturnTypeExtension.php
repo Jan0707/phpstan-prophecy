@@ -47,43 +47,18 @@ final class WillExtendOrImplementDynamicReturnTypeExtension implements Type\Dyna
         Reflection\MethodReflection $methodReflection,
         Node\Expr\MethodCall $methodCall,
         Analyser\Scope $scope
-    ): Type\Type {
-        $returnType = Reflection\ParametersAcceptorSelector::selectFromArgs(
-            $scope,
-            $methodCall->getArgs(),
-            $methodReflection->getVariants(),
-        )->getReturnType();
+    ): ?Type\Type {
+        $args = $methodCall->getArgs();
+        if (0 === \count($args)) {
+            return null;
+        }
 
         $calledOnType = $scope->getType($methodCall->var);
-
-        if ((new Type\ObjectType(Prophecy\ObjectProphecy::class))->isSuperTypeOf($calledOnType)->no()) {
-            return $returnType;
-        }
-
-        $args = $methodCall->getArgs();
-
-        if (0 === \count($args)) {
-            return $returnType;
-        }
-
-        $argumentType = $scope->getType($args[0]->value);
-
         $templateObjectType = $calledOnType->getTemplateType(Prophecy\ObjectProphecy::class, 'T');
 
-        $objects = [];
-
-        if ($templateObjectType->isObject()->no()
-            || \count($templateObjectType->getObjectClassNames()) !== 0) {
-            $objects[] = $templateObjectType;
-        }
-
-        $classObjectType = $argumentType->getClassStringObjectType();
-
-        if ($classObjectType->isObject()->no()) {
-            return $returnType;
-        }
-
-        $objects[] = $classObjectType;
+        $objects = [$templateObjectType];
+        $argumentType = $scope->getType($args[0]->value);
+        $objects[] = $argumentType->getClassStringObjectType();
 
         return new Type\Generic\GenericObjectType(
             Prophecy\ObjectProphecy::class,

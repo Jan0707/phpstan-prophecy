@@ -49,6 +49,7 @@ final class WillExtendOrImplementDynamicReturnTypeExtension implements Type\Dyna
         Analyser\Scope $scope
     ): ?Type\Type {
         $args = $methodCall->getArgs();
+
         if (0 === \count($args)) {
             return null;
         }

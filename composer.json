@@ -26,6 +26,8 @@
     "phpspec/prophecy-phpunit": "<2.3.0 || >=3.0.0",
     "phpunit/phpunit": "<9.1.0 || >=12.0.0"
   },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
   "autoload": {
     "psr-4": {
       "JanGregor\\Prophecy\\": "src/"
@@ -42,8 +44,6 @@
     },
     "sort-packages": true
   },
-  "minimum-stability": "dev",
-  "prefer-stable": true,
   "extra": {
     "phpstan": {
       "includes": [

@@ -23,9 +23,14 @@ $license = License\Type\MIT::text(
 
 $license->save();
 
-$config = PhpCsFixer\Config\Factory::fromRuleSet(new PhpCsFixer\Config\RuleSet\Php74($license->header()), [
-    'final_class' => false,
-]);
+$config = PhpCsFixer\Config\Factory::fromRuleSet(
+    PhpCsFixer\Config\RuleSet\Php74::create()
+        ->withHeader($license->header())
+        ->withRules(PhpCsFixer\Config\Rules::fromArray([
+            'final_class' => false,
+            'trailing_comma_in_multiline' => false,
+        ]))
+);
 
 $config->getFinder()
     ->exclude([

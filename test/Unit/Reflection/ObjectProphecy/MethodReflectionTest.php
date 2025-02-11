@@ -21,9 +21,9 @@ use PHPUnit\Framework;
 use Prophecy\Prophecy;
 
 /**
- * @covers \JanGregor\Prophecy\Reflection\ObjectProphecy\MethodReflection
- *
  * @internal
+ *
+ * @covers \JanGregor\Prophecy\Reflection\ObjectProphecy\MethodReflection
  */
 final class MethodReflectionTest extends Framework\TestCase
 {

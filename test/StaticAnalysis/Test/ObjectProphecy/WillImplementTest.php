@@ -31,9 +31,30 @@ final class WillImplementTest extends Framework\TestCase
      */
     private \Prophecy\Prophecy\ObjectProphecy $prophecy;
 
+    /**
+     * @var \Prophecy\Prophecy\ObjectProphecy<Src\Foo>
+     */
+    private \Prophecy\Prophecy\ObjectProphecy $prophecyFoo;
+
+    /**
+     * @var \Prophecy\Prophecy\ObjectProphecy<Src\Bar>
+     */
+    private \Prophecy\Prophecy\ObjectProphecy $prophecyBar;
+
+    /**
+     * @var \Prophecy\Prophecy\ObjectProphecy<Src\Bar>
+     */
+    private \Prophecy\Prophecy\ObjectProphecy $prophecyOnlyInterface;
+
     protected function setUp(): void
     {
         $this->prophecy = $this->prophesize(Src\Foo::class)
+            ->willImplement(Src\Bar::class);
+        $this->prophecyFoo = $this->prophesize(Src\Foo::class)
+            ->willImplement(Src\Bar::class);
+        $this->prophecyBar = $this->prophesize(Src\Foo::class)
+            ->willImplement(Src\Bar::class);
+        $this->prophecyOnlyInterface = $this->prophesize()
             ->willImplement(Src\Bar::class);
     }
 
@@ -53,6 +74,42 @@ final class WillImplementTest extends Framework\TestCase
 
         self::assertSame('Oh', $subject->bar($this->prophecy->reveal()));
         self::assertSame('Oh2', $subject->foo($this->prophecy->reveal()));
+    }
+
+    public function testCreateProphecyFooInSetUp(): void
+    {
+        $this->prophecyFoo
+            ->foo()
+            ->shouldBeCalled()
+            ->willReturn('Oh2');
+
+        $subject = new Src\BaseModel();
+
+        self::assertSame('Oh2', $subject->foo($this->prophecyFoo->reveal()));
+    }
+
+    public function testCreateProphecyBarInSetUp(): void
+    {
+        $this->prophecyBar
+            ->bar()
+            ->shouldBeCalled()
+            ->willReturn('Oh');
+
+        $subject = new Src\BaseModel();
+
+        self::assertSame('Oh', $subject->bar($this->prophecyBar->reveal()));
+    }
+
+    public function testCreateProphecyOnlyInterfaceInSetUp(): void
+    {
+        $this->prophecyOnlyInterface
+            ->bar()
+            ->shouldBeCalled()
+            ->willReturn('Oh');
+
+        $subject = new Src\BaseModel();
+
+        self::assertSame('Oh', $subject->bar($this->prophecyOnlyInterface->reveal()));
     }
 
     public function testCreateProphecyInTestMethod(): void

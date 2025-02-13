@@ -27,7 +27,7 @@ final class WillImplementTest extends Framework\TestCase
     use ProphecyTrait;
 
     /**
-     * @var \Prophecy\Prophecy\ObjectProphecy<Src\Foo&Src\Bar>
+     * @var \Prophecy\Prophecy\ObjectProphecy<Src\Bar&Src\Foo>
      */
     private \Prophecy\Prophecy\ObjectProphecy $prophecy;
 
@@ -91,7 +91,7 @@ final class WillImplementTest extends Framework\TestCase
     }
 
     /**
-     * @return \Prophecy\Prophecy\ObjectProphecy<Src\Foo&Src\Bar>
+     * @return \Prophecy\Prophecy\ObjectProphecy<Src\Bar&Src\Foo>
      */
     private function createProphecy()
     {

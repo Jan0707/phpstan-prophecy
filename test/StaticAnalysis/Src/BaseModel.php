@@ -46,4 +46,9 @@ class BaseModel
     {
         return $baz->baz();
     }
+
+    public function foo(Foo $foo): string
+    {
+        return $foo->foo();
+    }
 }

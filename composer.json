@@ -18,7 +18,7 @@
     "ergebnis/license": "^2.6.0",
     "ergebnis/php-cs-fixer-config": "^6.46.0",
     "phpspec/prophecy": "^1.7.0",
-    "phpspec/prophecy-phpunit": "^2.3 || dev-master#d3c2804 as 2.4.0",
+    "phpspec/prophecy-phpunit": "^2.3",
     "phpunit/phpunit": "^9.1.0"
   },
   "conflict": {

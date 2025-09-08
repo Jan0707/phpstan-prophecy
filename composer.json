@@ -14,7 +14,7 @@
     "phpstan/phpstan": "^2.1.5"
   },
   "require-dev": {
-    "ergebnis/composer-normalize": "^2.48.1",
+    "ergebnis/composer-normalize": "^2.48.2",
     "ergebnis/license": "^2.7.0",
     "ergebnis/php-cs-fixer-config": "^6.54.0",
     "phpspec/prophecy": "^1.7.0",

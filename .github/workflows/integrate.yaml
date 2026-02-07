@@ -94,6 +94,9 @@ jobs:
           - php-version: "8.4"
             phpunit-version: "12.0"
             dependencies: "highest"
+          - php-version: "8.5"
+            phpunit-version: "13.0"
+            dependencies: "highest"
 
     steps:
       - name: "Checkout"
@@ -140,6 +143,7 @@ jobs:
     strategy:
       matrix:
         php-version:
+          - "8.5"
           - "8.4"
           - "8.3"
           - "8.2"

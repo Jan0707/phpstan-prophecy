@@ -11,6 +11,8 @@ declare(strict_types=1);
  * @see https://github.com/Jan0707/phpstan-prophecy
  */
 
+require_once __DIR__ . '/vendor/autoload.php';
+
 use Ergebnis\License;
 use Ergebnis\PhpCsFixer;
 

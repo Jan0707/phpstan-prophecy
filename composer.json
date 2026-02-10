@@ -17,6 +17,7 @@
     "ergebnis/composer-normalize": "^2.50.0",
     "ergebnis/license": "^2.7.0",
     "ergebnis/php-cs-fixer-config": "^6.59.0",
+    "php-cs-fixer/shim": "^3.93.0",
     "phpspec/prophecy": "^1.7.0",
     "phpspec/prophecy-phpunit": "^2.3",
     "phpunit/phpunit": "^9.1.0"
@@ -24,7 +25,7 @@
   "conflict": {
     "phpspec/prophecy": "<1.17.0 || >=2.0.0",
     "phpspec/prophecy-phpunit": "<2.3.0 || >=3.0.0",
-    "phpunit/phpunit": "<9.1.0 || >=13.0.0"
+    "phpunit/phpunit": "<9.1.0 || >=14.0.0"
   },
   "autoload": {
     "psr-4": {

@@ -46,7 +46,7 @@ jobs:
       - name: "Validate composer.json and composer.lock"
         run: "composer validate --ansi --strict"
 
-      - uses: "ramsey/composer-install@v3"
+      - uses: "ramsey/composer-install@v4"
         with:
           dependency-versions: "${{ matrix.dependencies }}"
 
@@ -112,7 +112,7 @@ jobs:
       - name: "Require phpunit/phpunit:^${{ matrix.phpunit-version }}"
         run: "composer require phpunit/phpunit:^${{ matrix.phpunit-version }} --ansi --dev --no-update"
 
-      - uses: "ramsey/composer-install@v3"
+      - uses: "ramsey/composer-install@v4"
         with:
           dependency-versions: "${{ matrix.dependencies }}"
 
@@ -169,7 +169,7 @@ jobs:
       - name: "Set up problem matchers for phpunit/phpunit"
         run: "echo \"::add-matcher::${{ runner.tool_cache }}/phpunit.json\""
 
-      - uses: "ramsey/composer-install@v3"
+      - uses: "ramsey/composer-install@v4"
         with:
           dependency-versions: "${{ matrix.dependencies }}"
 

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "29a3d04defcb9e218727466fdd77d8fd",
+    "content-hash": "9085421b663584e3196b887c16b035d9",
     "packages": [
         {
             "name": "phpstan/phpstan",
@@ -1352,16 +1352,16 @@
         },
         {
             "name": "php-cs-fixer/shim",
-            "version": "v3.95.20",
+            "version": "v3.95.21",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHP-CS-Fixer/shim.git",
-                "reference": "85ccbf0b084d0dae3dbeb2dca8e5bd4ced13c265"
+                "reference": "7e679e720ecd5295899681d9e9ce584a281757a2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHP-CS-Fixer/shim/zipball/85ccbf0b084d0dae3dbeb2dca8e5bd4ced13c265",
-                "reference": "85ccbf0b084d0dae3dbeb2dca8e5bd4ced13c265",
+                "url": "https://api.github.com/repos/PHP-CS-Fixer/shim/zipball/7e679e720ecd5295899681d9e9ce584a281757a2",
+                "reference": "7e679e720ecd5295899681d9e9ce584a281757a2",
                 "shasum": ""
             },
             "require": {
@@ -1398,9 +1398,15 @@
             "description": "A tool to automatically fix PHP code style",
             "support": {
                 "issues": "https://github.com/PHP-CS-Fixer/shim/issues",
-                "source": "https://github.com/PHP-CS-Fixer/shim/tree/v3.95.20"
+                "source": "https://github.com/PHP-CS-Fixer/shim/tree/v3.95.21"
             },
-            "time": "2026-08-19T16:28:36+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/keradus",
+                    "type": "github"
+                }
+            ],
+            "time": "2026-08-21T17:04:23+00:00"
         },
         {
             "name": "phpdocumentor/reflection-common",

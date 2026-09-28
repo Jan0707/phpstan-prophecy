@@ -17,7 +17,7 @@
     "ergebnis/composer-normalize": "^2.54.0",
     "ergebnis/license": "^2.8.0",
     "ergebnis/php-cs-fixer-config": "^6.63.3",
-    "php-cs-fixer/shim": "^3.95.25",
+    "php-cs-fixer/shim": "^3.95.27",
     "phpspec/prophecy": "^1.7.0",
     "phpspec/prophecy-phpunit": "^2.3",
     "phpunit/phpunit": "^9.1.0"

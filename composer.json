@@ -14,7 +14,7 @@
     "phpstan/phpstan": "^2.1.5"
   },
   "require-dev": {
-    "ergebnis/composer-normalize": "^2.54.0",
+    "ergebnis/composer-normalize": "^2.56.0",
     "ergebnis/license": "^2.8.0",
     "ergebnis/php-cs-fixer-config": "^6.64.1",
     "php-cs-fixer/shim": "^3.95.25",

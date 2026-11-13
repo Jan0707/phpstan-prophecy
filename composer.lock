@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "27956c19a7e94b20448666a972bd208e",
+    "content-hash": "3558979d4972a0a2e78eb3abbf948208",
     "packages": [
         {
             "name": "phpstan/phpstan",
@@ -63,20 +63,20 @@
     "packages-dev": [
         {
             "name": "doctrine/deprecations",
-            "version": "1.1.6",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/deprecations.git",
-                "reference": "d4fe3e6fd9bb9e72557a19674f44d8ac7db4c6ca"
+                "reference": "d2e16653a734c8784c1851ad68b02f997b53ca82"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/deprecations/zipball/d4fe3e6fd9bb9e72557a19674f44d8ac7db4c6ca",
-                "reference": "d4fe3e6fd9bb9e72557a19674f44d8ac7db4c6ca",
+                "url": "https://api.github.com/repos/doctrine/deprecations/zipball/d2e16653a734c8784c1851ad68b02f997b53ca82",
+                "reference": "d2e16653a734c8784c1851ad68b02f997b53ca82",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.1 || ^8.0"
+                "php": "^7.4 || ^8.0"
             },
             "conflict": {
                 "phpunit/phpunit": "<=7.5 || >=14"
@@ -105,9 +105,9 @@
             "homepage": "https://www.doctrine-project.org/",
             "support": {
                 "issues": "https://github.com/doctrine/deprecations/issues",
-                "source": "https://github.com/doctrine/deprecations/tree/1.1.6"
+                "source": "https://github.com/doctrine/deprecations/tree/1.2.0"
             },
-            "time": "2026-02-07T07:09:04+00:00"
+            "time": "2026-11-11T10:04:49+00:00"
         },
         {
             "name": "doctrine/instantiator",
@@ -1343,16 +1343,16 @@
         },
         {
             "name": "php-cs-fixer/shim",
-            "version": "v3.95.29",
+            "version": "v3.95.30",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHP-CS-Fixer/shim.git",
-                "reference": "fec935ae1ccb3df4c7e66dae9a62a52e4c0b9a92"
+                "reference": "413c9705404163fa3e5f7854208c5e9ae1a4590d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHP-CS-Fixer/shim/zipball/fec935ae1ccb3df4c7e66dae9a62a52e4c0b9a92",
-                "reference": "fec935ae1ccb3df4c7e66dae9a62a52e4c0b9a92",
+                "url": "https://api.github.com/repos/PHP-CS-Fixer/shim/zipball/413c9705404163fa3e5f7854208c5e9ae1a4590d",
+                "reference": "413c9705404163fa3e5f7854208c5e9ae1a4590d",
                 "shasum": ""
             },
             "require": {
@@ -1389,7 +1389,7 @@
             "description": "A tool to automatically fix PHP code style",
             "support": {
                 "issues": "https://github.com/PHP-CS-Fixer/shim/issues",
-                "source": "https://github.com/PHP-CS-Fixer/shim/tree/v3.95.29"
+                "source": "https://github.com/PHP-CS-Fixer/shim/tree/v3.95.30"
             },
             "funding": [
                 {
@@ -1397,7 +1397,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-11-06T16:26:08+00:00"
+            "time": "2026-11-09T14:32:47+00:00"
         },
         {
             "name": "phpdocumentor/reflection-common",

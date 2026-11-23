@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a337995f1c721bb435824b262e2088a0",
+    "content-hash": "275cd52c629d52ca36204bcdb5d8f23e",
     "packages": [
         {
             "name": "phpstan/phpstan",
@@ -797,37 +797,37 @@
         },
         {
             "name": "ergebnis/php-cs-fixer-config",
-            "version": "6.65.0",
+            "version": "6.66.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ergebnis/php-cs-fixer-config.git",
-                "reference": "ff9e10dbda4515b7f63b85b301cc1b6583d85878"
+                "reference": "18b7e419eb9a285a682be6d02ad6c3e11190bb94"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ergebnis/php-cs-fixer-config/zipball/ff9e10dbda4515b7f63b85b301cc1b6583d85878",
-                "reference": "ff9e10dbda4515b7f63b85b301cc1b6583d85878",
+                "url": "https://api.github.com/repos/ergebnis/php-cs-fixer-config/zipball/18b7e419eb9a285a682be6d02ad6c3e11190bb94",
+                "reference": "18b7e419eb9a285a682be6d02ad6c3e11190bb94",
                 "shasum": ""
             },
             "require": {
                 "erickskrauch/php-cs-fixer-custom-fixers": "~1.3.1",
                 "ext-filter": "*",
-                "friendsofphp/php-cs-fixer": "~3.95.29",
+                "friendsofphp/php-cs-fixer": "~3.95.32",
                 "kubawerlos/php-cs-fixer-custom-fixers": "~3.37.5",
                 "php": "~7.4.0 || ~8.0.0 || ~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0 || ~8.5.0 || ~8.6.0"
             },
             "require-dev": {
-                "ergebnis/composer-normalize": "^2.56.0",
+                "ergebnis/composer-normalize": "^2.56.1",
                 "ergebnis/data-provider": "^3.7.1",
                 "ergebnis/license": "^2.9.0",
-                "ergebnis/phpstan-rules": "^2.17.0",
+                "ergebnis/phpstan-rules": "^2.17.1",
                 "ergebnis/phpunit-slow-test-detector": "^2.27.0",
                 "ergebnis/rector-rules": "^1.19.0",
                 "fakerphp/faker": "^1.24.1",
                 "phpstan/extension-installer": "^1.4.3",
-                "phpstan/phpstan": "^2.3.3",
+                "phpstan/phpstan": "^2.3.6",
                 "phpstan/phpstan-deprecation-rules": "^2.0.5",
-                "phpstan/phpstan-phpunit": "^2.1.1",
+                "phpstan/phpstan-phpunit": "^2.1.2",
                 "phpstan/phpstan-strict-rules": "^2.1.1",
                 "phpunit/phpunit": "^9.6.33",
                 "rector/rector": "^2.8.1",
@@ -837,7 +837,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "6.65-dev"
+                    "dev-main": "6.66-dev"
                 },
                 "composer-normalize": {
                     "indent-size": 2,
@@ -867,7 +867,7 @@
                 "security": "https://github.com/ergebnis/php-cs-fixer-config/blob/main/.github/SECURITY.md",
                 "source": "https://github.com/ergebnis/php-cs-fixer-config"
             },
-            "time": "2026-11-11T09:08:33+00:00"
+            "time": "2026-11-19T13:17:32+00:00"
         },
         {
             "name": "erickskrauch/php-cs-fixer-custom-fixers",
@@ -1364,16 +1364,16 @@
         },
         {
             "name": "php-cs-fixer/shim",
-            "version": "v3.95.31",
+            "version": "v3.95.32",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHP-CS-Fixer/shim.git",
-                "reference": "ecc5bd6c3a8151488dc6b9a81502655726bd0f1b"
+                "reference": "c95a290fc4486d4a68fb75f88d7b166f4141686a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHP-CS-Fixer/shim/zipball/ecc5bd6c3a8151488dc6b9a81502655726bd0f1b",
-                "reference": "ecc5bd6c3a8151488dc6b9a81502655726bd0f1b",
+                "url": "https://api.github.com/repos/PHP-CS-Fixer/shim/zipball/c95a290fc4486d4a68fb75f88d7b166f4141686a",
+                "reference": "c95a290fc4486d4a68fb75f88d7b166f4141686a",
                 "shasum": ""
             },
             "require": {
@@ -1410,7 +1410,7 @@
             "description": "A tool to automatically fix PHP code style",
             "support": {
                 "issues": "https://github.com/PHP-CS-Fixer/shim/issues",
-                "source": "https://github.com/PHP-CS-Fixer/shim/tree/v3.95.31"
+                "source": "https://github.com/PHP-CS-Fixer/shim/tree/v3.95.32"
             },
             "funding": [
                 {
@@ -1418,7 +1418,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-11-16T21:05:48+00:00"
+            "time": "2026-11-17T18:09:48+00:00"
         },
         {
             "name": "phpdocumentor/reflection-common",
